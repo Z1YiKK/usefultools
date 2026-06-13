@@ -1,5 +1,5 @@
 /**
- * UsefulTools - Main JavaScript
+ * ToolHero - Main JavaScript
  * Search, Analytics tracking, Social sharing, Mobile menu
  */
 
@@ -137,5 +137,5 @@
         });
     });
 
-    console.log('✅ UsefulTools ready');
+    console.log('✅ ToolHero ready');
 })();
