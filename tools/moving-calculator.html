@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moving Cost Estimator 2026 - Calculate Your Move Budget</title>
+    <meta name="description" content="Plan your move budget. Get an instant estimate based on distance, home size, and services needed. Free moving cost calculator for local & long distance.">
+    <link rel="canonical" href="https://usefultools.com/tools/moving-calculator.html">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <a href="/" class="logo"><span class="logo-icon">🔧</span><span class="logo-text">Useful<span class="highlight">Tools</span></span></a>
+                <ul class="nav-links"><li><a href="/">Home</a></li><li><a href="/#tools">Tools</a></li><li><a href="/blog/">Blog</a></li></ul>
+                <button class="mobile-menu-btn" aria-label="Menu">☰</button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="tool-page">
+        <div class="container">
+            <div class="tool-breadcrumb"><a href="/">Home</a> → Moving Cost Estimator</div>
+            <div class="tool-layout">
+                <div class="tool-main">
+                    <h1>📦 Moving Cost Estimator 2026 — Budget Your Move</h1>
+                    <div class="calc-form">
+                        <div class="form-group"><label for="moveType">Move Type</label><select id="moveType"><option value="local" selected>Local (under 50 miles)</option><option value="long">Long Distance (50+ miles)</option><option value="cross">Cross-Country</option></select></div>
+                        <div class="form-group"><label for="homeSize">Home Size</label><select id="homeSize"><option value="studio">Studio Apartment</option><option value="1bed" selected>1 Bedroom</option><option value="2bed">2 Bedrooms</option><option value="3bed">3 Bedrooms</option><option value="4bed">4+ Bedrooms</option></select></div>
+                        <div class="form-group"><label for="distance">Distance (miles)</label><input type="number" id="distance" value="20" min="1" max="5000" step="1"></div>
+                        <div class="form-group"><label for="serviceLevel">Service Level</label><select id="serviceLevel"><option value="diy">DIY (Rent Truck)</option><option value="hybrid" selected>Hybrid (Load yourself, they drive)</option><option value="full">Full Service (They do everything)</option></select></div>
+                        <button type="button" class="calc-btn" onclick="calculateMoving()">📦 Estimate My Move →</button>
+                    </div>
+
+                    <div class="results" id="movingResults">
+                        <h2>📊 Moving Cost Estimate</h2>
+                        <div class="result-item"><span class="result-label">Estimated Cost Range</span><span class="result-value big" id="moveEstimate">-</span></div>
+                        <div class="result-item"><span class="result-label">Truck / Transport</span><span class="result-value" id="truckCost">-</span></div>
+                        <div class="result-item"><span class="result-label">Labor / Movers</span><span class="result-value" id="laborCost">-</span></div>
+                        <div class="result-item"><span class="result-label">Supplies & Packing</span><span class="result-value" id="packingCost">-</span></div>
+                        <div class="result-item"><span class="result-label">Insurance</span><span class="result-value" id="moveInsurance">-</span></div>
+                    </div>
+
+                    <div class="tool-content">
+                        <h2>How Much Does Moving Cost in 2026?</h2>
+                        <p>Moving costs have risen significantly. A local 1-bedroom move averages <strong>$500–$1,500</strong>, while a cross-country 3-bedroom move can cost <strong>$5,000–$10,000+</strong> with full service.</p>
+                        <h3>Money-Saving Tips</h3>
+                        <ul><li>Move mid-week or mid-month when demand is lower</li><li>Declutter before you pack — less stuff = lower cost</li><li>Get at least 3 quotes and compare</li><li>Check if your employer offers relocation assistance</li></ul>
+                    </div>
+                </div>
+                <aside class="tool-sidebar">
+                    <div class="sidebar-cta"><h3>📦 Planning a Move?</h3><ul><li>Compare moving company quotes</li><li>Read verified reviews</li><li>Book with confidence</li></ul><a href="#" class="affiliate-link" onclick="trackEvent('Affiliate','Click','moving')">Compare Moving Quotes →</a></div>
+                    <div class="related-tools"><h3>🧮 Related Tools</h3><ul><li><a href="/tools/fuel-calculator.html">⛽ Fuel Cost Calculator</a></li><li><a href="/tools/mortgage-calculator.html">🏠 Mortgage Calculator</a></li></ul></div>
+                    <div class="ad-placeholder">Ad Space</div>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container"><div class="footer-grid"><div class="footer-col"><h4>UsefulTools</h4><p>Free online calculators for smarter decisions.</p></div><div class="footer-col"><h4>Legal</h4><ul><li><a href="/privacy.html">Privacy Policy</a></li><li><a href="/terms.html">Terms of Use</a></li></ul></div></div><div class="footer-bottom"><p>&copy; 2026 UsefulTools.</p></div></div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script>
+    function calculateMoving() {
+        var moveType = document.getElementById('moveType').value;
+        var homeSize = document.getElementById('homeSize').value;
+        var distance = parseFloat(document.getElementById('distance').value) || 20;
+        var service = document.getElementById('serviceLevel').value;
+
+        var baseCosts = { studio: 300, '1bed': 600, '2bed': 1000, '3bed': 1800, '4bed': 2800 };
+        var base = baseCosts[homeSize] || 600;
+        var distMult = moveType === 'local' ? 1 : moveType === 'long' ? 1.5 + distance * 0.5 : 2 + distance * 0.8;
+        var serviceMult = service === 'diy' ? 0.5 : service === 'hybrid' ? 1 : 2;
+
+        var total = base * distMult * serviceMult;
+        var truck = total * (service === 'diy' ? 0.6 : service === 'hybrid' ? 0.4 : 0.2);
+        var labor = total * (service === 'diy' ? 0.1 : service === 'hybrid' ? 0.35 : 0.55);
+        var packing = total * 0.15;
+        var insurance = total * 0.1;
+
+        document.getElementById('moveEstimate').textContent = '$' + Math.round(total * 0.8).toLocaleString() + ' – $' + Math.round(total * 1.2).toLocaleString();
+        document.getElementById('truckCost').textContent = '$' + Math.round(truck).toLocaleString();
+        document.getElementById('laborCost').textContent = '$' + Math.round(labor).toLocaleString();
+        document.getElementById('packingCost').textContent = '$' + Math.round(packing).toLocaleString();
+        document.getElementById('moveInsurance').textContent = '$' + Math.round(insurance).toLocaleString();
+        document.getElementById('movingResults').classList.add('show');
+        document.getElementById('movingResults').scrollIntoView({ behavior: 'smooth' });
+        if (typeof trackEvent === 'function') trackEvent('Tool', 'Calculate', 'Moving');
+    }
+    </script>
+</body>
+</html>

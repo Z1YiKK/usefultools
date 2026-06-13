@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fuel Cost Calculator - Trip Gas Cost & Fuel Economy</title>
+    <meta name="description" content="Calculate trip fuel costs, compare vehicle MPG, and find the cheapest route. Free gas cost calculator for road trips and daily commutes.">
+    <link rel="canonical" href="https://usefultools.com/tools/fuel-calculator.html">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <a href="/" class="logo"><span class="logo-icon">🔧</span><span class="logo-text">Useful<span class="highlight">Tools</span></span></a>
+                <ul class="nav-links"><li><a href="/">Home</a></li><li><a href="/#tools">Tools</a></li><li><a href="/blog/">Blog</a></li></ul>
+                <button class="mobile-menu-btn" aria-label="Menu">☰</button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="tool-page">
+        <div class="container">
+            <div class="tool-breadcrumb"><a href="/">Home</a> → Fuel Cost Calculator</div>
+            <div class="tool-layout">
+                <div class="tool-main">
+                    <h1>⛽ Fuel Cost Calculator — Trip & Commute Gas Costs</h1>
+                    <div class="calc-form">
+                        <div class="form-group"><label for="tripDistance">Trip Distance (miles)</label><input type="number" id="tripDistance" value="200" min="1" step="1"></div>
+                        <div class="form-group"><label for="mpg">Vehicle MPG (miles per gallon)</label><input type="number" id="mpg" value="28" min="5" max="100" step="0.1"><span class="input-hint">Average car: 25-30 MPG, SUV: 18-25, Hybrid: 45-55</span></div>
+                        <div class="form-group"><label for="gasPrice">Gas Price ($/gallon)</label><input type="number" id="gasPrice" value="3.50" min="0.5" max="15" step="0.01"></div>
+                        <button type="button" class="calc-btn" onclick="calculateFuel()">⛽ Calculate Fuel Cost →</button>
+                    </div>
+
+                    <div class="results" id="fuelResults">
+                        <h2>📊 Your Fuel Cost</h2>
+                        <div class="result-item"><span class="result-label">Gallons Needed</span><span class="result-value" id="gallons">-</span></div>
+                        <div class="result-item"><span class="result-label">Total Fuel Cost</span><span class="result-value big" id="fuelCost">-</span></div>
+                        <div class="result-item"><span class="result-label">Cost Per Mile</span><span class="result-value" id="costPerMile">-</span></div>
+                    </div>
+
+                    <div class="tool-content">
+                        <h2>How to Save on Fuel Costs</h2>
+                        <p>Gas prices fluctuate constantly. Here are proven ways to reduce your fuel spending:</p>
+                        <ul>
+                            <li><strong>Drive smoothly:</strong> Aggressive acceleration and braking can reduce MPG by 15-30%</li>
+                            <li><strong>Check tire pressure:</strong> Under-inflated tires reduce fuel efficiency by up to 3%</li>
+                            <li><strong>Use gas apps:</strong> Apps like GasBuddy can save you $0.10-$0.30 per gallon</li>
+                            <li><strong>Combine trips:</strong> A warm engine is more efficient than a cold start</li>
+                        </ul>
+                    </div>
+                </div>
+                <aside class="tool-sidebar">
+                    <div class="sidebar-cta"><h3>⛽ Find Cheap Gas Near You</h3><ul><li>Real-time gas prices</li><li>Save $0.10-$0.30/gallon</li><li>Free to use</li></ul><a href="#" class="affiliate-link">Find Cheap Gas →</a></div>
+                    <div class="related-tools"><h3>🧮 Related Tools</h3><ul><li><a href="/tools/moving-calculator.html">📦 Moving Cost Estimator</a></li><li><a href="/tools/savings-calculator.html">💰 Savings Calculator</a></li></ul></div>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container"><div class="footer-grid"><div class="footer-col"><h4>UsefulTools</h4><p>Free online calculators for smarter decisions.</p></div><div class="footer-col"><h4>Legal</h4><ul><li><a href="/privacy.html">Privacy Policy</a></li><li><a href="/terms.html">Terms of Use</a></li></ul></div></div><div class="footer-bottom"><p>&copy; 2026 UsefulTools.</p></div></div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script>
+    function calculateFuel() {
+        var dist = parseFloat(document.getElementById('tripDistance').value);
+        var mpg = parseFloat(document.getElementById('mpg').value);
+        var price = parseFloat(document.getElementById('gasPrice').value);
+        var gallons = dist / mpg;
+        var totalCost = gallons * price;
+
+        document.getElementById('gallons').textContent = Math.round(gallons * 100) / 100 + ' gallons';
+        document.getElementById('fuelCost').textContent = '$' + totalCost.toFixed(2);
+        document.getElementById('costPerMile').textContent = '$' + (totalCost / dist).toFixed(3) + '/mile';
+        document.getElementById('fuelResults').classList.add('show');
+        document.getElementById('fuelResults').scrollIntoView({ behavior: 'smooth' });
+        if (typeof trackEvent === 'function') trackEvent('Tool', 'Calculate', 'Fuel');
+    }
+    </script>
+</body>
+</html>

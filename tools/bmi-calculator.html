@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator - Free Body Mass Index Calculator (2026)</title>
+    <meta name="description" content="Instantly calculate your BMI (Body Mass Index). Get personalized health insights, weight category, and recommendations. Free, no sign-up.">
+    <link rel="canonical" href="https://usefultools.com/tools/bmi-calculator.html">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <a href="/" class="logo"><span class="logo-icon">🔧</span><span class="logo-text">Useful<span class="highlight">Tools</span></span></a>
+                <ul class="nav-links"><li><a href="/">Home</a></li><li><a href="/#tools">Tools</a></li><li><a href="/blog/">Blog</a></li></ul>
+                <button class="mobile-menu-btn" aria-label="Menu">☰</button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="tool-page">
+        <div class="container">
+            <div class="tool-breadcrumb"><a href="/">Home</a> → BMI Calculator</div>
+            <div class="tool-layout">
+                <div class="tool-main">
+                    <h1>💪 BMI Calculator — Instantly Check Your Body Mass Index</h1>
+                    <div class="calc-form">
+                        <div class="form-group">
+                            <label for="bmiUnit">Units</label>
+                            <select id="bmiUnit" onchange="toggleBmiUnits()">
+                                <option value="metric">Metric (kg / cm)</option>
+                                <option value="imperial" selected>Imperial (lbs / ft-in)</option>
+                            </select>
+                        </div>
+                        <div id="metricInputs" style="display:none;">
+                            <div class="form-group"><label for="weightKg">Weight (kg)</label><input type="number" id="weightKg" value="70" min="20" max="300" step="0.1"></div>
+                            <div class="form-group"><label for="heightCm">Height (cm)</label><input type="number" id="heightCm" value="170" min="50" max="250" step="0.1"></div>
+                        </div>
+                        <div id="imperialInputs">
+                            <div class="form-group"><label for="weightLbs">Weight (lbs)</label><input type="number" id="weightLbs" value="160" min="40" max="660" step="0.1"></div>
+                            <div class="form-group"><label for="heightFt">Height</label><div style="display:flex;gap:8px;"><input type="number" id="heightFt" value="5" min="1" max="8" step="1" style="flex:1;" placeholder="ft"><input type="number" id="heightIn" value="8" min="0" max="11" step="1" style="flex:1;" placeholder="in"></div></div>
+                        </div>
+                        <button type="button" class="calc-btn" onclick="calculateBMI()">💪 Calculate My BMI →</button>
+                    </div>
+
+                    <div class="results" id="bmiResults">
+                        <h2>📊 Your BMI Result</h2>
+                        <div class="result-item"><span class="result-label">Your BMI</span><span class="result-value big" id="bmiValue">-</span></div>
+                        <div class="result-item"><span class="result-label">Category</span><span class="result-value" id="bmiCategory">-</span></div>
+                        <div class="result-item"><span class="result-label">Healthy Weight Range (for your height)</span><span class="result-value" id="healthyRange">-</span></div>
+                    </div>
+
+                    <div class="tool-content">
+                        <h2>What Is BMI and Why Does It Matter?</h2>
+                        <p>Body Mass Index (BMI) is a simple screening tool used to identify potential weight problems in adults. While not perfect, it gives a useful starting point for understanding your health.</p>
+                        <h3>BMI Categories</h3>
+                        <ul>
+                            <li><strong>Below 18.5:</strong> Underweight</li>
+                            <li><strong>18.5 – 24.9:</strong> Normal / Healthy Weight</li>
+                            <li><strong>25.0 – 29.9:</strong> Overweight</li>
+                            <li><strong>30.0 and above:</strong> Obese</li>
+                        </ul>
+                        <p><strong>Important:</strong> BMI doesn't account for muscle mass, bone density, or body composition. Athletes with high muscle mass may have a high BMI but low body fat. Always consult a healthcare professional for a complete assessment.</p>
+                    </div>
+                </div>
+
+                <aside class="tool-sidebar">
+                    <div class="sidebar-cta">
+                        <h3>💪 Ready to Get Healthier?</h3>
+                        <ul><li>Personalized meal plans</li><li>At-home workout programs</li><li>Track your progress</li></ul>
+                        <a href="#" class="affiliate-link" onclick="trackEvent('Affiliate','Click','fitness')">Explore Fitness Programs →</a>
+                    </div>
+                    <div class="related-tools"><h3>🧮 Related Tools</h3><ul><li><a href="/tools/pet-cost-calculator.html">🐾 Pet Cost Calculator</a></li><li><a href="/tools/savings-calculator.html">💰 Savings Calculator</a></li></ul></div>
+                    <div class="ad-placeholder">Ad Space</div>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container"><div class="footer-grid"><div class="footer-col"><h4>UsefulTools</h4><p>Free online calculators for smarter decisions.</p></div><div class="footer-col"><h4>Legal</h4><ul><li><a href="/privacy.html">Privacy Policy</a></li><li><a href="/terms.html">Terms of Use</a></li></ul></div></div><div class="footer-bottom"><p>&copy; 2026 UsefulTools.</p></div></div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script>
+    function toggleBmiUnits() {
+        var isMetric = document.getElementById('bmiUnit').value === 'metric';
+        document.getElementById('metricInputs').style.display = isMetric ? 'block' : 'none';
+        document.getElementById('imperialInputs').style.display = isMetric ? 'none' : 'block';
+    }
+    function calculateBMI() {
+        var isMetric = document.getElementById('bmiUnit').value === 'metric';
+        var bmi, heightM;
+        if (isMetric) {
+            var kg = parseFloat(document.getElementById('weightKg').value);
+            var cm = parseFloat(document.getElementById('heightCm').value);
+            heightM = cm / 100;
+            bmi = kg / (heightM * heightM);
+        } else {
+            var lbs = parseFloat(document.getElementById('weightLbs').value);
+            var ft = parseInt(document.getElementById('heightFt').value);
+            var inch = parseInt(document.getElementById('heightIn').value) || 0;
+            var totalInches = ft * 12 + inch;
+            heightM = totalInches * 0.0254;
+            bmi = (lbs * 0.453592) / (heightM * heightM);
+        }
+
+        var category = '';
+        if (bmi < 18.5) category = '⬇️ Underweight';
+        else if (bmi < 25) category = '✅ Normal / Healthy Weight';
+        else if (bmi < 30) category = '⚠️ Overweight';
+        else category = '🔴 Obese';
+
+        var minHealthy = Math.round(18.5 * heightM * heightM);
+        var maxHealthy = Math.round(24.9 * heightM * heightM);
+        var unitLabel = isMetric ? 'kg' : 'lbs';
+        if (!isMetric) { minHealthy = Math.round(minHealthy * 2.20462); maxHealthy = Math.round(maxHealthy * 2.20462); }
+
+        document.getElementById('bmiValue').textContent = Math.round(bmi * 10) / 10;
+        document.getElementById('bmiCategory').textContent = category;
+        document.getElementById('healthyRange').textContent = minHealthy + ' – ' + maxHealthy + ' ' + unitLabel;
+        document.getElementById('bmiResults').classList.add('show');
+        document.getElementById('bmiResults').scrollIntoView({ behavior: 'smooth' });
+        if (typeof trackEvent === 'function') trackEvent('Tool', 'Calculate', 'BMI');
+    }
+    </script>
+</body>
+</html>

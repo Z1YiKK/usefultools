@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tip Calculator - Calculate Tips & Split Bills Instantly</title>
+    <meta name="description" content="Calculate the perfect tip and split the bill among friends. Works for US, UK, EU, and any tipping custom. Free, instant results.">
+    <link rel="canonical" href="https://usefultools.com/tools/tip-calculator.html">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <a href="/" class="logo"><span class="logo-icon">🔧</span><span class="logo-text">Useful<span class="highlight">Tools</span></span></a>
+                <ul class="nav-links"><li><a href="/">Home</a></li><li><a href="/#tools">Tools</a></li><li><a href="/blog/">Blog</a></li></ul>
+                <button class="mobile-menu-btn" aria-label="Menu">☰</button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="tool-page">
+        <div class="container">
+            <div class="tool-breadcrumb"><a href="/">Home</a> → Tip Calculator</div>
+            <div class="tool-layout">
+                <div class="tool-main">
+                    <h1>🍽️ Tip & Split Calculator — Tip With Confidence</h1>
+                    <div class="calc-form">
+                        <div class="form-group"><label for="billAmount">Bill Amount ($)</label><input type="number" id="billAmount" value="50" min="0" step="0.01"></div>
+                        <div class="form-group"><label for="tipPercent">Tip Percentage</label><select id="tipPercent"><option value="15" selected>15% - Standard (US)</option><option value="18">18% - Good Service</option><option value="20">20% - Great Service</option><option value="10">10% - Basic (UK/EU)</option><option value="25">25% - Exceptional</option><option value="0">No Tip</option><option value="custom">Custom...</option></select></div>
+                        <div class="form-group" id="customTipGroup" style="display:none;"><label for="customTip">Custom Tip (%)</label><input type="number" id="customTip" value="15" min="0" max="100" step="1"></div>
+                        <div class="form-group"><label for="numPeople">Number of People Splitting</label><input type="number" id="numPeople" value="1" min="1" max="100" step="1"></div>
+                        <button type="button" class="calc-btn" onclick="calculateTip()">💵 Calculate Tip →</button>
+                    </div>
+
+                    <div class="results" id="tipResults">
+                        <h2>📊 Your Bill Breakdown</h2>
+                        <div class="result-item"><span class="result-label">Tip Amount</span><span class="result-value big" id="tipAmount">-</span></div>
+                        <div class="result-item"><span class="result-label">Total Bill (with tip)</span><span class="result-value" id="totalBill">-</span></div>
+                        <div class="result-item"><span class="result-label">Per Person</span><span class="result-value big" id="perPerson">-</span></div>
+                    </div>
+
+                    <div class="tool-content">
+                        <h2>Tipping Around the World</h2>
+                        <p>Tipping customs vary widely by country. Here's a quick guide:</p>
+                        <ul><li><strong>United States:</strong> 15-20% is standard at restaurants</li><li><strong>United Kingdom:</strong> 10-12.5% service charge often included</li><li><strong>Japan:</strong> Tipping is not customary and can be considered rude</li><li><strong>France:</strong> Service is included ("service compris"), but leaving small change is polite</li></ul>
+                    </div>
+                </div>
+                <aside class="tool-sidebar">
+                    <div class="sidebar-cta"><h3>🍽️ Love Eating Out?</h3><ul><li>Find restaurant deals near you</li><li>Earn cashback on dining</li><li>Discover new restaurants</li></ul><a href="#" class="affiliate-link">Find Dining Deals →</a></div>
+                    <div class="related-tools"><h3>🧮 Related Tools</h3><ul><li><a href="/tools/subscription-calculator.html">📊 Subscription Analyzer</a></li><li><a href="/tools/savings-calculator.html">💰 Savings Calculator</a></li></ul></div>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container"><div class="footer-grid"><div class="footer-col"><h4>UsefulTools</h4><p>Free online calculators for smarter decisions.</p></div><div class="footer-col"><h4>Legal</h4><ul><li><a href="/privacy.html">Privacy Policy</a></li><li><a href="/terms.html">Terms of Use</a></li></ul></div></div><div class="footer-bottom"><p>&copy; 2026 UsefulTools.</p></div></div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script>
+    document.getElementById('tipPercent').addEventListener('change', function() {
+        document.getElementById('customTipGroup').style.display = this.value === 'custom' ? 'block' : 'none';
+    });
+    function calculateTip() {
+        var bill = parseFloat(document.getElementById('billAmount').value);
+        var tipSelect = document.getElementById('tipPercent').value;
+        var tipPct = tipSelect === 'custom' ? parseFloat(document.getElementById('customTip').value) : parseFloat(tipSelect);
+        var people = parseInt(document.getElementById('numPeople').value) || 1;
+        var tip = bill * (tipPct / 100);
+        var total = bill + tip;
+        var perPerson = total / people;
+
+        document.getElementById('tipAmount').textContent = '$' + tip.toFixed(2);
+        document.getElementById('totalBill').textContent = '$' + total.toFixed(2);
+        document.getElementById('perPerson').textContent = '$' + perPerson.toFixed(2) + (people > 1 ? ' each' : '');
+        document.getElementById('tipResults').classList.add('show');
+        document.getElementById('tipResults').scrollIntoView({ behavior: 'smooth' });
+        if (typeof trackEvent === 'function') trackEvent('Tool', 'Calculate', 'Tip');
+    }
+    </script>
+</body>
+</html>

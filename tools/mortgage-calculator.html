@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mortgage Extra Payment Calculator - Pay Off Early & Save</title>
+    <meta name="description" content="See how extra payments can save you thousands in interest and shave years off your mortgage. Free amortization schedule included.">
+    <link rel="canonical" href="https://usefultools.com/tools/mortgage-calculator.html">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <a href="/" class="logo"><span class="logo-icon">🔧</span><span class="logo-text">Useful<span class="highlight">Tools</span></span></a>
+                <ul class="nav-links">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/#tools">Tools</a></li>
+                    <li><a href="/blog/">Blog</a></li>
+                </ul>
+                <button class="mobile-menu-btn" aria-label="Menu">☰</button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="tool-page">
+        <div class="container">
+            <div class="tool-breadcrumb"><a href="/">Home</a> → Mortgage Payoff Calculator</div>
+
+            <div class="tool-layout">
+                <div class="tool-main">
+                    <h1>🏠 Mortgage Extra Payment Calculator — See How Much You Can Save</h1>
+
+                    <div class="calc-form" id="mortgageCalc">
+                        <div class="form-group">
+                            <label for="loanAmount">Loan Amount ($)</label>
+                            <input type="number" id="loanAmount" value="300000" min="1000" step="1000">
+                        </div>
+                        <div class="form-group">
+                            <label for="interestRate">Interest Rate (%)</label>
+                            <input type="number" id="interestRate" value="6.5" min="0.1" max="30" step="0.1">
+                        </div>
+                        <div class="form-group">
+                            <label for="loanTerm">Loan Term (years)</label>
+                            <select id="loanTerm">
+                                <option value="30" selected>30 Years</option>
+                                <option value="20">20 Years</option>
+                                <option value="15">15 Years</option>
+                                <option value="10">10 Years</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="extraPayment">Extra Monthly Payment ($)</label>
+                            <input type="number" id="extraPayment" value="200" min="0" step="10">
+                            <span class="input-hint">Even $100 extra per month can save thousands</span>
+                        </div>
+                        <button type="button" class="calc-btn" onclick="calculateMortgage()">💰 Calculate Savings →</button>
+                    </div>
+
+                    <div class="results" id="mortgageResults">
+                        <h2>📊 Your Mortgage Analysis</h2>
+                        <div class="result-item"><span class="result-label">Normal Monthly Payment</span><span class="result-value" id="normalPayment">-</span></div>
+                        <div class="result-item"><span class="result-label">Total Interest (normal)</span><span class="result-value" id="normalInterest">-</span></div>
+                        <div class="result-item"><span class="result-label">Payoff Date (normal)</span><span class="result-value" id="normalPayoff">-</span></div>
+                        <div class="result-item"><span class="result-label">With Extra: Payoff Date</span><span class="result-value big" id="extraPayoff">-</span></div>
+                        <div class="result-item"><span class="result-label">Years Saved</span><span class="result-value big" id="yearsSaved">-</span></div>
+                        <div class="result-item"><span class="result-label">Interest Saved</span><span class="result-value big" id="interestSaved">-</span></div>
+                        <div class="result-item"><span class="result-label">Total Savings</span><span class="result-value big" id="totalSaved">-</span></div>
+                    </div>
+
+                    <div class="tool-content">
+                        <h2>How Extra Payments Save You Money</h2>
+                        <p>Making extra payments toward your mortgage principal is one of the smartest financial moves you can make. Even a small additional amount each month can cut years off your loan and save tens of thousands in interest.</p>
+                        <h3>Why It Works</h3>
+                        <p>Mortgage interest is calculated on your remaining balance. Every extra dollar you pay goes directly to reducing the principal, which means less interest accrues next month — and the savings compound over time.</p>
+                        <p><strong>Example:</strong> On a $300,000 mortgage at 6.5%, adding just $200/month saves approximately <strong>$97,000 in interest</strong> and pays off the loan <strong>7 years early</strong>.</p>
+                    </div>
+                </div>
+
+                <aside class="tool-sidebar">
+                    <div class="sidebar-cta">
+                        <h3>🏠 Shopping for a Mortgage?</h3>
+                        <ul>
+                            <li>Compare current rates</li>
+                            <li>Find the best lender for you</li>
+                            <li>Check refinance options</li>
+                        </ul>
+                        <a href="#" class="affiliate-link" onclick="trackEvent('Affiliate','Click','mortgage')">Compare Mortgage Rates →</a>
+                    </div>
+                    <div class="related-tools">
+                        <h3>🧮 Related Tools</h3>
+                        <ul>
+                            <li><a href="/tools/savings-calculator.html">💰 Savings Goal Calculator</a></li>
+                            <li><a href="/tools/subscription-calculator.html">📊 Subscription Cost Analyzer</a></li>
+                            <li><a href="/tools/moving-calculator.html">📦 Moving Cost Estimator</a></li>
+                        </ul>
+                    </div>
+                    <div class="ad-placeholder">Ad Space</div>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col"><h4>UsefulTools</h4><p>Free online calculators to help you make smarter decisions.</p></div>
+                <div class="footer-col"><h4>Legal</h4><ul><li><a href="/privacy.html">Privacy Policy</a></li><li><a href="/terms.html">Terms of Use</a></li></ul></div>
+            </div>
+            <div class="footer-bottom"><p>&copy; 2026 UsefulTools.</p></div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script>
+    function calculateMortgage() {
+        var loan = parseFloat(document.getElementById('loanAmount').value) || 300000;
+        var rate = parseFloat(document.getElementById('interestRate').value) / 100 / 12;
+        var years = parseInt(document.getElementById('loanTerm').value);
+        var extra = parseFloat(document.getElementById('extraPayment').value) || 0;
+
+        var months = years * 12;
+        var normalPayment = loan * rate * Math.pow(1+rate, months) / (Math.pow(1+rate, months) - 1);
+        var normalTotal = normalPayment * months;
+        var normalInterest = normalTotal - loan;
+
+        // With extra payments
+        var balance = loan;
+        var extraMonths = 0;
+        while (balance > 0 && extraMonths < months * 2) {
+            var interestPayment = balance * rate;
+            var principalPayment = normalPayment - interestPayment + extra;
+            balance -= principalPayment;
+            if (balance < 0) balance = 0;
+            extraMonths++;
+        }
+
+        var extraTotal = normalPayment * extraMonths + extra * extraMonths;
+        var extraInterest = extraTotal - loan;
+        var interestSaved = normalInterest - extraInterest;
+        var yearsSaved = (months - extraMonths) / 12;
+
+        var today = new Date();
+        var normalEnd = new Date(today.getFullYear() + years, today.getMonth(), today.getDate());
+        var extraEnd = new Date(today.getFullYear() + extraMonths/12, today.getMonth(), today.getDate());
+
+        document.getElementById('normalPayment').textContent = '$' + Math.round(normalPayment).toLocaleString() + '/mo';
+        document.getElementById('normalInterest').textContent = '$' + Math.round(normalInterest).toLocaleString();
+        document.getElementById('normalPayoff').textContent = normalEnd.getFullYear();
+        document.getElementById('extraPayoff').textContent = 'By ' + extraEnd.getFullYear();
+        document.getElementById('yearsSaved').textContent = Math.round(yearsSaved * 10) / 10 + ' years earlier!';
+        document.getElementById('interestSaved').textContent = '$' + Math.round(interestSaved).toLocaleString() + ' saved in interest';
+        document.getElementById('totalSaved').textContent = '$' + Math.round(interestSaved).toLocaleString() + ' total savings';
+
+        document.getElementById('mortgageResults').classList.add('show');
+        document.getElementById('mortgageResults').scrollIntoView({ behavior: 'smooth' });
+        if (typeof trackEvent === 'function') trackEvent('Tool', 'Calculate', 'Mortgage');
+    }
+    </script>
+</body>
+</html>

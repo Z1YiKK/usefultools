@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Savings Goal Calculator - How Long to Reach Your Goal</title>
+    <meta name="description" content="Plan your financial future. See exactly how long it will take to reach your savings goals with compound interest. Free savings calculator.">
+    <link rel="canonical" href="https://usefultools.com/tools/savings-calculator.html">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <a href="/" class="logo"><span class="logo-icon">🔧</span><span class="logo-text">Useful<span class="highlight">Tools</span></span></a>
+                <ul class="nav-links"><li><a href="/">Home</a></li><li><a href="/#tools">Tools</a></li><li><a href="/blog/">Blog</a></li></ul>
+                <button class="mobile-menu-btn" aria-label="Menu">☰</button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="tool-page">
+        <div class="container">
+            <div class="tool-breadcrumb"><a href="/">Home</a> → Savings Goal Calculator</div>
+            <div class="tool-layout">
+                <div class="tool-main">
+                    <h1>💰 Savings Goal Calculator — How Long to Reach Your Financial Goals</h1>
+                    <div class="calc-form">
+                        <div class="form-group"><label for="goalAmount">Savings Goal ($)</label><input type="number" id="goalAmount" value="10000" min="100" step="100"></div>
+                        <div class="form-group"><label for="currentSavings">Current Savings ($)</label><input type="number" id="currentSavings" value="1000" min="0" step="100"></div>
+                        <div class="form-group"><label for="monthlyContribution">Monthly Contribution ($)</label><input type="number" id="monthlyContribution" value="500" min="1" step="50"></div>
+                        <div class="form-group"><label for="interestRate2">Annual Interest Rate (%)</label><input type="number" id="interestRate2" value="4" min="0" max="30" step="0.1"><span class="input-hint">APY from savings account or investments</span></div>
+                        <button type="button" class="calc-btn" onclick="calculateSavings()">💰 Calculate Timeline →</button>
+                    </div>
+
+                    <div class="results" id="savingsResults">
+                        <h2>📊 Your Savings Plan</h2>
+                        <div class="result-item"><span class="result-label">Time to Reach Goal</span><span class="result-value big" id="timeToGoal">-</span></div>
+                        <div class="result-item"><span class="result-label">Final Balance</span><span class="result-value" id="finalBalance">-</span></div>
+                        <div class="result-item"><span class="result-label">Total Contributions</span><span class="result-value" id="totalContributions">-</span></div>
+                        <div class="result-item"><span class="result-label">Interest Earned</span><span class="result-value" id="interestEarned">-</span></div>
+                    </div>
+
+                    <div class="tool-content">
+                        <h2>The Power of Compound Interest</h2>
+                        <p>Compound interest is often called the "eighth wonder of the world" — and for good reason. When your interest earns interest, your money grows exponentially over time.</p>
+                        <p><strong>Example:</strong> Saving $500/month at 4% APY, it takes just <strong>18 months</strong> to reach a $10,000 goal starting from $1,000 — and only about $9,000 is from your own contributions, with the rest coming from interest.</p>
+                    </div>
+                </div>
+                <aside class="tool-sidebar">
+                    <div class="sidebar-cta"><h3>💳 Want to Save Faster?</h3><ul><li>High-yield savings accounts</li><li>Best investment platforms</li><li>Automatic savings tools</li></ul><a href="#" class="affiliate-link" onclick="trackEvent('Affiliate','Click','savings')">Compare Savings Accounts →</a></div>
+                    <div class="related-tools"><h3>🧮 Related Tools</h3><ul><li><a href="/tools/mortgage-calculator.html">🏠 Mortgage Calculator</a></li><li><a href="/tools/subscription-calculator.html">📊 Subscription Analyzer</a></li></ul></div>
+                    <div class="ad-placeholder">Ad Space</div>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container"><div class="footer-grid"><div class="footer-col"><h4>UsefulTools</h4><p>Free online calculators for smarter decisions.</p></div><div class="footer-col"><h4>Legal</h4><ul><li><a href="/privacy.html">Privacy Policy</a></li><li><a href="/terms.html">Terms of Use</a></li></ul></div></div><div class="footer-bottom"><p>&copy; 2026 UsefulTools.</p></div></div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script>
+    function calculateSavings() {
+        var goal = parseFloat(document.getElementById('goalAmount').value);
+        var current = parseFloat(document.getElementById('currentSavings').value);
+        var monthly = parseFloat(document.getElementById('monthlyContribution').value);
+        var annualRate = parseFloat(document.getElementById('interestRate2').value) / 100;
+        var monthlyRate = annualRate / 12;
+
+        var balance = current;
+        var months = 0;
+        while (balance < goal && months < 1200) {
+            balance += monthly;
+            balance *= (1 + monthlyRate);
+            months++;
+        }
+
+        var totalContrib = current + monthly * months;
+        var interest = balance - totalContrib;
+
+        document.getElementById('timeToGoal').textContent = months + ' months (' + (months/12).toFixed(1) + ' years)';
+        document.getElementById('finalBalance').textContent = '$' + Math.round(balance).toLocaleString();
+        document.getElementById('totalContributions').textContent = '$' + Math.round(totalContrib).toLocaleString();
+        document.getElementById('interestEarned').textContent = '$' + Math.round(interest).toLocaleString();
+        document.getElementById('savingsResults').classList.add('show');
+        document.getElementById('savingsResults').scrollIntoView({ behavior: 'smooth' });
+        if (typeof trackEvent === 'function') trackEvent('Tool', 'Calculate', 'Savings');
+    }
+    </script>
+</body>
+</html>

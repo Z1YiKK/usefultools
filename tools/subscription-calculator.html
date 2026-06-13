@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subscription Cost Analyzer - Find Hidden Subscription Spending</title>
+    <meta name="description" content="Add up all your subscriptions (Netflix, Spotify, gym, apps) and see what you're really spending per month and per year. The results may shock you.">
+    <link rel="canonical" href="https://usefultools.com/tools/subscription-calculator.html">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <a href="/" class="logo"><span class="logo-icon">🔧</span><span class="logo-text">Useful<span class="highlight">Tools</span></span></a>
+                <ul class="nav-links"><li><a href="/">Home</a></li><li><a href="/#tools">Tools</a></li><li><a href="/blog/">Blog</a></li></ul>
+                <button class="mobile-menu-btn" aria-label="Menu">☰</button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="tool-page">
+        <div class="container">
+            <div class="tool-breadcrumb"><a href="/">Home</a> → Subscription Cost Analyzer</div>
+            <div class="tool-layout">
+                <div class="tool-main">
+                    <h1>📊 Subscription Cost Analyzer — What Are You Really Spending?</h1>
+                    <p style="margin-bottom:20px;color:var(--text-light);">Americans spend an average of <strong>$219/month</strong> on subscriptions they've forgotten about. Let's find yours.</p>
+                    <div class="calc-form" id="subCalc">
+                        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;" id="subList">
+                            <div class="form-group"><label>Netflix</label><input type="number" class="sub-input" value="15.49" min="0" step="0.01" placeholder="$/mo"></div>
+                            <div class="form-group"><label>Amazon Prime</label><input type="number" class="sub-input" value="14.99" min="0" step="0.01" placeholder="$/mo"></div>
+                            <div class="form-group"><label>Spotify / Apple Music</label><input type="number" class="sub-input" value="10.99" min="0" step="0.01" placeholder="$/mo"></div>
+                            <div class="form-group"><label>Disney+ / HBO / Hulu</label><input type="number" class="sub-input" value="0" min="0" step="0.01" placeholder="$/mo"></div>
+                            <div class="form-group"><label>Gym / Fitness App</label><input type="number" class="sub-input" value="0" min="0" step="0.01" placeholder="$/mo"></div>
+                            <div class="form-group"><label>Cloud Storage (iCloud/Drive)</label><input type="number" class="sub-input" value="0" min="0" step="0.01" placeholder="$/mo"></div>
+                            <div class="form-group"><label>Gaming (Xbox/PS/Nintendo)</label><input type="number" class="sub-input" value="0" min="0" step="0.01" placeholder="$/mo"></div>
+                            <div class="form-group"><label>Meal Kit / Food Delivery</label><input type="number" class="sub-input" value="0" min="0" step="0.01" placeholder="$/mo"></div>
+                            <div class="form-group"><label>News / Magazine</label><input type="number" class="sub-input" value="0" min="0" step="0.01" placeholder="$/mo"></div>
+                            <div class="form-group"><label>Software / Apps</label><input type="number" class="sub-input" value="0" min="0" step="0.01" placeholder="$/mo"></div>
+                            <div class="form-group"><label>Other #1</label><input type="number" class="sub-input" value="0" min="0" step="0.01" placeholder="$/mo"></div>
+                            <div class="form-group"><label>Other #2</label><input type="number" class="sub-input" value="0" min="0" step="0.01" placeholder="$/mo"></div>
+                        </div>
+                        <button type="button" class="calc-btn" onclick="calculateSubs()">📊 Show Me My Spending →</button>
+                    </div>
+
+                    <div class="results" id="subResults">
+                        <h2>📊 Your Subscription Spending</h2>
+                        <div class="result-item"><span class="result-label">Monthly Total</span><span class="result-value big" id="subMonthly">-</span></div>
+                        <div class="result-item"><span class="result-label">Annual Total</span><span class="result-value big" id="subAnnual">-</span></div>
+                        <div class="result-item"><span class="result-label">10-Year Cost</span><span class="result-value" id="subDecade">-</span></div>
+                        <div class="result-item"><span class="result-label">Number of Subscriptions</span><span class="result-value" id="subCount">-</span></div>
+                    </div>
+
+                    <div class="tool-content">
+                        <h2>The Hidden Cost of Subscription Creep</h2>
+                        <p>Streaming services, apps, gym memberships, meal kits — subscriptions are everywhere. A <strong>2025 study found that 42% of people</strong> are paying for at least one subscription they've completely forgotten about.</p>
+                        <p>At $50/month in forgotten subscriptions, that's <strong>$6,000 wasted over 10 years</strong> — money that could be invested and growing. Use our calculator, then check your bank statements for any subscriptions you didn't list!</p>
+                    </div>
+                </div>
+                <aside class="tool-sidebar">
+                    <div class="sidebar-cta"><h3>💡 Want to Save Money?</h3><ul><li>Track all subscriptions in one place</li><li>Get alerts before free trials end</li><li>Cancel unwanted subs in one click</li></ul><a href="#" class="affiliate-link" onclick="trackEvent('Affiliate','Click','subscription-saver')">Try Subscription Manager →</a></div>
+                    <div class="related-tools"><h3>🧮 Related Tools</h3><ul><li><a href="/tools/savings-calculator.html">💰 Savings Calculator</a></li><li><a href="/tools/mortgage-calculator.html">🏠 Mortgage Calculator</a></li></ul></div>
+                    <div class="ad-placeholder">Ad Space</div>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container"><div class="footer-grid"><div class="footer-col"><h4>UsefulTools</h4><p>Free online calculators for smarter decisions.</p></div><div class="footer-col"><h4>Legal</h4><ul><li><a href="/privacy.html">Privacy Policy</a></li><li><a href="/terms.html">Terms of Use</a></li></ul></div></div><div class="footer-bottom"><p>&copy; 2026 UsefulTools.</p></div></div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script>
+    function calculateSubs() {
+        var inputs = document.querySelectorAll('.sub-input');
+        var total = 0;
+        var count = 0;
+        inputs.forEach(function(inp) {
+            var val = parseFloat(inp.value) || 0;
+            if (val > 0) count++;
+            total += val;
+        });
+        document.getElementById('subMonthly').textContent = '$' + total.toFixed(2) + '/month';
+        document.getElementById('subAnnual').textContent = '$' + (total * 12).toFixed(2) + '/year';
+        document.getElementById('subDecade').textContent = '$' + (total * 120).toLocaleString() + ' over 10 years';
+        document.getElementById('subCount').textContent = count + ' active subscriptions';
+        document.getElementById('subResults').classList.add('show');
+        document.getElementById('subResults').scrollIntoView({ behavior: 'smooth' });
+        if (typeof trackEvent === 'function') trackEvent('Tool', 'Calculate', 'Subscription');
+    }
+    </script>
+</body>
+</html>
