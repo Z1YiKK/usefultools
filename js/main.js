@@ -1,22 +1,18 @@
 /**
  * ToolHero - Main JavaScript
- * Search, Analytics tracking, Social sharing, Mobile menu
+ * Search autocomplete, Contact modal, Analytics, Mobile menu
  */
-
 (function() {
     'use strict';
 
-    // ========== Mobile Menu Toggle ==========
-    const menuBtn = document.querySelector('.mobile-menu-btn');
-    const navLinks = document.querySelector('.nav-links');
-
+    // ========== Mobile Menu ==========
+    var menuBtn = document.querySelector('.mobile-menu-btn');
+    var navLinks = document.querySelector('.nav-links');
     if (menuBtn && navLinks) {
         menuBtn.addEventListener('click', function() {
             navLinks.classList.toggle('open');
             menuBtn.textContent = navLinks.classList.contains('open') ? '✕' : '☰';
         });
-
-        // Close menu when clicking a link
         navLinks.querySelectorAll('a').forEach(function(link) {
             link.addEventListener('click', function() {
                 navLinks.classList.remove('open');
@@ -25,117 +21,216 @@
         });
     }
 
-    // ========== Tool Search ==========
-    const searchInput = document.getElementById('toolSearch');
-    const searchBtn = document.getElementById('searchBtn');
+    // ========== Search Autocomplete ==========
+    var tools = [
+        { name: 'Pet Cost Calculator', kw: ['pet','dog','cat','puppy','kitten','animal','puppy cost','dog cost','cat cost'], url: 'tools/pet-cost-calculator.html', icon: '🐾' },
+        { name: 'Mortgage Payoff Calculator', kw: ['mortgage','home','loan','payment','house','refinance','pay off','amortization'], url: 'tools/mortgage-calculator.html', icon: '🏠' },
+        { name: 'BMI Calculator', kw: ['bmi','weight','body','health','obese','overweight','fitness'], url: 'tools/bmi-calculator.html', icon: '💪' },
+        { name: 'Savings Goal Calculator', kw: ['save','saving','money','retire','invest','interest','compound','goal','financial'], url: 'tools/savings-calculator.html', icon: '💰' },
+        { name: 'Subscription Cost Analyzer', kw: ['subscription','netflix','spotify','streaming','recurring','monthly bill','membership'], url: 'tools/subscription-calculator.html', icon: '📊' },
+        { name: 'Tip & Split Calculator', kw: ['tip','restaurant','split','bill','dining','gratuity','service charge'], url: 'tools/tip-calculator.html', icon: '🍽️' },
+        { name: 'Moving Cost Estimator', kw: ['move','moving','relocate','relocation','moving company','packing'], url: 'tools/moving-calculator.html', icon: '📦' },
+        { name: 'Fuel Cost Calculator', kw: ['fuel','gas','trip','drive','mpg','mileage','road trip','commute'], url: 'tools/fuel-calculator.html', icon: '⛽' }
+    ];
 
-    function performSearch() {
-        if (!searchInput) return;
-        var query = searchInput.value.toLowerCase().trim();
-        if (!query) return;
+    var searchInput = document.getElementById('toolSearch');
+    var searchBtn = document.getElementById('searchBtn');
+    var dropdown = null;
 
-        var toolMap = {
-            'pet': '/tools/pet-cost-calculator.html',
-            'dog': '/tools/pet-cost-calculator.html',
-            'cat': '/tools/pet-cost-calculator.html',
-            'puppy': '/tools/pet-cost-calculator.html',
-            'animal': '/tools/pet-cost-calculator.html',
-            'mortgage': '/tools/mortgage-calculator.html',
-            'home': '/tools/mortgage-calculator.html',
-            'loan': '/tools/mortgage-calculator.html',
-            'payment': '/tools/mortgage-calculator.html',
-            'bmi': '/tools/bmi-calculator.html',
-            'weight': '/tools/bmi-calculator.html',
-            'body': '/tools/bmi-calculator.html',
-            'health': '/tools/bmi-calculator.html',
-            'save': '/tools/savings-calculator.html',
-            'saving': '/tools/savings-calculator.html',
-            'money': '/tools/savings-calculator.html',
-            'retire': '/tools/savings-calculator.html',
-            'interest': '/tools/savings-calculator.html',
-            'subscription': '/tools/subscription-calculator.html',
-            'netflix': '/tools/subscription-calculator.html',
-            'streaming': '/tools/subscription-calculator.html',
-            'tip': '/tools/tip-calculator.html',
-            'restaurant': '/tools/tip-calculator.html',
-            'split': '/tools/tip-calculator.html',
-            'bill': '/tools/tip-calculator.html',
-            'move': '/tools/moving-calculator.html',
-            'moving': '/tools/moving-calculator.html',
-            'relocate': '/tools/moving-calculator.html',
-            'fuel': '/tools/fuel-calculator.html',
-            'gas': '/tools/fuel-calculator.html',
-            'trip': '/tools/fuel-calculator.html',
-            'drive': '/tools/fuel-calculator.html'
-        };
+    function createDropdown() {
+        var el = document.createElement('div');
+        el.className = 'search-dropdown';
+        el.id = 'searchDropdown';
+        if (searchInput && searchInput.parentNode) {
+            searchInput.parentNode.appendChild(el);
+        }
+        return el;
+    }
 
-        for (var key in toolMap) {
-            if (query.indexOf(key) !== -1) {
-                window.location.href = toolMap[key];
-                return;
+    function showSuggestions(query) {
+        if (!dropdown) dropdown = createDropdown();
+        if (!dropdown) return;
+        query = query.toLowerCase().trim();
+        if (!query) { dropdown.style.display = 'none'; return; }
+
+        var matches = [];
+        tools.forEach(function(tool) {
+            var matchScore = 0;
+            tool.kw.forEach(function(kw) {
+                if (kw === query) matchScore = 3;
+                else if (kw.indexOf(query) === 0) matchScore = Math.max(matchScore, 2);
+                else if (kw.indexOf(query) > 0) matchScore = Math.max(matchScore, 1);
+                if (tool.name.toLowerCase().indexOf(query) >= 0) matchScore = Math.max(matchScore, 2);
+            });
+            if (matchScore > 0) {
+                matches.push({ tool: tool, score: matchScore });
+            }
+        });
+
+        matches.sort(function(a, b) { return b.score - a.score; });
+        matches = matches.slice(0, 5);
+
+        if (matches.length === 0) {
+            dropdown.style.display = 'none';
+            return;
+        }
+
+        var html = '';
+        matches.forEach(function(m) {
+            html += '<a href="' + m.tool.url + '" class="dropdown-item">';
+            html += '<span class="dropdown-icon">' + m.tool.icon + '</span>';
+            html += '<span>' + m.tool.name + '</span>';
+            html += '</a>';
+        });
+
+        dropdown.innerHTML = html;
+        dropdown.style.display = 'block';
+    }
+
+    function navigateSearch(query) {
+        query = query.toLowerCase().trim();
+        if (!query) return false;
+
+        for (var i = 0; i < tools.length; i++) {
+            for (var j = 0; j < tools[i].kw.length; j++) {
+                if (tools[i].kw[j] === query || tools[i].name.toLowerCase() === query) {
+                    window.location.href = tools[i].url;
+                    return true;
+                }
             }
         }
-
-        // Scroll to tools section if no specific match
-        var toolsSection = document.getElementById('tools');
-        if (toolsSection) {
-            toolsSection.scrollIntoView({ behavior: 'smooth' });
+        // Fuzzy: just pick the first partial match
+        for (var i = 0; i < tools.length; i++) {
+            for (var j = 0; j < tools[i].kw.length; j++) {
+                if (tools[i].kw[j].indexOf(query) >= 0 || query.indexOf(tools[i].kw[j]) >= 0) {
+                    window.location.href = tools[i].url;
+                    return true;
+                }
+            }
         }
+        return false;
     }
 
-    if (searchBtn) {
-        searchBtn.addEventListener('click', performSearch);
-    }
     if (searchInput) {
-        searchInput.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') performSearch();
+        searchInput.addEventListener('input', function() {
+            showSuggestions(this.value);
+        });
+        searchInput.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                var q = this.value.trim();
+                if (q && !navigateSearch(q)) {
+                    var toolsSection = document.getElementById('tools');
+                    if (toolsSection) toolsSection.scrollIntoView({ behavior: 'smooth' });
+                }
+                if (dropdown) dropdown.style.display = 'none';
+            }
+        });
+        searchInput.addEventListener('blur', function() {
+            setTimeout(function() {
+                if (dropdown) dropdown.style.display = 'none';
+            }, 200);
+        });
+    }
+    if (searchBtn) {
+        searchBtn.addEventListener('click', function() {
+            var q = searchInput ? searchInput.value.trim() : '';
+            if (q && !navigateSearch(q)) {
+                var toolsSection = document.getElementById('tools');
+                if (toolsSection) toolsSection.scrollIntoView({ behavior: 'smooth' });
+            }
         });
     }
 
-    // ========== Share Buttons ==========
+    // ========== Contact Modal ==========
+    function initContactModal() {
+        var modalHTML = '<div id="contactModal" class="modal-overlay" style="display:none;">' +
+            '<div class="modal-box">' +
+                '<button class="modal-close" onclick="document.getElementById(\'contactModal\').style.display=\'none\'">&times;</button>' +
+                '<div class="modal-icon">📧</div>' +
+                '<h3>Get in Touch</h3>' +
+                '<p>Have a business inquiry, partnership idea, or want to advertise on ToolHero?</p>' +
+                '<div class="modal-email-box">' +
+                    '<input type="text" id="modalEmail" value="1395149709@qq.com" readonly>' +
+                    '<button class="modal-copy-btn" onclick="copyEmail()">Copy</button>' +
+                '</div>' +
+                '<p class="modal-sub">Click Copy above, then paste into your email client. We reply within 24 hours.</p>' +
+            '</div>' +
+        '</div>';
+        document.body.insertAdjacentHTML('beforeend', modalHTML);
+    }
+
+    window.copyEmail = function() {
+        var inp = document.getElementById('modalEmail');
+        inp.select();
+        document.execCommand('copy');
+        var btn = document.querySelector('.modal-copy-btn');
+        var orig = btn.textContent;
+        btn.textContent = 'Copied!';
+        btn.style.background = '#10b981';
+        setTimeout(function() {
+            btn.textContent = orig;
+            btn.style.background = '';
+        }, 1500);
+    };
+
+    // Open modal from any contact button
+    window.openContactModal = function() {
+        var modal = document.getElementById('contactModal');
+        if (!modal) { initContactModal(); modal = document.getElementById('contactModal'); }
+        modal.style.display = 'flex';
+        trackEvent('Contact', 'Open', 'Modal');
+    };
+
+    // Close modal on overlay click
+    document.addEventListener('click', function(e) {
+        if (e.target.id === 'contactModal') {
+            e.target.style.display = 'none';
+        }
+    });
+
+    initContactModal();
+
+    // ========== Share ==========
     window.shareTool = function(title, url) {
         if (navigator.share) {
             navigator.share({ title: title, url: url }).catch(function() {});
         } else {
-            // Fallback: copy to clipboard
-            var textarea = document.createElement('textarea');
-            textarea.value = title + ' - ' + url;
-            document.body.appendChild(textarea);
-            textarea.select();
+            var ta = document.createElement('textarea');
+            ta.value = title + ' - ' + url;
+            document.body.appendChild(ta);
+            ta.select();
             document.execCommand('copy');
-            document.body.removeChild(textarea);
-            alert('Link copied to clipboard!');
+            document.body.removeChild(ta);
+            alert('Link copied!');
         }
     };
 
-    // ========== Analytics Placeholder ==========
-    // Replace with your Google Analytics ID when you set it up
+    // ========== Analytics ==========
     window.trackEvent = function(category, action, label) {
-        // Google Analytics placeholder
         if (typeof gtag === 'function') {
-            gtag('event', action, {
-                'event_category': category,
-                'event_label': label
-            });
+            gtag('event', action, { event_category: category, event_label: label });
         }
-        // Log for debugging
-        console.log('[Track]', category, action, label);
     };
 
-    // Track tool usage
     document.querySelectorAll('.calc-btn').forEach(function(btn) {
         btn.addEventListener('click', function() {
-            var toolName = document.title || 'Unknown Tool';
-            window.trackEvent('Tool', 'Calculate', toolName);
+            trackEvent('Tool', 'Calculate', document.title || 'Unknown');
         });
     });
-
-    // Track outbound affiliate links
     document.querySelectorAll('.affiliate-link').forEach(function(link) {
         link.addEventListener('click', function() {
-            window.trackEvent('Affiliate', 'Click', link.href);
+            trackEvent('Affiliate', 'Click', link.href);
         });
     });
 
-    console.log('✅ ToolHero ready');
+    // Make contact buttons work
+    document.querySelectorAll('.contact-trigger').forEach(function(el) {
+        el.addEventListener('click', function(e) {
+            e.preventDefault();
+            openContactModal();
+        });
+    });
+
+    console.log('ToolHero ready');
 })();

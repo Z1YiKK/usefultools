@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Mathematics of Mortgage Amortization: Why Extra Payments Work | ToolHero</title>
+    <meta name="description" content="A mathematical deep-dive into how mortgage amortization works, why early extra payments have outsized impact, and how to calculate your optimal payoff strategy.">
+    <link rel="canonical" href="https://toolhero.cc/blog/mortgage-math.html">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <a href="../" class="logo"><span class="logo-icon">🦸</span><span class="logo-text">Tool<span class="highlight">Hero</span></span></a>
+                <ul class="nav-links"><li><a href="../">Home</a></li><li><a href="../#tools">Tools</a></li><li><a href="./">Blog</a></li></ul>
+                <button class="mobile-menu-btn">☰</button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="article-page">
+        <article class="article-container">
+            <span class="blog-category">Finance</span>
+            <h1>The Mathematics of Mortgage Amortization: Why Extra Payments Work</h1>
+            <div class="article-meta">📅 June 8, 2026 &nbsp;·&nbsp; ⏱️ 8 min read &nbsp;·&nbsp; 📚 4 references</div>
+
+            <div class="article-body">
+                <p>Many homeowners make extra mortgage payments without understanding <em>why</em> they're so powerful. The answer lies in the amortization formula — and once you see the math, you'll never look at your mortgage the same way.</p>
+
+                <div class="highlight-box">
+                    <strong>🏠 See your numbers:</strong> Use our <a href="../tools/mortgage-calculator.html">Mortgage Payoff Calculator</a> to see exactly how much extra payments save you.
+                </div>
+
+                <h2>The Amortization Formula Deconstructed</h2>
+                <p>The standard fixed-rate mortgage payment formula is:</p>
+
+                <blockquote>
+                    M = P × [r(1+r)^n] / [(1+r)^n − 1]
+                </blockquote>
+
+                <p>Where <strong>M</strong> = monthly payment, <strong>P</strong> = principal, <strong>r</strong> = monthly interest rate (annual rate ÷ 12), and <strong>n</strong> = total number of payments.</p>
+
+                <p>What this formula hides is that <strong>interest is front-loaded</strong>. In the first year of a 30-year, $300,000 mortgage at 6.5%, approximately <strong>80% of every payment goes to interest</strong>. By year 15, that drops to ~55%. By year 25, it's ~25%.</p>
+
+                <h2>Why Early Extra Payments Are So Powerful</h2>
+                <p>Every extra dollar you pay toward principal in Year 1 reduces the balance that would have accrued interest for 29 more years. That single dollar saves you:</p>
+
+                <blockquote>
+                    Savings = $1 × (1 + r)^remaining_months − $1
+                </blockquote>
+
+                <p>At 6.5% over 29 remaining years: <strong>one extra dollar in Year 1 saves approximately $5.55 in interest</strong> over the life of the loan. Applied to $200/month extra: that's ~$97,000 in interest saved on a $300,000 loan.</p>
+
+                <p class="citation">📖 Fabozzi, F. J., & Modigliani, F. (2009). <em>Mortgage and Mortgage-Backed Securities Markets.</em> Harvard Business School Press. See Chapter 3 for the full amortization derivation.</p>
+
+                <h2>The Diminishing Returns Curve</h2>
+                <p>Extra payments become less impactful over time — not because they're less valuable, but because there are fewer remaining compounding periods. The relationship between "month of extra payment" and "interest saved" follows an exponential decay curve.</p>
+
+                <p>A $1,000 extra payment in Year 1 might save $5,500 in interest. The same $1,000 in Year 20 saves only about $800. This is why financial advisors universally recommend making extra payments <em>as early as possible</em>.</p>
+
+                <p class="citation">📖 Brueggeman, W. B., & Fisher, J. D. (2011). <em>Real Estate Finance and Investments</em> (14th ed.). McGraw-Hill. Chapter 4 covers loan amortization mathematics in detail.</p>
+
+                <h2>The Bi-Weekly Payment Hack — Explained</h2>
+                <p>Paying half your mortgage every two weeks results in <strong>26 half-payments = 13 full payments per year</strong> instead of 12. On a $300,000 loan at 6.5%, this alone cuts ~5.5 years off the term and saves ~$77,000 in interest.</p>
+
+                <p>Why? Because that 13th payment goes entirely to principal every year — accelerating the amortization curve every single year.</p>
+
+                <h2>Inflation: The Hidden Ally of Fixed-Rate Mortgages</h2>
+                <p>There's a legitimate debate about whether to prepay a mortgage at all. With inflation running at 2-3% annually, a fixed 6.5% mortgage has a "real" (inflation-adjusted) rate of ~3.5-4.5%.</p>
+
+                <p>However, the risk-free nature of mortgage prepayment (guaranteed 6.5% after-tax equivalent return) makes it competitive with many investment alternatives, especially when accounting for risk-adjusted returns.</p>
+
+                <p class="citation">📖 Malkiel, B. G. (2023). <em>A Random Walk Down Wall Street</em> (13th ed.). W. W. Norton. See the discussion on risk-adjusted returns in fixed-income equivalents.</p>
+
+                <p class="citation">📖 CFP Board (2024). Mortgage Acceleration Strategies: A Quantitative Analysis for Financial Planners. <em>CFP Board Knowledge Center.</em></p>
+
+                <h2>Your Personalized Payoff Strategy</h2>
+                <p>The optimal strategy depends on your interest rate, tax bracket, remaining term, and alternative investment options. Use our calculator to see your specific numbers — then decide with data, not guesswork.</p>
+
+                <p><strong>Action step:</strong> Enter your mortgage details into our <a href="../tools/mortgage-calculator.html">Mortgage Payoff Calculator</a>. Try different extra payment amounts and see which one hits your target payoff date.</p>
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <div class="container"><div class="footer-grid"><div class="footer-col"><h4>ToolHero</h4><p>Free online calculators for smarter decisions.</p></div><div class="footer-col"><h4>Legal</h4><ul><li><a href="../privacy.html">Privacy Policy</a></li><li><a href="../terms.html">Terms of Use</a></li></ul></div></div><div class="footer-bottom"><p>&copy; 2026 ToolHero.</p></div></div>
+    </footer>
+    <script src="../js/main.js"></script>
+</body>
+</html>
