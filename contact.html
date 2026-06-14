@@ -16,28 +16,32 @@
 
             <!-- Feedback Form -->
             <h2>🐛 Report a Bug or Suggest a Tool</h2>
-            <p>Found something broken? Have an idea for a new calculator? Tell us below — we read every submission.</p>
-
-            <div class="feedback-form" id="feedbackForm">
+            <p>Found something broken? Have an idea? Tell us — we read every message.</p>
+            <div class="feedback-form" id="fbFormContact">
                 <div class="form-group">
                     <label for="fbType">What's this about?</label>
                     <select id="fbType">
-                        <option value="bug">🐛 Bug Report</option>
-                        <option value="suggestion">💡 Tool Suggestion</option>
-                        <option value="improvement">🔧 Improvement Idea</option>
-                        <option value="other">📝 Other</option>
+                        <option value="Bug Report">🐛 Bug Report</option>
+                        <option value="Tool Suggestion">💡 Tool Suggestion</option>
+                        <option value="Improvement">🔧 Improvement Idea</option>
+                        <option value="Other">📝 Other Feedback</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="fbMessage">Your Message</label>
-                    <textarea id="fbMessage" placeholder="Describe the issue or idea... (optional: include your email if you want a reply)"></textarea>
+                    <label for="fbMessage">Your Message <span style="color:#ef4444;">(Required)</span></label>
+                    <textarea id="fbMessage" placeholder="Describe the issue or idea..."></textarea>
                 </div>
-                <button class="submit-btn" onclick="submitFeedback()">Submit Feedback →</button>
+                <div class="form-group">
+                    <label for="fbContact">Your Contact <span style="color:#94a3b8;">(Optional — email or other, so we can reply)</span></label>
+                    <input type="text" id="fbContact" placeholder="e.g. your@email.com or @username">
+                    <span class="input-hint">Leave blank if you don't need a reply.</span>
+                </div>
+                <button class="submit-btn" id="fbContactBtn" onclick="submitContactFeedback()">Send Feedback →</button>
             </div>
-
-            <div class="form-success" id="formSuccess">
-                <strong>✅ Thank you!</strong><br>Your feedback has been sent. We review every submission and will reply if you included contact info.
+            <div class="form-success" id="contactSuccess" style="display:none;">
+                <strong>✅ Sent! Thank you.</strong><br>We read every message and reply within 48 hours if you left contact info.
             </div>
+            <div id="contactError" style="display:none;color:#ef4444;font-size:0.9rem;">⚠️ Send failed. Please email us at <strong>toolhero@163.com</strong></div>
 
             <!-- Business Contact -->
             <h2 style="margin-top:48px;">💼 Business & Advertising</h2>
@@ -52,18 +56,46 @@
 
     <script src="js/main.js"></script>
     <script>
-    function submitFeedback() {
-        var type = document.getElementById('fbType').value;
+    function submitContactFeedback() {
         var msg = document.getElementById('fbMessage').value.trim();
-        if (!msg) { alert('Please enter a message.'); return; }
+        if (!msg) { alert('Please enter a message before submitting.'); return; }
+        var type = document.getElementById('fbType').value;
+        var contact = document.getElementById('fbContact').value.trim();
+        var btn = document.getElementById('fbContactBtn');
+        var orig = btn.textContent;
+        btn.textContent = 'Sending...';
+        btn.disabled = true;
 
-        // Build mailto — simple, no backend needed
-        var subject = encodeURIComponent('[ToolHero ' + type + ']');
-        var body = encodeURIComponent(msg);
-        window.location.href = 'mailto:toolhero@163.com?subject=' + subject + '&body=' + body;
+        var body = 'Type: ' + type + '\nMessage: ' + msg + '\n';
+        if (contact) body += 'Contact: ' + contact + '\n';
+        body += 'Page: ' + window.location.href + '\nTime: ' + new Date().toISOString() + '\n';
 
-        document.getElementById('feedbackForm').style.display = 'none';
-        document.getElementById('formSuccess').style.display = 'block';
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', 'https://formsubmit.co/ajax/toolhero@163.com', true);
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.setRequestHeader('Accept', 'application/json');
+        xhr.onload = function() {
+            btn.textContent = orig;
+            btn.disabled = false;
+            if (xhr.status === 200) {
+                document.getElementById('fbFormContact').style.display = 'none';
+                document.getElementById('contactSuccess').style.display = 'block';
+            } else {
+                document.getElementById('contactError').style.display = 'block';
+            }
+        };
+        xhr.onerror = function() {
+            btn.textContent = orig;
+            btn.disabled = false;
+            document.getElementById('contactError').style.display = 'block';
+        };
+        xhr.send(JSON.stringify({
+            type: type,
+            message: msg,
+            contact: contact,
+            _subject: '[ToolHero Feedback] ' + type,
+            _captcha: 'false'
+        }));
     }
 
     function copyEmailDirect() {

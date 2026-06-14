@@ -198,13 +198,18 @@
                 '<button class="modal-close" onclick="document.getElementById(\'feedbackModal\').style.display=\'none\'">&times;</button>' +
                 '<div class="modal-icon">🐛</div>' +
                 '<h3>Report a Bug or Suggest a Tool</h3>' +
-                '<div class="feedback-form" style="text-align:left;">' +
+                '<div class="feedback-form" style="text-align:left;" id="fbFormInner">' +
                     '<div class="form-group"><label for="fbModalType">What\'s this about?</label>' +
-                    '<select id="fbModalType"><option value="bug">Bug Report</option><option value="suggestion">Tool Suggestion</option><option value="other">Other Feedback</option></select></div>' +
-                    '<div class="form-group"><label for="fbModalMsg">Your Message</label>' +
-                    '<textarea id="fbModalMsg" style="min-height:100px;" placeholder="Describe the issue or suggest a tool..."></textarea></div>' +
-                    '<button class="submit-btn" onclick="submitFeedbackModal()" style="width:100%;">Send Feedback →</button>' +
+                    '<select id="fbModalType"><option value="Bug Report">🐛 Bug Report</option><option value="Tool Suggestion">💡 Tool Suggestion</option><option value="Improvement">🔧 Improvement Idea</option><option value="Other">📝 Other Feedback</option></select></div>' +
+                    '<div class="form-group"><label for="fbModalMsg">Your Message <span style="color:#ef4444;">(Required)</span></label>' +
+                    '<textarea id="fbModalMsg" style="min-height:100px;" placeholder="Describe the issue or suggest a tool..." required></textarea></div>' +
+                    '<div class="form-group"><label for="fbModalContact">Your Contact <span style="color:#94a3b8;">(Optional — email or other, so we can reply)</span></label>' +
+                    '<input type="text" id="fbModalContact" placeholder="e.g. your@email.com or @username">' +
+                    '<span class="input-hint">Leave blank if you don\'t need a reply.</span></div>' +
+                    '<button class="submit-btn" id="fbSubmitBtn" onclick="submitFeedbackModal()" style="width:100%;">Send Feedback →</button>' +
                 '</div>' +
+                '<div class="form-success" id="fbSuccess" style="display:none;margin-top:16px;"><strong>✅ Sent! Thank you.</strong><br>We read every message and will reply within 48 hours if you left contact info.</div>' +
+                '<div id="fbError" style="display:none;margin-top:16px;color:#ef4444;font-size:0.9rem;">⚠️ Failed to send. Please email us directly at <strong>toolhero@163.com</strong></div>' +
             '</div>' +
         '</div>';
         document.body.insertAdjacentHTML('beforeend', html);
@@ -212,19 +217,67 @@
 
     window.submitFeedbackModal = function() {
         var msg = document.getElementById('fbModalMsg').value.trim();
-        if (!msg) { alert('Please enter a message.'); return; }
+        if (!msg) { alert('Please enter a message before submitting.'); return; }
+
         var type = document.getElementById('fbModalType').value;
-        var subject = encodeURIComponent('[ToolHero ' + type + ']');
-        var body = encodeURIComponent(msg);
-        window.location.href = 'mailto:toolhero@163.com?subject=' + subject + '&body=' + body;
-        document.getElementById('feedbackModal').style.display = 'none';
-        document.getElementById('fbModalMsg').value = '';
-        trackEvent('Feedback', 'Submit', type);
+        var contact = document.getElementById('fbModalContact').value.trim();
+        var btn = document.getElementById('fbSubmitBtn');
+        var origText = btn.textContent;
+        btn.textContent = 'Sending...';
+        btn.disabled = true;
+
+        // Build request body
+        var body = 'Type: ' + type + '\n';
+        body += 'Message: ' + msg + '\n';
+        if (contact) body += 'Contact: ' + contact + '\n';
+        body += 'Page: ' + window.location.href + '\n';
+        body += 'Time: ' + new Date().toISOString() + '\n';
+
+        // Try FormSubmit.co (free, no account needed)
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', 'https://formsubmit.co/ajax/toolhero@163.com', true);
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.setRequestHeader('Accept', 'application/json');
+        xhr.onload = function() {
+            btn.textContent = origText;
+            btn.disabled = false;
+            if (xhr.status === 200) {
+                document.getElementById('fbFormInner').style.display = 'none';
+                document.getElementById('fbSuccess').style.display = 'block';
+                document.getElementById('fbModalMsg').value = '';
+                document.getElementById('fbModalContact').value = '';
+                trackEvent('Feedback', 'Submit', type);
+            } else {
+                document.getElementById('fbError').style.display = 'block';
+                trackEvent('Feedback', 'Error', type);
+            }
+        };
+        xhr.onerror = function() {
+            btn.textContent = origText;
+            btn.disabled = false;
+            document.getElementById('fbError').style.display = 'block';
+        };
+        xhr.send(JSON.stringify({
+            type: type,
+            message: msg,
+            contact: contact,
+            _subject: '[ToolHero Feedback] ' + type,
+            _captcha: 'false'
+        }));
     };
 
     window.openFeedbackModal = function() {
         var modal = document.getElementById('feedbackModal');
         if (!modal) { initFeedbackModal(); modal = document.getElementById('feedbackModal'); }
+        // Reset form state
+        var inner = document.getElementById('fbFormInner');
+        var success = document.getElementById('fbSuccess');
+        var err = document.getElementById('fbError');
+        if (inner) inner.style.display = 'block';
+        if (success) success.style.display = 'none';
+        if (err) err.style.display = 'none';
+        document.getElementById('fbModalMsg').value = '';
+        document.getElementById('fbModalContact').value = '';
         modal.style.display = 'flex';
         trackEvent('Feedback', 'Open', 'Modal');
     };
