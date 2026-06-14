@@ -151,7 +151,7 @@
                 '<h3>Get in Touch</h3>' +
                 '<p>Have a business inquiry, partnership idea, or want to advertise on ToolHero?</p>' +
                 '<div class="modal-email-box">' +
-                    '<input type="text" id="modalEmail" value="1395149709@qq.com" readonly>' +
+                    '<input type="text" id="modalEmail" value="toolhero@163.com" readonly>' +
                     '<button class="modal-copy-btn" onclick="copyEmail()">Copy</button>' +
                 '</div>' +
                 '<p class="modal-sub">Click Copy above, then paste into your email client. We reply within 24 hours.</p>' +
@@ -182,14 +182,54 @@
         trackEvent('Contact', 'Open', 'Modal');
     };
 
-    // Close modal on overlay click
+    // Close modals on overlay click
     document.addEventListener('click', function(e) {
-        if (e.target.id === 'contactModal') {
+        if (e.target.id === 'contactModal' || e.target.id === 'feedbackModal') {
             e.target.style.display = 'none';
         }
     });
 
     initContactModal();
+
+    // ========== Feedback Modal ==========
+    function initFeedbackModal() {
+        var html = '<div id="feedbackModal" class="modal-overlay" style="display:none;">' +
+            '<div class="modal-box" style="max-width:480px;">' +
+                '<button class="modal-close" onclick="document.getElementById(\'feedbackModal\').style.display=\'none\'">&times;</button>' +
+                '<div class="modal-icon">🐛</div>' +
+                '<h3>Report a Bug or Suggest a Tool</h3>' +
+                '<div class="feedback-form" style="text-align:left;">' +
+                    '<div class="form-group"><label for="fbModalType">What\'s this about?</label>' +
+                    '<select id="fbModalType"><option value="bug">Bug Report</option><option value="suggestion">Tool Suggestion</option><option value="other">Other Feedback</option></select></div>' +
+                    '<div class="form-group"><label for="fbModalMsg">Your Message</label>' +
+                    '<textarea id="fbModalMsg" style="min-height:100px;" placeholder="Describe the issue or suggest a tool..."></textarea></div>' +
+                    '<button class="submit-btn" onclick="submitFeedbackModal()" style="width:100%;">Send Feedback →</button>' +
+                '</div>' +
+            '</div>' +
+        '</div>';
+        document.body.insertAdjacentHTML('beforeend', html);
+    }
+
+    window.submitFeedbackModal = function() {
+        var msg = document.getElementById('fbModalMsg').value.trim();
+        if (!msg) { alert('Please enter a message.'); return; }
+        var type = document.getElementById('fbModalType').value;
+        var subject = encodeURIComponent('[ToolHero ' + type + ']');
+        var body = encodeURIComponent(msg);
+        window.location.href = 'mailto:toolhero@163.com?subject=' + subject + '&body=' + body;
+        document.getElementById('feedbackModal').style.display = 'none';
+        document.getElementById('fbModalMsg').value = '';
+        trackEvent('Feedback', 'Submit', type);
+    };
+
+    window.openFeedbackModal = function() {
+        var modal = document.getElementById('feedbackModal');
+        if (!modal) { initFeedbackModal(); modal = document.getElementById('feedbackModal'); }
+        modal.style.display = 'flex';
+        trackEvent('Feedback', 'Open', 'Modal');
+    };
+
+    initFeedbackModal();
 
     // ========== Share ==========
     window.shareTool = function(title, url) {

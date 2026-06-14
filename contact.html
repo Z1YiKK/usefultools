@@ -42,7 +42,7 @@
             <!-- Business Contact -->
             <h2 style="margin-top:48px;">💼 Business & Advertising</h2>
             <p>Interested in advertising on ToolHero, partnering, or discussing a business opportunity?</p>
-            <p><strong>📧 Email:</strong> <span style="font-size:1.1rem;color:var(--primary);">1395149709@qq.com</span></p>
+            <p><strong>📧 Email:</strong> <span style="font-size:1.1rem;color:var(--primary);">toolhero@163.com</span></p>
             <button class="contact-cta-btn" onclick="copyEmailDirect()" style="margin-top:8px;">📋 Copy Email Address</button>
             <span id="copyConfirm" style="display:none;margin-left:12px;color:#10b981;font-weight:600;">Copied!</span>
         </div>
@@ -60,7 +60,7 @@
         // Build mailto — simple, no backend needed
         var subject = encodeURIComponent('[ToolHero ' + type + ']');
         var body = encodeURIComponent(msg);
-        window.location.href = 'mailto:1395149709@qq.com?subject=' + subject + '&body=' + body;
+        window.location.href = 'mailto:toolhero@163.com?subject=' + subject + '&body=' + body;
 
         document.getElementById('feedbackForm').style.display = 'none';
         document.getElementById('formSuccess').style.display = 'block';
@@ -68,7 +68,7 @@
 
     function copyEmailDirect() {
         var ta = document.createElement('textarea');
-        ta.value = '1395149709@qq.com';
+        ta.value = 'toolhero@163.com';
         document.body.appendChild(ta);
         ta.select();
         document.execCommand('copy');
