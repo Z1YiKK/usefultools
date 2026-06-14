@@ -2,18 +2,81 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us - ToolHero</title>
+    <title>Contact ToolHero — Feedback & Business Inquiries</title>
+    <meta name="description" content="Contact ToolHero for bug reports, tool suggestions, advertising, or partnership inquiries.">
+    <link rel="canonical" href="https://toolhero.cc/contact.html">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <header><nav class="navbar"><div class="container"><a href="./" class="logo"><span class="logo-icon">🦸</span><span class="logo-text">Tool<span class="highlight">Hero</span></span></a><ul class="nav-links"><li><a href="./">Home</a></li><li><a href="./#tools">Tools</a></li><li><a href="blog/">Blog</a></li></ul></div></nav></header>
-    <main class="article-page"><div class="article-container"><h1>Contact Us</h1><div class="article-body">
-        <p>Have a question, suggestion, or want to request a new calculator? We'd love to hear from you!</p>
-        <p>📧 Email: <strong>1395149709@qq.com</strong></p>
-        <p>We typically respond within 24-48 hours.</p>
-        <h2>Suggest a Tool</h2>
-        <p>Is there a calculator or tool you'd find useful? Let us know and we'll build it — for free, just like all our other tools.</p>
-    </div></div></main>
-    <footer><div class="container"><div class="footer-bottom"><p>&copy; 2026 ToolHero.</p></div></div></footer>
+
+    <main class="article-page">
+        <div class="article-container">
+            <h1>📧 Contact ToolHero</h1>
+
+            <!-- Feedback Form -->
+            <h2>🐛 Report a Bug or Suggest a Tool</h2>
+            <p>Found something broken? Have an idea for a new calculator? Tell us below — we read every submission.</p>
+
+            <div class="feedback-form" id="feedbackForm">
+                <div class="form-group">
+                    <label for="fbType">What's this about?</label>
+                    <select id="fbType">
+                        <option value="bug">🐛 Bug Report</option>
+                        <option value="suggestion">💡 Tool Suggestion</option>
+                        <option value="improvement">🔧 Improvement Idea</option>
+                        <option value="other">📝 Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="fbMessage">Your Message</label>
+                    <textarea id="fbMessage" placeholder="Describe the issue or idea... (optional: include your email if you want a reply)"></textarea>
+                </div>
+                <button class="submit-btn" onclick="submitFeedback()">Submit Feedback →</button>
+            </div>
+
+            <div class="form-success" id="formSuccess">
+                <strong>✅ Thank you!</strong><br>Your feedback has been sent. We review every submission and will reply if you included contact info.
+            </div>
+
+            <!-- Business Contact -->
+            <h2 style="margin-top:48px;">💼 Business & Advertising</h2>
+            <p>Interested in advertising on ToolHero, partnering, or discussing a business opportunity?</p>
+            <p><strong>📧 Email:</strong> <span style="font-size:1.1rem;color:var(--primary);">1395149709@qq.com</span></p>
+            <button class="contact-cta-btn" onclick="copyEmailDirect()" style="margin-top:8px;">📋 Copy Email Address</button>
+            <span id="copyConfirm" style="display:none;margin-left:12px;color:#10b981;font-weight:600;">Copied!</span>
+        </div>
+    </main>
+
+    <footer><div class="container"><div class="footer-grid"><div class="footer-col"><h4>ToolHero</h4><p>Free online calculators for smarter decisions.</p></div><div class="footer-col"><h4>Legal</h4><ul><li><a href="privacy.html">Privacy Policy</a></li><li><a href="terms.html">Terms of Use</a></li><li><a href="contact.html">Contact Us</a></li></ul></div></div><div class="footer-bottom"><p>&copy; 2026 ToolHero.</p></div></div></footer>
+
+    <script src="js/main.js"></script>
+    <script>
+    function submitFeedback() {
+        var type = document.getElementById('fbType').value;
+        var msg = document.getElementById('fbMessage').value.trim();
+        if (!msg) { alert('Please enter a message.'); return; }
+
+        // Build mailto — simple, no backend needed
+        var subject = encodeURIComponent('[ToolHero ' + type + ']');
+        var body = encodeURIComponent(msg);
+        window.location.href = 'mailto:1395149709@qq.com?subject=' + subject + '&body=' + body;
+
+        document.getElementById('feedbackForm').style.display = 'none';
+        document.getElementById('formSuccess').style.display = 'block';
+    }
+
+    function copyEmailDirect() {
+        var ta = document.createElement('textarea');
+        ta.value = '1395149709@qq.com';
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+        var el = document.getElementById('copyConfirm');
+        el.style.display = 'inline';
+        setTimeout(function() { el.style.display = 'none'; }, 2000);
+    }
+    </script>
 </body>
 </html>
