@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Calorie Calculator 2026 — Daily Calorie Needs, BMR & TDEE | ToolHero</title><meta name="description" content="Calculate your daily calorie needs using the Mifflin-St Jeor equation (the gold standard). Get BMR, TDEE, and personalized targets for weight loss or gain."><link rel="canonical" href="https://toolhero.cc/tools/calorie-calculator.html"><link rel="stylesheet" href="../css/style.css"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2853119909292198" crossorigin="anonymous"></script><script async src="https://www.googletagmanager.com/gtag/js?id=G-YHHBHY14BJ"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-YHHBHY14BJ");</script></head>
+<body><header><nav class="navbar"><div class="container"><a href="../" class="logo"><span class="logo-icon">&#x1F9B8;</span><span class="logo-text">Tool<span class="highlight">Hero</span></span></a><ul class="nav-links"><li><a href="../">Home</a></li><li><a href="../#tools">Tools</a></li><li><a href="../blog/">Blog</a></li></ul><button class="mobile-menu-btn">&#9776;</button></div></nav></header>
+<main class="tool-page"><div class="container"><div class="tool-breadcrumb"><a href="../">Home</a> &rarr; Calorie Calculator</div><div class="tool-layout"><div class="tool-main">
+<h1>Calorie Calculator — Daily Calorie Needs, BMR &amp; TDEE</h1>
+<div class="calc-form">
+    <div class="form-group"><label for="calUnit">Measurement System</label><select id="calUnit" onchange="toggleCalUnits()"><option value="metric">Metric (kg, cm)</option><option value="imperial">Imperial (lbs, ft/in)</option></select></div>
+    <div class="form-group"><label for="calGender">Gender</label><select id="calGender"><option value="male">Male</option><option value="female">Female</option></select><span class="input-hint">BMR formulas differ by gender due to body composition differences (Mifflin et al., 1990).</span></div>
+    <div class="form-group"><label for="calAge">Age (years)</label><input type="number" id="calAge" value="30" min="10" max="120"><span class="input-hint">BMR decreases approximately 1-2% per decade after age 20 (NIH, 2023).</span></div>
+    <div id="metricInputs">
+        <div class="form-group"><label for="weightKg">Weight (kg)</label><input type="number" id="weightKg" value="70" min="20" max="400" step="0.1"></div>
+        <div class="form-group"><label for="heightCm">Height (cm)</label><input type="number" id="heightCm" value="170" min="50" max="280" step="0.1"></div>
+    </div>
+    <div id="imperialInputs" style="display:none;">
+        <div class="form-group"><label for="weightLbs">Weight (lbs)</label><input type="number" id="weightLbs" value="154" min="40" max="880" step="0.1"></div>
+        <div class="form-group"><label for="heightFt">Height</label><div style="display:flex;gap:8px;"><input type="number" id="heightFt" value="5" min="1" max="9" style="flex:1;" placeholder="ft"><input type="number" id="heightIn" value="7" min="0" max="11" style="flex:1;" placeholder="in"></div></div>
+    </div>
+    <div class="form-group"><label for="calActivity">Activity Level</label><select id="calActivity">
+        <option value="1.2">Sedentary &mdash; desk job, little or no exercise</option>
+        <option value="1.375" selected>Lightly Active &mdash; light exercise/sports 1-3 days/week</option>
+        <option value="1.55">Moderately Active &mdash; moderate exercise 3-5 days/week</option>
+        <option value="1.725">Very Active &mdash; hard exercise 6-7 days/week</option>
+        <option value="1.9">Extremely Active &mdash; physical job + training, 2x/day</option>
+    </select><span class="input-hint">Activity multipliers are based on the Harris-Benedict physical activity factor scale, widely used in clinical nutrition.</span></div>
+    <div class="form-group"><label for="calGoal">Weight Goal</label><select id="calGoal">
+        <option value="-1000">Aggressive Loss &mdash; lose ~1 kg / 2 lbs per week (1000 cal deficit)</option>
+        <option value="-500" selected>Moderate Loss &mdash; lose ~0.5 kg / 1 lb per week (500 cal deficit)</option>
+        <option value="-250">Mild Loss &mdash; lose ~0.25 kg / 0.5 lb per week (250 cal deficit)</option>
+        <option value="0">Maintain Weight &mdash; keep current weight</option>
+        <option value="250">Mild Gain &mdash; gain ~0.25 kg / 0.5 lb per week (250 cal surplus)</option>
+        <option value="500">Moderate Gain &mdash; gain ~0.5 kg / 1 lb per week (500 cal surplus)</option>
+    </select><span class="input-hint">1 kg of body weight = approximately 7,700 calories. A 500 cal daily deficit = ~0.5 kg/week loss (Hall, 2008; NIH Body Weight Planner).</span></div>
+    <button type="button" class="calc-btn" onclick="calculateCalories()">Calculate My Calorie Needs</button>
+</div>
+
+<div class="results" id="calResults"><h2>Your Daily Calorie Targets</h2>
+    <div class="result-item"><span class="result-label">Basal Metabolic Rate (BMR)</span><span class="result-value" id="bmrResult">-</span></div>
+    <div class="result-item"><span class="result-label">Total Daily Energy Expenditure (TDEE)</span><span class="result-value big" id="tdeeResult">-</span></div>
+    <div class="result-item"><span class="result-label">Daily Calorie Target (based on goal)</span><span class="result-value big" id="targetResult">-</span></div>
+    <div class="result-item"><span class="result-label">Weekly Change (estimated)</span><span class="result-value" id="weeklyChange">-</span></div>
+    <div class="result-item"><span class="result-label">Macro Breakdown (approx.)</span><span class="result-value" id="macroBreakdown">-</span></div>
+</div>
+
+<div class="tool-content">
+    <h2>How the Calorie Calculator Works</h2>
+    <p>This calculator uses the <strong>Mifflin-St Jeor equation</strong> (1990), considered the most accurate BMR formula for the general population by the Academy of Nutrition and Dietetics:</p>
+    <p><strong>Male:</strong> BMR = 10 x weight(kg) + 6.25 x height(cm) - 5 x age + 5</p>
+    <p><strong>Female:</strong> BMR = 10 x weight(kg) + 6.25 x height(cm) - 5 x age - 161</p>
+    <h3>BMR vs TDEE</h3>
+    <p><strong>BMR</strong> (Basal Metabolic Rate) = calories burned at complete rest &mdash; just breathing and keeping your organs running. <strong>TDEE</strong> (Total Daily Energy Expenditure) = BMR x activity multiplier &mdash; your actual daily burn including movement.</p>
+    <h3>Important Notes</h3>
+    <ul>
+        <li>These are <strong>estimates</strong>. Individual variation exists due to genetics, muscle mass, metabolic health, and hormones (ACSM, 2022).</li>
+        <li>Weight loss deficits below BMR are not recommended without medical supervision (NIH guidelines).</li>
+        <li>Macro split shown is a general recommendation (30% protein, 30% fat, 40% carbs). Adjust based on your diet approach.</li>
+        <li>For athletes or clinical needs, consult a registered dietitian.</li>
+    </ul>
+</div></div>
+
+<aside class="tool-sidebar">
+    <div class="sidebar-cta"><h3>Take Control of Your Health</h3><ul><li>Personalized meal planning</li><li>Calorie &amp; macro tracking</li><li>Progress dashboards</li></ul><a href="https://www.myfitnesspal.com/" class="affiliate-link" target="_blank" rel="nofollow sponsored" onclick="trackEvent('Affiliate','Click','fitness')">Try MyFitnessPal</a></div>
+    <div class="related-tools"><h3>Related Tools</h3><ul><li><a href="bmi-calculator.html">BMI Calculator</a></li><li><a href="savings-calculator.html">Savings Calculator</a></li></ul></div>
+    <a href="#" class="ad-cta-box" onclick="event.preventDefault();openContactModal();">Advertise on ToolHero<span>Click to reach thousands daily</span></a>
+</aside>
+</div></div></main>
+<footer><div class="container"><div class="footer-grid"><div class="footer-col"><h4>ToolHero</h4><p>Free online calculators for smarter decisions.</p></div><div class="footer-col"><h4>Legal</h4><ul><li><a href="../privacy.html">Privacy Policy</a></li><li><a href="../terms.html">Terms of Use</a></li></ul></div></div><div class="footer-bottom"><p>&copy; 2026 ToolHero.</p></div></div></footer>
+<script src="../js/main.js"></script><script>
+function toggleCalUnits(){var m=document.getElementById('calUnit').value==='metric';document.getElementById('metricInputs').style.display=m?'block':'none';document.getElementById('imperialInputs').style.display=m?'none':'block';}
+
+function calculateCalories(){
+    var isMetric=document.getElementById('calUnit').value==='metric';
+    var gender=document.getElementById('calGender').value;
+    var age=parseInt(document.getElementById('calAge').value)||30;
+    var weightKg,heightCm;
+    if(isMetric){
+        weightKg=parseFloat(document.getElementById('weightKg').value)||70;
+        heightCm=parseFloat(document.getElementById('heightCm').value)||170;
+    }else{
+        weightKg=(parseFloat(document.getElementById('weightLbs').value)||154)*0.453592;
+        var ft=parseInt(document.getElementById('heightFt').value)||5;
+        var inch=parseInt(document.getElementById('heightIn').value)||7;
+        heightCm=(ft*12+inch)*2.54;
+    }
+    var activity=parseFloat(document.getElementById('calActivity').value);
+    var goal=parseInt(document.getElementById('calGoal').value);
+
+    // Mifflin-St Jeor Equation
+    var bmr=(10*weightKg)+(6.25*heightCm)-(5*age)+(gender==='male'?5:-161);
+    var tdee=bmr*activity;
+    var target=tdee+goal;
+    if(target<bmr*0.9) target=Math.round(bmr*0.9); // don't go below 90% BMR
+
+    // Weekly change estimate
+    var weeklyCalDeficit=goal*7;
+    var weeklyKg=-(weeklyCalDeficit/7700);
+
+    document.getElementById('bmrResult').textContent=Math.round(bmr).toLocaleString()+' cal/day (at complete rest)';
+    document.getElementById('tdeeResult').textContent=Math.round(tdee).toLocaleString()+' cal/day (maintenance)';
+    document.getElementById('targetResult').textContent=Math.round(target).toLocaleString()+' cal/day (your goal)';
+    var wcText='';
+    if(Math.abs(weeklyKg)<0.05) wcText='No change (maintenance)';
+    else if(weeklyKg<0) wcText='Losing ~'+(Math.abs(weeklyKg)).toFixed(1)+' kg/week ('+(Math.abs(weeklyKg*2.205)).toFixed(1)+' lbs/week)';
+    else wcText='Gaining ~'+weeklyKg.toFixed(1)+' kg/week ('+(weeklyKg*2.205).toFixed(1)+' lbs/week)';
+    document.getElementById('weeklyChange').textContent=wcText;
+    // Rough macro split
+    var protein=Math.round(target*0.3/4);
+    var fat=Math.round(target*0.3/9);
+    var carbs=Math.round(target*0.4/4);
+    document.getElementById('macroBreakdown').textContent='~'+protein+'g protein | ~'+fat+'g fat | ~'+carbs+'g carbs';
+
+    document.getElementById('calResults').classList.add('show');
+    document.getElementById('calResults').scrollIntoView({behavior:'smooth'});
+    if(typeof trackEvent==='function') trackEvent('Tool','Calculate','Calorie');
+}
+</script></body></html>
