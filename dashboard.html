@@ -85,40 +85,47 @@ var pageNames = {
 fetch('data/dashboard-data.json?v=' + Date.now())
 .then(function(r) { return r.json(); })
 .then(function(d) {
-  if (!d.rows) return;
-  var totalUsers = 0, totalViews = 0, totalTime = 0;
-  var pages = [];
-  d.rows.forEach(function(r) {
-    var page = r.dimensionValues[0].value;
-    var users = parseInt(r.metricValues[0].value) || 0;
-    var views = parseInt(r.metricValues[1].value) || 0;
-    var time = parseFloat(r.metricValues[2].value) || 0;
-    totalUsers += users;
-    totalViews += views;
-    totalTime += time * users;
-    pages.push({page: page, users: users, views: views});
-  });
-  var avgTime = totalUsers > 0 ? Math.round(totalTime / totalUsers) : 0;
-  document.getElementById('visitors').textContent = totalUsers;
-  document.getElementById('pageviews').textContent = totalViews;
-  document.getElementById('avgTime').textContent = avgTime + 's avg';
+  document.getElementById('lastUpdate').textContent = 'Last updated: ' + new Date(d.updated).toLocaleString() + ' | GA4 + Search Console';
 
-  pages.sort(function(a,b) { return b.views - a.views; });
-  var topPagesHtml = '';
-  pages.slice(0, 10).forEach(function(p) {
-    var pct = totalViews > 0 ? Math.round(p.views / totalViews * 100) : 0;
-    var barWidth = Math.min(pct * 4, 300);
-    var label = pageNames[p.page] || p.page;
-    topPagesHtml += '<tr><td>' + label + '</td><td>' + p.views + '</td><td><span class="bar" style="width:' + barWidth + 'px;"></span> ' + pct + '%</td></tr>';
-  });
-  document.getElementById('topPages').innerHTML = topPagesHtml;
-  document.getElementById('lastUpdate').textContent = 'Last updated: ' + new Date(d.updated).toLocaleString();
+  // GA4 data
+  if (d.ga4 && d.ga4.rows) {
+    var totalUsers = 0, totalViews = 0, totalTime = 0;
+    var pages = [];
+    d.ga4.rows.forEach(function(r) {
+      var page = r.dimensionValues[0].value;
+      var users = parseInt(r.metricValues[0].value) || 0;
+      var views = parseInt(r.metricValues[1].value) || 0;
+      var time = parseFloat(r.metricValues[2].value) || 0;
+      totalUsers += users; totalViews += views; totalTime += time * users;
+      pages.push({page: page, users: users, views: views});
+    });
+    var avgTime = totalUsers > 0 ? Math.round(totalTime / totalUsers) : 0;
+    document.getElementById('visitors').textContent = totalUsers;
+    document.getElementById('pageviews').textContent = totalViews;
+    document.getElementById('avgTime').textContent = avgTime + 's avg';
+
+    pages.sort(function(a,b) { return b.views - a.views; });
+    var topPagesHtml = '';
+    pages.slice(0, 10).forEach(function(p) {
+      var pct = totalViews > 0 ? Math.round(p.views / totalViews * 100) : 0;
+      var barWidth = Math.min(pct * 4, 300);
+      var label = pageNames[p.page] || p.page;
+      topPagesHtml += '<tr><td>' + label + '</td><td>' + p.views + '</td><td><span class="bar" style="width:' + barWidth + 'px;"></span> ' + pct + '%</td></tr>';
+    });
+    document.getElementById('topPages').innerHTML = topPagesHtml;
+  }
+
+  // Search Console data
+  if (d.searchTotals) {
+    document.getElementById('searchClicks').textContent = d.searchTotals.clicks || 0;
+    document.getElementById('searchImpressions').textContent = (d.searchTotals.impressions || 0).toLocaleString();
+    document.getElementById('avgPosition').textContent = d.searchTotals.avgPosition || '--';
+    document.getElementById('indexedPages').textContent = d.searchTotals.impressions > 0 ? 'Active' : 'Waiting';
+  }
 })
 .catch(function() {
   document.getElementById('lastUpdate').textContent = 'Data loading... check back later';
 });
-
-document.getElementById('lastUpdate').textContent += ' | GA4 API';
 </script>
 </body>
 </html>
