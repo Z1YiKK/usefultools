@@ -28,7 +28,7 @@ tr:last-child td{border-bottom:none}
 <main style="padding:40px 0 80px">
 <div class="container">
 <h1 style="font-size:2rem;margin-bottom:8px">Dashboard</h1>
-<p style="color:var(--text-light);margin-bottom:32px">Real-time analytics. Refreshed every 24 hours. Data from Google Analytics 4.</p>
+<p style="color:var(--text-light);margin-bottom:32px">Real-time analytics. Data from Google Analytics 4. Updated every 3 days.</p>
 
 <div class="db-grid">
 <div class="db-card"><div class="val" id="visitors">--</div><div class="lbl">Visitors (Last 7 Days)</div></div>
@@ -42,16 +42,9 @@ tr:last-child td{border-bottom:none}
 <table>
 <thead><tr><th>Page</th><th>Views</th><th>Share</th></tr></thead>
 <tbody id="topPages">
-<tr><td colspan="3" style="text-align:center;color:var(--text-light)">Loading data or no data yet. Check back after traffic accumulates.</td></tr>
+<tr><td colspan="3" style="text-align:center;color:var(--text-light)">Loading data...</td></tr>
 </tbody>
 </table>
-</div>
-
-<div class="db-grid">
-<div class="db-card"><div class="val" id="searchClicks">--</div><div class="lbl">Google Search Clicks (7d)</div></div>
-<div class="db-card green"><div class="val" id="searchImpressions">--</div><div class="lbl">Google Search Impressions (7d)</div></div>
-<div class="db-card amber"><div class="val" id="avgPosition">--</div><div class="lbl">Avg. Search Position</div></div>
-<div class="db-card purple"><div class="val" id="indexedPages">--</div><div class="lbl">Indexed Pages</div></div>
 </div>
 
 <div class="table-wrap">
@@ -71,11 +64,28 @@ tr:last-child td{border-bottom:none}
 <footer><div class="container"><div class="footer-bottom"><p>&copy; 2026 ToolHero.</p></div></div></footer>
 
 <script>
-fetch('data/dashboard-data.json?v=' + Date.now())
-.then(r => r.json())
-.then(d => {
-  if (!d.rows) return;
+var pageNames = {
+  '/': '首页 (Home)',
+  '/tools/pet-cost-calculator.html': '宠物花费计算器 (Pet Cost)',
+  '/tools/mortgage-calculator.html': '房贷计算器 (Mortgage)',
+  '/tools/bmi-calculator.html': 'BMI 计算器',
+  '/tools/savings-calculator.html': '储蓄目标计算器 (Savings)',
+  '/tools/subscription-calculator.html': '订阅费用分析 (Subscription)',
+  '/tools/tip-calculator.html': '小费计算器 (Tip)',
+  '/tools/moving-calculator.html': '搬家费用估算 (Moving)',
+  '/tools/fuel-calculator.html': '油费计算器 (Fuel)',
+  '/tools/calorie-calculator.html': '卡路里计算器 (Calorie)',
+  '/blog/': '博客首页 (Blog)',
+  '/privacy.html': '隐私政策 (Privacy)',
+  '/terms.html': '使用条款 (Terms)',
+  '/contact.html': '联系我们 (Contact)',
+  '/dashboard.html': '数据看板 (Dashboard)'
+};
 
+fetch('data/dashboard-data.json?v=' + Date.now())
+.then(function(r) { return r.json(); })
+.then(function(d) {
+  if (!d.rows) return;
   var totalUsers = 0, totalViews = 0, totalTime = 0;
   var pages = [];
   d.rows.forEach(function(r) {
@@ -88,29 +98,27 @@ fetch('data/dashboard-data.json?v=' + Date.now())
     totalTime += time * users;
     pages.push({page: page, users: users, views: views});
   });
-
   var avgTime = totalUsers > 0 ? Math.round(totalTime / totalUsers) : 0;
   document.getElementById('visitors').textContent = totalUsers;
   document.getElementById('pageviews').textContent = totalViews;
   document.getElementById('avgTime').textContent = avgTime + 's avg';
 
-  // Top pages table
   pages.sort(function(a,b) { return b.views - a.views; });
   var topPagesHtml = '';
-  pages.slice(0, 10).forEach(function(p, i) {
+  pages.slice(0, 10).forEach(function(p) {
     var pct = totalViews > 0 ? Math.round(p.views / totalViews * 100) : 0;
     var barWidth = Math.min(pct * 4, 300);
-    topPagesHtml += '<tr><td>' + p.page + '</td><td>' + p.views + '</td><td><span class="bar" style="width:' + barWidth + 'px;"></span> ' + pct + '%</td></tr>';
+    var label = pageNames[p.page] || p.page;
+    topPagesHtml += '<tr><td>' + label + '</td><td>' + p.views + '</td><td><span class="bar" style="width:' + barWidth + 'px;"></span> ' + pct + '%</td></tr>';
   });
   document.getElementById('topPages').innerHTML = topPagesHtml;
-
   document.getElementById('lastUpdate').textContent = 'Last updated: ' + new Date(d.updated).toLocaleString();
 })
 .catch(function() {
-  document.getElementById('lastUpdate').textContent = 'Data loading... Run update script to refresh.';
+  document.getElementById('lastUpdate').textContent = 'Data loading... check back later';
 });
 
-document.getElementById('lastUpdate').textContent += ' | Data source: GA4 via API';
+document.getElementById('lastUpdate').textContent += ' | GA4 API';
 </script>
 </body>
 </html>
