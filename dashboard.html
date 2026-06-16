@@ -71,20 +71,46 @@ tr:last-child td{border-bottom:none}
 <footer><div class="container"><div class="footer-bottom"><p>&copy; 2026 ToolHero.</p></div></div></footer>
 
 <script>
-// Set last update time
-document.getElementById('lastUpdate').textContent = new Date().toLocaleString();
+fetch('data/dashboard-data.json?v=' + Date.now())
+.then(r => r.json())
+.then(d => {
+  if (!d.rows) return;
 
-// In the future, fetch real data from GA4 API here.
-// For now, placeholder values show the dashboard structure.
-// Once GA4 API is connected, replace with:
-// fetch('/api/analytics').then(r=>r.json()).then(updateDashboard)
-document.getElementById('visitors').textContent = '--';
-document.getElementById('pageviews').textContent = '--';
-document.getElementById('avgTime').textContent = '--';
-document.getElementById('searchClicks').textContent = '--';
-document.getElementById('searchImpressions').textContent = '--';
-document.getElementById('avgPosition').textContent = '--';
-document.getElementById('indexedPages').textContent = '--';
+  var totalUsers = 0, totalViews = 0, totalTime = 0;
+  var pages = [];
+  d.rows.forEach(function(r) {
+    var page = r.dimensionValues[0].value;
+    var users = parseInt(r.metricValues[0].value) || 0;
+    var views = parseInt(r.metricValues[1].value) || 0;
+    var time = parseFloat(r.metricValues[2].value) || 0;
+    totalUsers += users;
+    totalViews += views;
+    totalTime += time * users;
+    pages.push({page: page, users: users, views: views});
+  });
+
+  var avgTime = totalUsers > 0 ? Math.round(totalTime / totalUsers) : 0;
+  document.getElementById('visitors').textContent = totalUsers;
+  document.getElementById('pageviews').textContent = totalViews;
+  document.getElementById('avgTime').textContent = avgTime + 's avg';
+
+  // Top pages table
+  pages.sort(function(a,b) { return b.views - a.views; });
+  var topPagesHtml = '';
+  pages.slice(0, 10).forEach(function(p, i) {
+    var pct = totalViews > 0 ? Math.round(p.views / totalViews * 100) : 0;
+    var barWidth = Math.min(pct * 4, 300);
+    topPagesHtml += '<tr><td>' + p.page + '</td><td>' + p.views + '</td><td><span class="bar" style="width:' + barWidth + 'px;"></span> ' + pct + '%</td></tr>';
+  });
+  document.getElementById('topPages').innerHTML = topPagesHtml;
+
+  document.getElementById('lastUpdate').textContent = 'Last updated: ' + new Date(d.updated).toLocaleString();
+})
+.catch(function() {
+  document.getElementById('lastUpdate').textContent = 'Data loading... Run update script to refresh.';
+});
+
+document.getElementById('lastUpdate').textContent += ' | Data source: GA4 via API';
 </script>
 </body>
 </html>
