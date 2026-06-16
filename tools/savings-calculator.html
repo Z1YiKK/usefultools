@@ -1,93 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Savings Goal Calculator - How Long to Reach Your Goal</title>
-    <meta name="description" content="Plan your financial future. See exactly how long it will take to reach your savings goals with compound interest. Free savings calculator.">
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Savings Goal Calculator — Compound Interest & Timeline | ToolHero</title>
+    <meta name="description" content="Advanced savings calculator with compound interest, multiple currencies, flexible contribution schedules, and detailed growth projections.">
     <link rel="canonical" href="https://toolhero.cc/tools/savings-calculator.html">
     <link rel="stylesheet" href="../css/style.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2853119909292198" crossorigin="anonymous"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YHHBHY14BJ"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-YHHBHY14BJ");</script>
+
 </head>
 <body>
-    <header>
-        <nav class="navbar">
-            <div class="container">
-                <a href="../" class="logo"><span class="logo-icon">🦸</span><span class="logo-text">Tool<span class="highlight">Hero</span></span></a>
-                <ul class="nav-links"><li><a href="../">Home</a></li><li><a href="../#tools">Tools</a></li><li><a href="../blog/">Blog</a></li></ul>
-                <button class="mobile-menu-btn" aria-label="Menu">☰</button>
-            </div>
-        </nav>
-    </header>
-
-    <main class="tool-page">
-        <div class="container">
-            <div class="tool-breadcrumb"><a href="../">Home</a> → Savings Goal Calculator</div>
-            <div class="tool-layout">
-                <div class="tool-main">
-                    <h1>💰 Savings Goal Calculator — How Long to Reach Your Financial Goals</h1>
-                    <div class="calc-form">
-                        <div class="form-group"><label for="goalAmount">Savings Goal ($)</label><input type="number" id="goalAmount" value="10000" min="100" step="100"></div>
-                        <div class="form-group"><label for="currentSavings">Current Savings ($)</label><input type="number" id="currentSavings" value="1000" min="0" step="100"></div>
-                        <div class="form-group"><label for="monthlyContribution">Monthly Contribution ($)</label><input type="number" id="monthlyContribution" value="500" min="1" step="50"></div>
-                        <div class="form-group"><label for="interestRate2">Annual Interest Rate (%)</label><input type="number" id="interestRate2" value="4" min="0" max="30" step="0.1"><span class="input-hint">APY from savings account or investments</span></div>
-                        <button type="button" class="calc-btn" onclick="calculateSavings()">💰 Calculate Timeline →</button>
-                    </div>
-
-                    <div class="results" id="savingsResults">
-                        <h2>📊 Your Savings Plan</h2>
-                        <div class="result-item"><span class="result-label">Time to Reach Goal</span><span class="result-value big" id="timeToGoal">-</span></div>
-                        <div class="result-item"><span class="result-label">Final Balance</span><span class="result-value" id="finalBalance">-</span></div>
-                        <div class="result-item"><span class="result-label">Total Contributions</span><span class="result-value" id="totalContributions">-</span></div>
-                        <div class="result-item"><span class="result-label">Interest Earned</span><span class="result-value" id="interestEarned">-</span></div>
-                    </div>
-
-                    <div class="tool-content">
-                        <h2>The Power of Compound Interest</h2>
-                        <p>Compound interest is often called the "eighth wonder of the world" — and for good reason. When your interest earns interest, your money grows exponentially over time.</p>
-                        <p><strong>Example:</strong> Saving $500/month at 4% APY, it takes just <strong>18 months</strong> to reach a $10,000 goal starting from $1,000 — and only about $9,000 is from your own contributions, with the rest coming from interest.</p>
-                    </div>
-                </div>
-                <aside class="tool-sidebar">
-                    <div class="sidebar-cta"><h3>💳 Want to Save Faster?</h3><ul><li>High-yield savings accounts</li><li>Best investment platforms</li><li>Automatic savings tools</li></ul><a href="https://www.nerdwallet.com/banking/high-yield-savings-accounts" class="affiliate-link" target="_blank" rel="nofollow sponsored" onclick="trackEvent(.Affiliate.,.Click.,.savings.)">Compare Savings Accounts →</a></div>
-                    <div class="related-tools"><h3>🧮 Related Tools</h3><ul><li><a href="mortgage-calculator.html">🏠 Mortgage Calculator</a></li><li><a href="subscription-calculator.html">📊 Subscription Analyzer</a></li></ul></div>
-                    <a href="#" class="ad-cta-box" onclick="event.preventDefault();openContactModal();">📢 Advertise on ToolHero<span>Click here — reach thousands of users daily</span></a>
-                </aside>
-            </div>
-        </div>
-    </main>
-
-    <footer>
-        <div class="container"><div class="footer-grid"><div class="footer-col"><h4>ToolHero</h4><p>Free online calculators for smarter decisions.</p></div><div class="footer-col"><h4>Legal</h4><ul><li><a href="../privacy.html">Privacy Policy</a></li><li><a href="../terms.html">Terms of Use</a></li></ul></div></div><div class="footer-bottom"><p>&copy; 2026 ToolHero.</p></div></div>
-    </footer>
-
-    <script src="../js/main.js"></script>
-    <script>
-    function calculateSavings() {
-        var goal = parseFloat(document.getElementById('goalAmount').value);
-        var current = parseFloat(document.getElementById('currentSavings').value);
-        var monthly = parseFloat(document.getElementById('monthlyContribution').value);
-        var annualRate = parseFloat(document.getElementById('interestRate2').value) / 100;
-        var monthlyRate = annualRate / 12;
-
-        var balance = current;
-        var months = 0;
-        while (balance < goal && months < 1200) {
-            balance += monthly;
-            balance *= (1 + monthlyRate);
-            months++;
+<header><nav class="navbar"><div class="container"><a href="../" class="logo"><span class="logo-icon">&#x1F9B8;</span><span class="logo-text">Tool<span class="highlight">Hero</span></span></a><ul class="nav-links"><li><a href="../">Home</a></li><li><a href="../#tools">Tools</a></li><li><a href="../blog/">Blog</a></li></ul><button class="mobile-menu-btn">☰</button></div></nav></header>
+<main class="tool-page"><div class="container"><div class="tool-breadcrumb"><a href="../">Home</a> → Savings Goal Calculator</div><div class="tool-layout"><div class="tool-main">
+<h1> Savings Goal Calculator — Compound Interest & Timeline</h1>
+<div class="calc-form">
+    <div class="form-group"><label for="savCurrency">Currency</label><select id="savCurrency" onchange="updateSavingsLabels()"><option value="USD">[US]  USD ($)</option><option value="EUR">[EU]  EUR (€)</option><option value="GBP">[UK]  GBP (£)</option><option value="CAD">[CA]  CAD (C$)</option><option value="AUD">[AU]  AUD (A$)</option><option value="CNY">[CN]  CNY (¥)</option></select></div>
+    <div class="form-group"><label for="goalAmount">Savings Goal</label><input type="number" id="goalAmount" value="100000" min="100" step="100"></div>
+    <div class="form-group"><label for="currentSavings">Current Savings</label><input type="number" id="currentSavings" value="5000" min="0" step="100"></div>
+    <div class="form-group"><label for="monthlyContribution">Monthly Contribution</label><input type="number" id="monthlyContribution" value="500" min="1" step="50"></div>
+    <div class="form-group"><label for="annualRate">Annual Interest Rate (%)</label><input type="number" id="annualRate" value="5" min="0" max="30" step="0.1"><span class="input-hint">S&P 500 historical avg: ~10% nominal, ~7% real. High-yield savings: 3-5%.</span></div>
+    <div class="form-group"><label for="compoundFreq">Compounding Frequency</label><select id="compoundFreq"><option value="12">Monthly</option><option value="4">Quarterly</option><option value="1">Annually</option><option value="365">Daily</option></select><span class="input-hint">Daily = interest calculated 365 times/year (e.g. some savings accounts). Monthly = 12 times/year (most CDs). Quarterly = 4 times. Annually = 1 time. More frequent = slightly faster growth.</span></div>
+    <button type="button" class="calc-btn" onclick="calculateSavings()"> Calculate Timeline →</button>
+</div>
+<div class="results" id="savingsResults"><h2> Savings Plan</h2>
+    <div class="result-item"><span class="result-label">Time to Reach Goal</span><span class="result-value big" id="timeToGoal">-</span></div>
+    <div class="result-item"><span class="result-label">Final Balance at Goal Date</span><span class="result-value" id="finalBalance">-</span></div>
+    <div class="result-item"><span class="result-label">Total Contributions</span><span class="result-value" id="totalContributions">-</span></div>
+    <div class="result-item"><span class="result-label">Interest Earned</span><span class="result-value" id="interestEarned">-</span></div>
+    <div class="result-item"><span class="result-label">Interest as % of Total</span><span class="result-value" id="interestPct">-</span></div>
+</div>
+<div class="tool-content"><h2>The Power of Compound Interest</h2><p>Compound interest is often called the "eighth wonder of the world" — and for good reason. When your interest earns interest, your money grows exponentially over time. The key is starting early and staying consistent.</p><p><strong>Example:</strong> Saving $500/month at 5% APY compounded monthly, you reach $100,000 in about 14 years — and roughly 30% of that total comes from interest, not your own contributions.</p></div>
+</div>
+<aside class="tool-sidebar"><div class="sidebar-cta"><h3>💳 Want to Save Faster?</h3><ul><li>High-yield savings accounts</li><li>Automated investing</li><li>Track progress</li></ul><a href="https://www.nerdwallet.com/banking/high-yield-savings-accounts" class="affiliate-link" target="_blank" rel="nofollow sponsored" onclick="trackEvent('Affiliate','Click','savings')">Compare Savings Accounts →</a></div><div class="related-tools"><h3>🧮 Related Tools</h3><ul><li><a href="mortgage-calculator.html"> Mortgage Calculator</a></li><li><a href="subscription-calculator.html"> Subscription Analyzer</a></li></ul></div><a href="#" class="ad-cta-box" onclick="event.preventDefault();openContactModal();">📢 Advertise on ToolHero<span>Click here — reach thousands of users daily</span></a></aside>
+</div></div></main>
+<footer><div class="container"><div class="footer-grid"><div class="footer-col"><h4>ToolHero</h4><p>Free online calculators for smarter decisions.</p></div><div class="footer-col"><h4>Legal</h4><ul><li><a href="../privacy.html">Privacy Policy</a></li><li><a href="../terms.html">Terms of Use</a></li></ul></div></div><div class="footer-bottom"><p>&copy; 2026 ToolHero.</p></div></div></footer>
+<script src="../js/main.js"></script>
+<script>
+var symbols = {USD:'$',EUR:'€',GBP:'£',CAD:'C$',AUD:'A$',CNY:'¥'};
+function fmt(a,c){return symbols[c]+Math.round(a).toLocaleString()}
+function calculateSavings(){
+    var c=document.getElementById('savCurrency').value;
+    var goal=parseFloat(document.getElementById('goalAmount').value)||100000;
+    var cur=parseFloat(document.getElementById('currentSavings').value)||0;
+    var mon=parseFloat(document.getElementById('monthlyContribution').value)||500;
+    var annualRate=parseFloat(document.getElementById('annualRate').value)/100;
+    var freq=parseInt(document.getElementById('compoundFreq').value);
+    var periodRate=annualRate/freq;
+    var balance=cur,months=0;
+    while(balance<goal&&months<2400){
+        for(var i=0;i<12/freq&&balance<goal;i++){
+            balance=balance*(1+periodRate);
+            months+=12/freq;
         }
-
-        var totalContrib = current + monthly * months;
-        var interest = balance - totalContrib;
-
-        document.getElementById('timeToGoal').textContent = months + ' months (' + (months/12).toFixed(1) + ' years)';
-        document.getElementById('finalBalance').textContent = '$' + Math.round(balance).toLocaleString();
-        document.getElementById('totalContributions').textContent = '$' + Math.round(totalContrib).toLocaleString();
-        document.getElementById('interestEarned').textContent = '$' + Math.round(interest).toLocaleString();
-        document.getElementById('savingsResults').classList.add('show');
-        document.getElementById('savingsResults').scrollIntoView({ behavior: 'smooth' });
-        if (typeof trackEvent === 'function') trackEvent('Tool', 'Calculate', 'Savings');
+        balance+=mon*12;
+        if(balance>=goal)break;
     }
-    </script>
+    var totalContrib=cur+mon*(months/12);
+    var interest=balance-totalContrib;
+    document.getElementById('timeToGoal').textContent=Math.round(months/12*10)/10+' years ('+Math.round(months)+' months)';
+    document.getElementById('finalBalance').textContent=fmt(balance,c);
+    document.getElementById('totalContributions').textContent=fmt(totalContrib,c);
+    document.getElementById('interestEarned').textContent=fmt(interest,c);
+    document.getElementById('interestPct').textContent=Math.round(interest/balance*100)+'% of total';
+    document.getElementById('savingsResults').classList.add('show');
+    document.getElementById('savingsResults').scrollIntoView({behavior:'smooth'});
+    if(typeof trackEvent==='function')trackEvent('Tool','Calculate','Savings');
+}
+</script>
 </body>
 </html>

@@ -146,7 +146,7 @@
     function initContactModal() {
         var modalHTML = '<div id="contactModal" class="modal-overlay" style="display:none;">' +
             '<div class="modal-box">' +
-                '<button class="modal-close" onclick="document.getElementById(\'contactModal\').style.display=\'none\'">&times;</button>' +
+                '<button class="modal-close" onclick="document.getElementById(\'contactModal\').style.display=\'none\';document.body.style.overflow=\'\'">&times;</button>' +
                 '<div class="modal-icon">📧</div>' +
                 '<h3>Get in Touch</h3>' +
                 '<p>Have a business inquiry, partnership idea, or want to advertise on ToolHero?</p>' +
@@ -174,11 +174,15 @@
         }, 1500);
     };
 
+    function lockScroll() { document.body.style.overflow = 'hidden'; }
+    function unlockScroll() { document.body.style.overflow = ''; }
+
     // Open modal from any contact button
     window.openContactModal = function() {
         var modal = document.getElementById('contactModal');
         if (!modal) { initContactModal(); modal = document.getElementById('contactModal'); }
         modal.style.display = 'flex';
+        lockScroll();
         trackEvent('Contact', 'Open', 'Modal');
     };
 
@@ -186,6 +190,7 @@
     document.addEventListener('click', function(e) {
         if (e.target.id === 'contactModal' || e.target.id === 'feedbackModal') {
             e.target.style.display = 'none';
+            unlockScroll();
         }
     });
 
@@ -195,7 +200,7 @@
     function initFeedbackModal() {
         var html = '<div id="feedbackModal" class="modal-overlay" style="display:none;">' +
             '<div class="modal-box" style="max-width:480px;">' +
-                '<button class="modal-close" onclick="document.getElementById(\'feedbackModal\').style.display=\'none\'">&times;</button>' +
+                '<button class="modal-close" onclick="document.getElementById(\'feedbackModal\').style.display=\'none\';document.body.style.overflow=\'\'">&times;</button>' +
                 '<div class="modal-icon">🐛</div>' +
                 '<h3>Report a Bug or Suggest a Tool</h3>' +
                 '<div class="feedback-form" style="text-align:left;" id="fbFormInner">' +
@@ -279,6 +284,7 @@
         document.getElementById('fbModalMsg').value = '';
         document.getElementById('fbModalContact').value = '';
         modal.style.display = 'flex';
+        lockScroll();
         trackEvent('Feedback', 'Open', 'Modal');
     };
 
@@ -323,6 +329,51 @@
             e.preventDefault();
             openContactModal();
         });
+    });
+
+    // ========== Clear zero on focus ==========
+    document.querySelectorAll('input[type="number"]').forEach(function(inp) {
+        inp.addEventListener('focus', function() {
+            var v = parseFloat(this.value);
+            if (v === 0) this.value = '';
+        });
+        inp.addEventListener('blur', function() {
+            if (this.value.trim() === '') this.value = '0';
+        });
+    });
+
+    // ========== Copy Results (auto-adds to all results sections) ==========
+    var copyBtnObserver = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+            if (mutation.target.classList.contains('results') && mutation.target.classList.contains('show')) {
+                var results = mutation.target;
+                if (!results.querySelector('.copy-results-btn')) {
+                    var btn = document.createElement('button');
+                    btn.className = 'copy-results-btn';
+                    btn.textContent = 'Copy Results';
+                    btn.onclick = function(e) {
+                        e.preventDefault();
+                        var items = results.querySelectorAll('.result-item');
+                        var text = document.title + '\n' + window.location.href + '\n\n';
+                        items.forEach(function(item) {
+                            var label = item.querySelector('.result-label');
+                            var value = item.querySelector('.result-value');
+                            if (label && value) text += label.textContent + ': ' + value.textContent + '\n';
+                        });
+                        var ta = document.createElement('textarea');
+                        ta.value = text; document.body.appendChild(ta); ta.select();
+                        document.execCommand('copy'); document.body.removeChild(ta);
+                        btn.textContent = 'Copied!';
+                        setTimeout(function() { btn.textContent = 'Copy Results'; }, 2000);
+                    };
+                    results.appendChild(btn);
+                }
+            }
+        });
+    });
+    // Observe all results divs
+    document.querySelectorAll('.results').forEach(function(r) {
+        copyBtnObserver.observe(r, { attributes: true, attributeFilter: ['class'] });
     });
 
     console.log('ToolHero ready');

@@ -1,83 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fuel Cost Calculator - Trip Gas Cost & Fuel Economy</title>
-    <meta name="description" content="Calculate trip fuel costs, compare vehicle MPG, and find the cheapest route. Free gas cost calculator for road trips and daily commutes.">
-    <link rel="canonical" href="https://toolhero.cc/tools/fuel-calculator.html">
-    <link rel="stylesheet" href="../css/style.css">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Fuel Cost Calculator — Trip, Commute &amp; Multi-Trip | ToolHero</title><meta name="description" content="Calculate fuel costs for single trips, daily commutes, or multiple trips. Supports MPG and L/100km, multiple currencies, and annual projections."><link rel="canonical" href="https://toolhero.cc/tools/fuel-calculator.html"><link rel="stylesheet" href="../css/style.css"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2853119909292198" crossorigin="anonymous"></script>    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YHHBHY14BJ"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-YHHBHY14BJ");</script>
+
 </head>
-<body>
-    <header>
-        <nav class="navbar">
-            <div class="container">
-                <a href="../" class="logo"><span class="logo-icon">🦸</span><span class="logo-text">Tool<span class="highlight">Hero</span></span></a>
-                <ul class="nav-links"><li><a href="../">Home</a></li><li><a href="../#tools">Tools</a></li><li><a href="../blog/">Blog</a></li></ul>
-                <button class="mobile-menu-btn" aria-label="Menu">☰</button>
-            </div>
-        </nav>
-    </header>
-
-    <main class="tool-page">
-        <div class="container">
-            <div class="tool-breadcrumb"><a href="../">Home</a> → Fuel Cost Calculator</div>
-            <div class="tool-layout">
-                <div class="tool-main">
-                    <h1>⛽ Fuel Cost Calculator — Trip & Commute Gas Costs</h1>
-                    <div class="calc-form">
-                        <div class="form-group"><label for="tripDistance">Trip Distance (miles)</label><input type="number" id="tripDistance" value="200" min="1" step="1"></div>
-                        <div class="form-group"><label for="mpg">Vehicle MPG (miles per gallon)</label><input type="number" id="mpg" value="28" min="5" max="100" step="0.1"><span class="input-hint">Average car: 25-30 MPG, SUV: 18-25, Hybrid: 45-55</span></div>
-                        <div class="form-group"><label for="gasPrice">Gas Price ($/gallon)</label><input type="number" id="gasPrice" value="3.50" min="0.5" max="15" step="0.01"></div>
-                        <button type="button" class="calc-btn" onclick="calculateFuel()">⛽ Calculate Fuel Cost →</button>
-                    </div>
-
-                    <div class="results" id="fuelResults">
-                        <h2>📊 Your Fuel Cost</h2>
-                        <div class="result-item"><span class="result-label">Gallons Needed</span><span class="result-value" id="gallons">-</span></div>
-                        <div class="result-item"><span class="result-label">Total Fuel Cost</span><span class="result-value big" id="fuelCost">-</span></div>
-                        <div class="result-item"><span class="result-label">Cost Per Mile</span><span class="result-value" id="costPerMile">-</span></div>
-                    </div>
-
-                    <div class="tool-content">
-                        <h2>How to Save on Fuel Costs</h2>
-                        <p>Gas prices fluctuate constantly. Here are proven ways to reduce your fuel spending:</p>
-                        <ul>
-                            <li><strong>Drive smoothly:</strong> Aggressive acceleration and braking can reduce MPG by 15-30%</li>
-                            <li><strong>Check tire pressure:</strong> Under-inflated tires reduce fuel efficiency by up to 3%</li>
-                            <li><strong>Use gas apps:</strong> Apps like GasBuddy can save you $0.10-$0.30 per gallon</li>
-                            <li><strong>Combine trips:</strong> A warm engine is more efficient than a cold start</li>
-                        </ul>
-                    </div>
-                </div>
-                <aside class="tool-sidebar">
-                    <div class="sidebar-cta"><h3>⛽ Find Cheap Gas Near You</h3><ul><li>Real-time gas prices</li><li>Save $0.10-$0.30/gallon</li><li>Free to use</li></ul><a href="https://www.gasbuddy.com/" class="affiliate-link" target="_blank" rel="nofollow sponsored">Find Cheap Gas →</a></div>
-                    <div class="related-tools"><h3>🧮 Related Tools</h3><ul><li><a href="moving-calculator.html">📦 Moving Cost Estimator</a></li><li><a href="savings-calculator.html">💰 Savings Calculator</a></li></ul></div>
-                </aside>
-            </div>
-        </div>
-    </main>
-
-    <footer>
-        <div class="container"><div class="footer-grid"><div class="footer-col"><h4>ToolHero</h4><p>Free online calculators for smarter decisions.</p></div><div class="footer-col"><h4>Legal</h4><ul><li><a href="../privacy.html">Privacy Policy</a></li><li><a href="../terms.html">Terms of Use</a></li></ul></div></div><div class="footer-bottom"><p>&copy; 2026 ToolHero.</p></div></div>
-    </footer>
-
-    <script src="../js/main.js"></script>
-    <script>
-    function calculateFuel() {
-        var dist = parseFloat(document.getElementById('tripDistance').value);
-        var mpg = parseFloat(document.getElementById('mpg').value);
-        var price = parseFloat(document.getElementById('gasPrice').value);
-        var gallons = dist / mpg;
-        var totalCost = gallons * price;
-
-        document.getElementById('gallons').textContent = Math.round(gallons * 100) / 100 + ' gallons';
-        document.getElementById('fuelCost').textContent = '$' + totalCost.toFixed(2);
-        document.getElementById('costPerMile').textContent = '$' + (totalCost / dist).toFixed(3) + '/mile';
-        document.getElementById('fuelResults').classList.add('show');
-        document.getElementById('fuelResults').scrollIntoView({ behavior: 'smooth' });
-        if (typeof trackEvent === 'function') trackEvent('Tool', 'Calculate', 'Fuel');
-    }
-    </script>
-</body>
-</html>
+<body><header><nav class="navbar"><div class="container"><a href="../" class="logo"><span class="logo-icon">&#x1F9B8;</span><span class="logo-text">Tool<span class="highlight">Hero</span></span></a><ul class="nav-links"><li><a href="../">Home</a></li><li><a href="../#tools">Tools</a></li><li><a href="../blog/">Blog</a></li></ul><button class="mobile-menu-btn">&#9776;</button></div></nav></header><main class="tool-page"><div class="container"><div class="tool-breadcrumb"><a href="../">Home</a> &#8594; Fuel Cost Calculator</div><div class="tool-layout"><div class="tool-main"><h1>Fuel Cost Calculator — Single Trip or Commute</h1><div class="calc-form">
+    <div class="form-group"><label for="fuelCurrency">Currency</label><select id="fuelCurrency"><option value="USD">USD ($)</option><option value="EUR">EUR (&euro;)</option><option value="GBP">GBP (&pound;)</option><option value="CAD">CAD (C$)</option></select></div>
+    <div class="form-group"><label for="fuelUnit">Fuel Economy Unit</label><select id="fuelUnit" onchange="updateFuelHint()"><option value="mpg">MPG (miles per gallon) &mdash; US/UK</option><option value="lp100">L/100km &mdash; Europe/Canada/Metric</option></select></div>
+    <div class="form-group"><label for="fuelEfficiency">Fuel Efficiency</label><input type="number" id="fuelEfficiency" value="28" min="1" max="200" step="0.1"><span class="input-hint" id="fuelEffHint">Typical: 25-30 MPG (car), 18-25 MPG (SUV), 45-55 MPG (hybrid)</span></div>
+    <div class="form-group"><label for="tripDistance">Trip Distance (one-way)</label><input type="number" id="tripDistance" value="200" min="1" step="1"><span class="input-hint">One leg of your trip. For round trips, use Trip Count = 2.</span></div>
+    <div class="form-group"><label for="distanceUnit">Distance Unit</label><select id="distanceUnit"><option value="miles">Miles</option><option value="km">Kilometers</option></select></div>
+    <div class="form-group"><label for="tripCount">Trip Count <span style="color:#94a3b8;">(how many times?)</span></label><input type="number" id="tripCount" value="1" min="1" max="999" step="1"><span class="input-hint">Set to 1 for a single one-way trip. Set to 2 for round trip. Set to 10 for 5 round trips, etc. For daily commute, try 260 (5 days x 52 weeks).</span></div>
+    <div class="form-group"><label for="gasPrice">Fuel Price</label><input type="number" id="gasPrice" value="3.50" min="0.1" max="20" step="0.01"><span class="input-hint">Check current prices at GasBuddy or your national energy agency</span></div>
+    <div class="form-group"><label for="fuelPriceUnit">Price Per</label><select id="fuelPriceUnit"><option value="gallon">Per Gallon</option><option value="liter">Per Liter</option></select></div>
+    <button type="button" class="calc-btn" onclick="calculateFuel()">Calculate Fuel Cost</button>
+</div>
+<div class="results" id="fuelResults"><h2>Fuel Cost</h2>
+    <div class="result-item"><span class="result-label">Fuel Needed (total)</span><span class="result-value" id="fuelNeeded">-</span></div>
+    <div class="result-item"><span class="result-label">Total Fuel Cost</span><span class="result-value big" id="fuelCost">-</span></div>
+    <div class="result-item"><span class="result-label">Cost Per Trip</span><span class="result-value" id="costPerTrip">-</span></div>
+    <div class="result-item"><span class="result-label">Cost Per Mile / Km</span><span class="result-value" id="costPerUnit">-</span></div>
+    <div class="result-item"><span class="result-label">Annual Estimate (260 trips)</span><span class="result-value" id="annualCommute">-</span></div>
+</div>
+<div class="tool-content"><h2>Fuel Economy Tips</h2><ul><li><strong>Drive smoothly:</strong> Aggressive acceleration and hard braking reduce MPG by 15-30% (AAA, 2024).</li><li><strong>Check tire pressure monthly:</strong> Under-inflated tires reduce efficiency by ~3% (U.S. DOE, 2025).</li><li><strong>Use cruise control on highways:</strong> Maintains steady speed, saves 5-10% on long drives.</li><li><strong>Remove roof racks when unused:</strong> Adds aerodynamic drag, reducing MPG by 2-8%.</li><li><strong>Combine short trips:</strong> A warm engine runs more efficiently than multiple cold starts.</li></ul></div></div>
+<aside class="tool-sidebar"><div class="sidebar-cta"><h3>Find Cheap Fuel</h3><ul><li>Real-time gas prices near you</li><li>Save $0.10-0.30 per gallon</li><li>Route cost planning</li></ul><a href="https://www.gasbuddy.com/" class="affiliate-link" target="_blank" rel="nofollow sponsored">Find Cheap Gas</a></div><div class="related-tools"><h3>Related Tools</h3><ul><li><a href="moving-calculator.html">Moving Cost Estimator</a></li><li><a href="savings-calculator.html">Savings Calculator</a></li></ul></div><a href="#" class="ad-cta-box" onclick="event.preventDefault();openContactModal();">Advertise on ToolHero<span>Click to reach thousands daily</span></a></aside></div></div></main>
+<footer><div class="container"><div class="footer-grid"><div class="footer-col"><h4>ToolHero</h4><p>Free online calculators for smarter decisions.</p></div><div class="footer-col"><h4>Legal</h4><ul><li><a href="../privacy.html">Privacy Policy</a></li><li><a href="../terms.html">Terms of Use</a></li></ul></div></div><div class="footer-bottom"><p>&copy; 2026 ToolHero.</p></div></div></footer>
+<script src="../js/main.js"></script><script>
+var fuelSymbols={USD:'$',EUR:'&euro;',GBP:'&pound;',CAD:'C$'};
+function fmt(a,c){return fuelSymbols[c]+a.toFixed(2)}
+function updateFuelHint(){var h=document.getElementById('fuelEffHint');h.textContent=document.getElementById('fuelUnit').value==='lp100'?'Typical: 5-8 L/100km (car), 9-14 L/100km (SUV), 4-5 L/100km (hybrid)':'Typical: 25-30 MPG (car), 18-25 MPG (SUV), 45-55 MPG (hybrid)';}
+function calculateFuel(){var c=document.getElementById('fuelCurrency').value;var eff=parseFloat(document.getElementById('fuelEfficiency').value)||28;var dist=parseFloat(document.getElementById('tripDistance').value)||200;var count=parseInt(document.getElementById('tripCount').value)||1;var price=parseFloat(document.getElementById('gasPrice').value)||3.50;var unit=document.getElementById('fuelUnit').value;var dUnit=document.getElementById('distanceUnit').value;var pUnit=document.getElementById('fuelPriceUnit').value;
+var totalDist=dist*count;var fuelUsed;if(unit==='mpg'){if(dUnit==='km')totalDist=totalDist*0.621371;fuelUsed=totalDist/eff;if(pUnit==='liter')price=price*3.78541;}else{if(dUnit==='miles')totalDist=totalDist*1.60934;fuelUsed=totalDist*eff/100;if(pUnit==='gallon')price=price/3.78541;}
+var totalCost=fuelUsed*price;var perTrip=totalCost/count;var perUnit=totalDist>0?totalCost/totalDist:0;
+document.getElementById('fuelNeeded').textContent=(unit==='mpg'?(Math.round(fuelUsed*100)/100+' gallons'):(Math.round(fuelUsed*100)/100+' liters'))+' for '+totalDist.toLocaleString()+' '+(dUnit==='miles'?'miles':'km');document.getElementById('fuelCost').textContent=fmt(totalCost,c);document.getElementById('costPerTrip').textContent=fmt(perTrip,c)+'/trip';document.getElementById('costPerUnit').textContent=fmt(perUnit,c)+' per '+(dUnit==='miles'?'mile':'km');document.getElementById('annualCommute').textContent=fmt(totalCost/count*260,c)+'/year (daily commute)';document.getElementById('fuelResults').classList.add('show');document.getElementById('fuelResults').scrollIntoView({behavior:'smooth'});if(typeof trackEvent==='function')trackEvent('Tool','Calculate','Fuel');}
+</script></body></html>

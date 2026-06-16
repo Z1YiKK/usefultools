@@ -1,129 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BMI Calculator - Free Body Mass Index Calculator (2026)</title>
-    <meta name="description" content="Instantly calculate your BMI (Body Mass Index). Get personalized health insights, weight category, and recommendations. Free, no sign-up.">
-    <link rel="canonical" href="https://toolhero.cc/tools/bmi-calculator.html">
-    <link rel="stylesheet" href="../css/style.css">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>BMI Calculator — Body Mass Index with Health Insights | ToolHero</title><meta name="description" content="Calculate your BMI with age and gender context. Get personalized weight category, healthy range, and health insights."><link rel="canonical" href="https://toolhero.cc/tools/bmi-calculator.html"><link rel="stylesheet" href="../css/style.css"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2853119909292198" crossorigin="anonymous"></script>    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YHHBHY14BJ"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-YHHBHY14BJ");</script>
+
 </head>
-<body>
-    <header>
-        <nav class="navbar">
-            <div class="container">
-                <a href="../" class="logo"><span class="logo-icon">🦸</span><span class="logo-text">Tool<span class="highlight">Hero</span></span></a>
-                <ul class="nav-links"><li><a href="../">Home</a></li><li><a href="../#tools">Tools</a></li><li><a href="../blog/">Blog</a></li></ul>
-                <button class="mobile-menu-btn" aria-label="Menu">☰</button>
-            </div>
-        </nav>
-    </header>
-
-    <main class="tool-page">
-        <div class="container">
-            <div class="tool-breadcrumb"><a href="../">Home</a> → BMI Calculator</div>
-            <div class="tool-layout">
-                <div class="tool-main">
-                    <h1>💪 BMI Calculator — Instantly Check Your Body Mass Index</h1>
-                    <div class="calc-form">
-                        <div class="form-group">
-                            <label for="bmiUnit">Units</label>
-                            <select id="bmiUnit" onchange="toggleBmiUnits()">
-                                <option value="metric">Metric (kg / cm)</option>
-                                <option value="imperial" selected>Imperial (lbs / ft-in)</option>
-                            </select>
-                        </div>
-                        <div id="metricInputs" style="display:none;">
-                            <div class="form-group"><label for="weightKg">Weight (kg)</label><input type="number" id="weightKg" value="70" min="20" max="300" step="0.1"></div>
-                            <div class="form-group"><label for="heightCm">Height (cm)</label><input type="number" id="heightCm" value="170" min="50" max="250" step="0.1"></div>
-                        </div>
-                        <div id="imperialInputs">
-                            <div class="form-group"><label for="weightLbs">Weight (lbs)</label><input type="number" id="weightLbs" value="160" min="40" max="660" step="0.1"></div>
-                            <div class="form-group"><label for="heightFt">Height</label><div style="display:flex;gap:8px;"><input type="number" id="heightFt" value="5" min="1" max="8" step="1" style="flex:1;" placeholder="ft"><input type="number" id="heightIn" value="8" min="0" max="11" step="1" style="flex:1;" placeholder="in"></div></div>
-                        </div>
-                        <button type="button" class="calc-btn" onclick="calculateBMI()">💪 Calculate My BMI →</button>
-                    </div>
-
-                    <div class="results" id="bmiResults">
-                        <h2>📊 Your BMI Result</h2>
-                        <div class="result-item"><span class="result-label">Your BMI</span><span class="result-value big" id="bmiValue">-</span></div>
-                        <div class="result-item"><span class="result-label">Category</span><span class="result-value" id="bmiCategory">-</span></div>
-                        <div class="result-item"><span class="result-label">Healthy Weight Range (for your height)</span><span class="result-value" id="healthyRange">-</span></div>
-                    </div>
-
-                    <div class="tool-content">
-                        <h2>What Is BMI and Why Does It Matter?</h2>
-                        <p>Body Mass Index (BMI) is a simple screening tool used to identify potential weight problems in adults. While not perfect, it gives a useful starting point for understanding your health.</p>
-                        <h3>BMI Categories</h3>
-                        <ul>
-                            <li><strong>Below 18.5:</strong> Underweight</li>
-                            <li><strong>18.5 – 24.9:</strong> Normal / Healthy Weight</li>
-                            <li><strong>25.0 – 29.9:</strong> Overweight</li>
-                            <li><strong>30.0 and above:</strong> Obese</li>
-                        </ul>
-                        <p><strong>Important:</strong> BMI doesn't account for muscle mass, bone density, or body composition. Athletes with high muscle mass may have a high BMI but low body fat. Always consult a healthcare professional for a complete assessment.</p>
-                    </div>
-                </div>
-
-                <aside class="tool-sidebar">
-                    <div class="sidebar-cta">
-                        <h3>💪 Ready to Get Healthier?</h3>
-                        <ul><li>Personalized meal plans</li><li>At-home workout programs</li><li>Track your progress</li></ul>
-                        <a href="https://www.myfitnesspal.com/" class="affiliate-link" target="_blank" rel="nofollow sponsored" onclick="trackEvent(.Affiliate.,.Click.,.fitness.)">Explore Fitness Programs →</a>
-                    </div>
-                    <div class="related-tools"><h3>🧮 Related Tools</h3><ul><li><a href="pet-cost-calculator.html">🐾 Pet Cost Calculator</a></li><li><a href="savings-calculator.html">💰 Savings Calculator</a></li></ul></div>
-                    <a href="#" class="ad-cta-box" onclick="event.preventDefault();openContactModal();">📢 Advertise on ToolHero<span>Click here — reach thousands of users daily</span></a>
-                </aside>
-            </div>
-        </div>
-    </main>
-
-    <footer>
-        <div class="container"><div class="footer-grid"><div class="footer-col"><h4>ToolHero</h4><p>Free online calculators for smarter decisions.</p></div><div class="footer-col"><h4>Legal</h4><ul><li><a href="../privacy.html">Privacy Policy</a></li><li><a href="../terms.html">Terms of Use</a></li></ul></div></div><div class="footer-bottom"><p>&copy; 2026 ToolHero.</p></div></div>
-    </footer>
-
-    <script src="../js/main.js"></script>
-    <script>
-    function toggleBmiUnits() {
-        var isMetric = document.getElementById('bmiUnit').value === 'metric';
-        document.getElementById('metricInputs').style.display = isMetric ? 'block' : 'none';
-        document.getElementById('imperialInputs').style.display = isMetric ? 'none' : 'block';
-    }
-    function calculateBMI() {
-        var isMetric = document.getElementById('bmiUnit').value === 'metric';
-        var bmi, heightM;
-        if (isMetric) {
-            var kg = parseFloat(document.getElementById('weightKg').value);
-            var cm = parseFloat(document.getElementById('heightCm').value);
-            heightM = cm / 100;
-            bmi = kg / (heightM * heightM);
-        } else {
-            var lbs = parseFloat(document.getElementById('weightLbs').value);
-            var ft = parseInt(document.getElementById('heightFt').value);
-            var inch = parseInt(document.getElementById('heightIn').value) || 0;
-            var totalInches = ft * 12 + inch;
-            heightM = totalInches * 0.0254;
-            bmi = (lbs * 0.453592) / (heightM * heightM);
-        }
-
-        var category = '';
-        if (bmi < 18.5) category = '⬇️ Underweight';
-        else if (bmi < 25) category = '✅ Normal / Healthy Weight';
-        else if (bmi < 30) category = '⚠️ Overweight';
-        else category = '🔴 Obese';
-
-        var minHealthy = Math.round(18.5 * heightM * heightM);
-        var maxHealthy = Math.round(24.9 * heightM * heightM);
-        var unitLabel = isMetric ? 'kg' : 'lbs';
-        if (!isMetric) { minHealthy = Math.round(minHealthy * 2.20462); maxHealthy = Math.round(maxHealthy * 2.20462); }
-
-        document.getElementById('bmiValue').textContent = Math.round(bmi * 10) / 10;
-        document.getElementById('bmiCategory').textContent = category;
-        document.getElementById('healthyRange').textContent = minHealthy + ' – ' + maxHealthy + ' ' + unitLabel;
-        document.getElementById('bmiResults').classList.add('show');
-        document.getElementById('bmiResults').scrollIntoView({ behavior: 'smooth' });
-        if (typeof trackEvent === 'function') trackEvent('Tool', 'Calculate', 'BMI');
-    }
-    </script>
-</body>
-</html>
+<body><header><nav class="navbar"><div class="container"><a href="../" class="logo"><span class="logo-icon">&#x1F9B8;</span><span class="logo-text">Tool<span class="highlight">Hero</span></span></a><ul class="nav-links"><li><a href="../">Home</a></li><li><a href="../#tools">Tools</a></li><li><a href="../blog/">Blog</a></li></ul><button class="mobile-menu-btn">☰</button></div></nav></header><main class="tool-page"><div class="container"><div class="tool-breadcrumb"><a href="../">Home</a> → BMI Calculator</div><div class="tool-layout"><div class="tool-main"><h1> BMI Calculator — Body Mass Index with Health Context</h1><div class="calc-form">
+    <div class="form-group"><label for="bmiUnit">Measurement System</label><select id="bmiUnit" onchange="toggleBmiUnits()"><option value="imperial">Imperial (lbs, ft/in)</option><option value="metric">Metric (kg, cm)</option></select></div>
+    <div id="imperialInputs"><div class="form-group"><label for="weightLbs">Weight (lbs)</label><input type="number" id="weightLbs" value="160" min="30" max="700" step="0.1"></div><div class="form-group"><label for="heightFt">Height</label><div style="display:flex;gap:8px;"><input type="number" id="heightFt" value="5" min="1" max="8" style="flex:1;" placeholder="ft"><input type="number" id="heightIn" value="8" min="0" max="11" style="flex:1;" placeholder="in"></div></div></div>
+    <div id="metricInputs" style="display:none;"><div class="form-group"><label for="weightKg">Weight (kg)</label><input type="number" id="weightKg" value="72.5" min="15" max="320" step="0.1"></div><div class="form-group"><label for="heightCm">Height (cm)</label><input type="number" id="heightCm" value="173" min="50" max="260" step="0.1"></div></div>
+    <div class="form-group"><label for="bmiAge">Age <span style="color:#94a3b8;">(Optional — for context)</span></label><input type="number" id="bmiAge" value="30" min="1" max="120"></div>
+    <div class="form-group"><label for="bmiGender">Gender <span style="color:#94a3b8;">(Optional — body composition differs)</span></label><select id="bmiGender"><option value="">Prefer not to say</option><option value="male">Male</option><option value="female">Female</option></select></div>
+    <button type="button" class="calc-btn" onclick="calculateBMI()"> Calculate My BMI →</button>
+</div>
+<div class="results" id="bmiResults"><h2> BMI Result</h2>
+    <div class="result-item"><span class="result-label">Your BMI</span><span class="result-value big" id="bmiValue">-</span></div>
+    <div class="result-item"><span class="result-label">Weight Category</span><span class="result-value" id="bmiCategory">-</span></div>
+    <div class="result-item"><span class="result-label">Healthy Weight Range (your height)</span><span class="result-value" id="healthyRange">-</span></div>
+    <div class="result-item"><span class="result-label">Ponderal Index (kg/m³)</span><span class="result-value" id="ponderalIndex">-</span></div>
+</div>
+<div class="tool-content"><h2>What BMI Tells You</h2><p>BMI = weight ÷ height². It was developed by Adolphe Quetelet in the 1830s as a population-level statistical tool, now widely used as a health screening measure.</p><h3>BMI Categories (WHO)</h3><ul><li><strong>Below 18.5:</strong> Underweight</li><li><strong>18.5–24.9:</strong> Normal weight</li><li><strong>25.0–29.9:</strong> Overweight</li><li><strong>30.0–34.9:</strong> Obesity Class I</li><li><strong>35.0–39.9:</strong> Obesity Class II</li><li><strong>40.0+:</strong> Obesity Class III</li></ul><p><strong>Limitations:</strong> BMI does not distinguish muscle from fat, consider body composition and distribution. Athletes, elderly individuals, and certain ethnic groups may need adjusted interpretations. (WHO, 2024; AMA, 2023)</p></div></div>
+<aside class="tool-sidebar"><div class="sidebar-cta"><h3> Ready to Get Healthier?</h3><ul><li>Personalized meal plans</li><li>At-home workouts</li><li>Progress tracking</li></ul><a href="https://www.myfitnesspal.com/" class="affiliate-link" target="_blank" rel="nofollow sponsored" onclick="trackEvent('Affiliate','Click','fitness')">Explore Fitness Programs →</a></div><div class="related-tools"><h3>🧮 Related Tools</h3><ul><li><a href="pet-cost-calculator.html"> Pet Cost Calculator</a></li><li><a href="savings-calculator.html"> Savings Calculator</a></li></ul></div><a href="#" class="ad-cta-box" onclick="event.preventDefault();openContactModal();">📢 Advertise on ToolHero<span>Click here — reach thousands of users daily</span></a></aside></div></div></main>
+<footer><div class="container"><div class="footer-grid"><div class="footer-col"><h4>ToolHero</h4><p>Free online calculators for smarter decisions.</p></div><div class="footer-col"><h4>Legal</h4><ul><li><a href="../privacy.html">Privacy Policy</a></li><li><a href="../terms.html">Terms of Use</a></li></ul></div></div><div class="footer-bottom"><p>&copy; 2026 ToolHero.</p></div></div></footer>
+<script src="../js/main.js"></script><script>
+function toggleBmiUnits(){document.getElementById('metricInputs').style.display=document.getElementById('bmiUnit').value==='metric'?'block':'none';document.getElementById('imperialInputs').style.display=document.getElementById('bmiUnit').value==='metric'?'none':'block';}
+function calculateBMI(){var isMetric=document.getElementById('bmiUnit').value==='metric';var bmi,heightM,weightKg;if(isMetric){weightKg=parseFloat(document.getElementById('weightKg').value);heightM=parseFloat(document.getElementById('heightCm').value)/100;bmi=weightKg/(heightM*heightM);}else{var lbs=parseFloat(document.getElementById('weightLbs').value);var totalIn=parseInt(document.getElementById('heightFt').value)*12+parseInt(document.getElementById('heightIn').value||0);heightM=totalIn*0.0254;weightKg=lbs*0.453592;bmi=(lbs*703)/(totalIn*totalIn);}var cat='';if(bmi<18.5)cat='Underweight';else if(bmi<25)cat='Normal / Healthy Weight';else if(bmi<30)cat='Overweight';else if(bmi<35)cat='Obesity Class I';else if(bmi<40)cat='Obesity Class II';else cat='Obesity Class III';var isMetricShow=document.getElementById('bmiUnit').value==='metric';var minH=Math.round(18.5*heightM*heightM);var maxH=Math.round(24.9*heightM*heightM);if(!isMetricShow){minH=Math.round(minH*2.20462);maxH=Math.round(maxH*2.20462);}var unitLabel=isMetricShow?'kg':'lbs';var ponderal=weightKg/(heightM*heightM*heightM);document.getElementById('bmiValue').textContent=Math.round(bmi*10)/10;document.getElementById('bmiCategory').textContent=cat;document.getElementById('healthyRange').textContent=minH+' – '+maxH+' '+unitLabel;document.getElementById('ponderalIndex').textContent=Math.round(ponderal*10)/10+' kg/m³';document.getElementById('bmiResults').classList.add('show');document.getElementById('bmiResults').scrollIntoView({behavior:'smooth'});if(typeof trackEvent==='function')trackEvent('Tool','Calculate','BMI');}
+</script></body></html>

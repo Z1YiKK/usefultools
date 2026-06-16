@@ -1,233 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pet Cost Calculator 2026 - Lifetime Cost of Dog, Cat & More</title>
-    <meta name="description" content="Calculate the true cost of owning a pet. Our free calculator shows monthly and lifetime costs for dogs, cats, and other pets including food, vet, grooming, and hidden expenses.">
-    <meta name="keywords" content="pet cost calculator, dog cost per month, cat cost, pet ownership cost, puppy cost calculator">
-    <meta property="og:title" content="Pet Cost Calculator 2026 - Lifetime Cost of Dog, Cat & More">
-    <meta property="og:description" content="Calculate the true monthly and lifetime cost of owning any pet. Free, instant results.">
-    <link rel="canonical" href="https://toolhero.cc/tools/pet-cost-calculator.html">
-    <link rel="stylesheet" href="../css/style.css">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Pet Cost Calculator 2026 — Lifetime Ownership Cost | ToolHero</title><meta name="description" content="Estimate your pet lifetime cost with region-adjusted pricing. Covers dogs, cats, rabbits, birds, fish, rodents, and reptiles. Based on APPA 2025 and AVMA data."><link rel="canonical" href="https://toolhero.cc/tools/pet-cost-calculator.html"><link rel="stylesheet" href="../css/style.css"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2853119909292198" crossorigin="anonymous"></script>    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YHHBHY14BJ"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-YHHBHY14BJ");</script>
+
 </head>
-<body>
-    <header>
-        <nav class="navbar">
-            <div class="container">
-                <a href="../" class="logo"><span class="logo-icon">🦸</span><span class="logo-text">Tool<span class="highlight">Hero</span></span></a>
-                <ul class="nav-links">
-                    <li><a href="../">Home</a></li>
-                    <li><a href="../#tools">Tools</a></li>
-                    <li><a href="../blog/">Blog</a></li>
-                </ul>
-                <button class="mobile-menu-btn" aria-label="Menu">☰</button>
-            </div>
-        </nav>
-    </header>
+<body><header><nav class="navbar"><div class="container"><a href="../" class="logo"><span class="logo-icon">&#x1F9B8;</span><span class="logo-text">Tool<span class="highlight">Hero</span></span></a><ul class="nav-links"><li><a href="../">Home</a></li><li><a href="../#tools">Tools</a></li><li><a href="../blog/">Blog</a></li></ul><button class="mobile-menu-btn">&#9776;</button></div></nav></header>
+<main class="tool-page"><div class="container"><div class="tool-breadcrumb"><a href="../">Home</a> &rarr; Pet Cost Calculator</div><div class="tool-layout"><div class="tool-main"><h1>Pet Cost Calculator — Lifetime Ownership Cost</h1>
+<div class="calc-form">
+    <div class="form-group"><label for="petType">Pet Type</label><select id="petType" onchange="onPetTypeChange()">
+        <option value="dog-small">Dog, Small Breed (e.g. Chihuahua, Shih Tzu, Dachshund)</option>
+        <option value="dog-medium" selected>Dog, Medium Breed (e.g. Beagle, Corgi, Border Collie)</option>
+        <option value="dog-large">Dog, Large Breed (e.g. Labrador, German Shepherd, Golden Retriever)</option>
+        <option value="dog-giant">Dog, Giant Breed (e.g. Great Dane, Mastiff, Saint Bernard)</option>
+        <option value="cat">Cat (e.g. Domestic Shorthair, Siamese, Maine Coon)</option>
+        <option value="rabbit">Rabbit (e.g. Holland Lop, Netherland Dwarf, Flemish Giant)</option>
+        <option value="bird">Bird (e.g. Budgie, Cockatiel, Parrot, Macaw, Canary, Finch)</option>
+        <option value="fish">Fish, Freshwater Aquarium (e.g. Goldfish, Betta, Tetra, Guppy)</option>
+        <option value="hamster">Hamster / Gerbil / Mouse / Guinea Pig</option>
+        <option value="reptile">Reptile (e.g. Bearded Dragon, Leopard Gecko, Corn Snake)</option>
+        <option value="turtle">Turtle / Tortoise</option>
+    </select><span class="input-hint">Select the closest match. Lifespan and costs auto-adjust. Adjust further if needed.</span></div>
+    <div class="form-group"><label for="petAge">Current Age (years)</label><input type="number" id="petAge" value="0" min="0" max="100"><span class="input-hint">For a new pet, enter 0. Costs calculated for remaining expected lifespan.</span></div>
+    <div class="form-group"><label for="lifespan">Average Lifespan (years)</label><input type="number" id="lifespan" value="12" min="1" max="150"><span class="input-hint" id="lifespanHint">Dogs: 10-15 yr. Cats: 12-18 yr. Rabbits: 8-12 yr. Birds: 5-60+ yr (species-dependent). Fish: 2-5 yr. Rodents: 2-7 yr. Reptiles: 8-20 yr. Turtles: 30-50+ yr.</span></div>
+    <div class="form-group"><label for="foodQuality">Diet / Food Quality</label><select id="foodQuality">
+        <option value="standard">Standard (grocery-brand kibble, basic pellets, flake food)</option>
+        <option value="premium" selected>Premium (brand-name, better ingredients, species-appropriate)</option>
+        <option value="vet">Veterinary / Prescription Diet</option>
+        <option value="fresh">Fresh / Raw / Whole Prey / Custom Formulation</option>
+    </select><span class="input-hint">Standard = Purina, Kaytee, Tetra. Premium = Blue Buffalo, Oxbow, Hikari, Hill's Science Diet. Vet = prescription formulas. Fresh = raw, homemade, whole prey for reptiles.</span></div>
+    <div class="form-group"><label for="petCurrency">Currency</label><select id="petCurrency"><option value="USD">USD ($)</option><option value="EUR">EUR (&euro;)</option><option value="GBP">GBP (&pound;)</option><option value="CAD">CAD (C$)</option><option value="AUD">AUD (A$)</option></select></div>
+    <div class="form-group"><label for="petLocation">Region (adjusts for local costs)</label><select id="petLocation">
+        <option value="us">🇺🇸 United States (baseline)</option>
+        <option value="uk">🇬🇧 United Kingdom</option>
+        <option value="ca">🇨🇦 Canada</option>
+        <option value="au">🇦🇺 Australia</option>
+        <option value="eu">🇪🇺 Europe</option>
+    </select><span class="input-hint">Vet costs, food, and insurance premiums vary significantly by country and metro area.</span></div>
+    <div class="form-group"><label for="emergencyFund">Emergency Vet Fund <span style="color:#94a3b8;">(Optional)</span></label><input type="number" id="emergencyFund" value="2000" min="0" step="100"><span class="input-hint">Most pets need at least one major emergency. Budget $2,000-$5,000 for dogs/cats, less for small pets.</span></div>
+    <button type="button" class="calc-btn" onclick="calculatePetCost()">Calculate Lifetime Cost</button>
+</div>
+<div class="results" id="petResults"><h2>Cost Breakdown</h2>
+    <div class="result-item"><span class="result-label">One-Time Setup Costs</span><span class="result-value" id="initialCost">-</span></div>
+    <div class="result-item"><span class="result-label">Monthly Cost</span><span class="result-value big" id="monthlyCost">-</span></div>
+    <div class="result-item"><span class="result-label">Annual Cost</span><span class="result-value" id="annualCost">-</span></div>
+    <div class="result-item"><span class="result-label">Lifetime Cost (remaining)</span><span class="result-value big" id="lifetimeCost">-</span></div>
+    <div class="result-item"><span class="result-label">Food &amp; Treats (per year)</span><span class="result-value" id="foodCost">-</span></div>
+    <div class="result-item"><span class="result-label">Veterinary &amp; Medical (per year)</span><span class="result-value" id="vetCost">-</span></div>
+    <div class="result-item"><span class="result-label">Supplies &amp; Grooming (per year)</span><span class="result-value" id="suppliesCost">-</span></div>
+    <div class="result-item"><span class="result-label">Insurance (per year)</span><span class="result-value" id="insuranceCost">-</span></div>
+</div>
+<div class="tool-content"><h2>How Costs Are Estimated</h2><p>Based on APPA 2025 National Pet Owners Survey and AVMA veterinary pricing data. Food costs reflect U.S. market averages for each tier. Regional multipliers adjust for local pricing (vet care and supplies vary 2-3x between metro areas, per Rover.com 2024 data). Emergency fund: 30% of dogs and 20% of cats need at least one major unplanned expense (NAPHIA 2025).</p></div>
+</div>
+<aside class="tool-sidebar"><div class="sidebar-cta"><h3>Save on Pet Costs</h3><ul><li>Compare pet insurance quotes</li><li>Find deals on premium food</li><li>Budget-friendly supply sources</li></ul><a href="https://www.petinsurance.com/" class="affiliate-link" target="_blank" rel="nofollow sponsored" onclick="trackEvent('Affiliate','Click','pet-insurance')">Compare Pet Insurance</a></div><div class="related-tools"><h3>Related Tools</h3><ul><li><a href="savings-calculator.html">Savings Calculator</a></li><li><a href="subscription-calculator.html">Subscription Analyzer</a></li></ul></div><a href="#" class="ad-cta-box" onclick="event.preventDefault();openContactModal();">Advertise on ToolHero<span>Click to reach thousands daily</span></a></aside>
+</div></div></main>
+<footer><div class="container"><div class="footer-grid"><div class="footer-col"><h4>ToolHero</h4><p>Free online calculators for smarter decisions.</p></div><div class="footer-col"><h4>Legal</h4><ul><li><a href="../privacy.html">Privacy Policy</a></li><li><a href="../terms.html">Terms of Use</a></li></ul></div></div><div class="footer-bottom"><p>&copy; 2026 ToolHero.</p></div></div></footer>
+<script src="../js/main.js"></script><script>
+function onPetTypeChange(){var t=document.getElementById('petType').value;var ls=document.getElementById('lifespan');
+var lifespans={'dog-small':13,'dog-medium':12,'dog-large':11,'dog-giant':9,'cat':15,'rabbit':9,'bird':15,'fish':4,'hamster':3,'reptile':12,'turtle':40};
+var hints={'dog-small':'Small breeds: 12-16 yr (e.g. Chihuahua).','dog-medium':'Medium breeds: 10-14 yr (e.g. Beagle, Corgi).','dog-large':'Large breeds: 9-12 yr (e.g. Labrador).','dog-giant':'Giant breeds: 7-10 yr (e.g. Great Dane).','cat':'Indoor cats: 12-18 yr.','rabbit':'Domestic rabbits: 8-12 yr.','bird':'Varies widely: budgies 5-8 yr, cockatiels 15-20 yr, parrots 30-60+ yr. Adjust based on your species.','fish':'Freshwater aquarium fish: 2-5 yr. Goldfish: 10+ yr.','hamster':'Hamsters: 2-3 yr. Gerbils: 3-4 yr. Guinea pigs: 5-7 yr.','reptile':'Bearded dragons: 8-12 yr. Geckos: 15-20 yr. Snakes: 15-20 yr.','turtle':'Box turtles: 30-50 yr. Tortoises: 50-100+ yr.'};
+ls.value=lifespans[t]||5;document.getElementById('lifespanHint').textContent=hints[t]||'';}
 
-    <main class="tool-page">
-        <div class="container">
-            <div class="tool-breadcrumb"><a href="../">Home</a> → Pet Cost Calculator</div>
+var pSym={USD:'$',EUR:'&euro;',GBP:'&pound;',CAD:'C$',AUD:'A$'};
+function fmt(a,c){return pSym[c]+Math.round(a).toLocaleString()}
 
-            <div class="tool-layout">
-                <div class="tool-main">
-                    <h1>🐾 Pet Cost Calculator 2026 — True Monthly & Lifetime Cost</h1>
-
-                    <div class="calc-form" id="petCalc">
-                        <div class="form-group">
-                            <label for="petType">Pet Type</label>
-                            <select id="petType">
-                                <option value="dog">🐕 Dog</option>
-                                <option value="cat">🐈 Cat</option>
-                                <option value="rabbit">🐰 Rabbit</option>
-                                <option value="bird">🐦 Bird</option>
-                                <option value="fish">🐟 Fish</option>
-                                <option value="hamster">🐹 Hamster / Guinea Pig</option>
-                                <option value="reptile">🦎 Reptile</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="petBreed">Breed / Size (for dogs)</label>
-                            <select id="petBreed">
-                                <option value="small">Small Breed (e.g., Chihuahua, Pomeranian)</option>
-                                <option value="medium" selected>Medium Breed (e.g., Beagle, Corgi)</option>
-                                <option value="large">Large Breed (e.g., Labrador, Golden Retriever)</option>
-                                <option value="giant">Giant Breed (e.g., Great Dane, Mastiff)</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="petAge">Pet Age (years)</label>
-                            <input type="number" id="petAge" value="0" min="0" max="30" step="1">
-                            <span class="input-hint">New pet = 0 years. We'll estimate remaining lifetime costs.</span>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="lifespan">Expected Lifespan (years)</label>
-                            <input type="number" id="lifespan" value="12" min="1" max="50">
-                            <span class="input-hint">Average: Dog 10-15, Cat 12-18, Rabbit 8-12</span>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="foodQuality">Food Quality</label>
-                            <select id="foodQuality">
-                                <option value="budget">Budget / Grocery Brand</option>
-                                <option value="mid" selected>Mid-Range / Premium</option>
-                                <option value="premium">Premium / Vet-Recommended</option>
-                                <option value="raw">Raw / Fresh / Custom Diet</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="location">Your Location (affects vet costs)</label>
-                            <select id="location">
-                                <option value="us" selected>🇺🇸 United States</option>
-                                <option value="uk">🇬🇧 United Kingdom</option>
-                                <option value="ca">🇨🇦 Canada</option>
-                                <option value="au">🇦🇺 Australia</option>
-                                <option value="eu">🇪🇺 Europe</option>
-                            </select>
-                        </div>
-
-                        <button type="button" class="calc-btn" onclick="calculatePetCost()">💰 Calculate Pet Costs →</button>
-                    </div>
-
-                    <div class="results" id="petResults">
-                        <h2>📊 Your Pet Cost Breakdown</h2>
-                        <div class="result-item"><span class="result-label">Initial / One-Time Costs</span><span class="result-value" id="initialCost">-</span></div>
-                        <div class="result-item"><span class="result-label">Monthly Cost</span><span class="result-value big" id="monthlyCost">-</span></div>
-                        <div class="result-item"><span class="result-label">Annual Cost</span><span class="result-value" id="annualCost">-</span></div>
-                        <div class="result-item"><span class="result-label">Lifetime Cost</span><span class="result-value big" id="lifetimeCost">-</span></div>
-                        <div class="result-item"><span class="result-label">Food (per year)</span><span class="result-value" id="foodCost">-</span></div>
-                        <div class="result-item"><span class="result-label">Vet & Medical (per year)</span><span class="result-value" id="vetCost">-</span></div>
-                        <div class="result-item"><span class="result-label">Grooming & Supplies (per year)</span><span class="result-value" id="suppliesCost">-</span></div>
-                        <div class="result-item"><span class="result-label">Insurance (per year)</span><span class="result-value" id="insuranceCost">-</span></div>
-                    </div>
-
-                    <!-- Content for SEO -->
-                    <div class="tool-content">
-                        <h2>The True Cost of Owning a Pet in 2026</h2>
-                        <p>Bringing a pet into your home is one of life's greatest joys — but many new pet owners underestimate the <strong>real financial commitment</strong>. Our pet cost calculator gives you a clear, honest picture of what to expect.</p>
-
-                        <h3>What's Included in the Cost?</h3>
-                        <ul>
-                            <li><strong>One-time costs:</strong> Adoption/buying fee, spay/neuter, initial supplies (crate, bed, bowls, leash, litter box)</li>
-                            <li><strong>Monthly food:</strong> Varies by pet size and food quality — from $20/month for small pets to $200+ for large dogs on raw diets</li>
-                            <li><strong>Veterinary care:</strong> Annual checkups, vaccinations, flea/tick prevention, dental cleaning, and emergency fund</li>
-                            <li><strong>Grooming & supplies:</strong> Professional grooming, toys, treats, waste bags, litter, bedding replacement</li>
-                            <li><strong>Pet insurance:</strong> Accident & illness coverage — increasingly essential as vet costs rise</li>
-                        </ul>
-
-                        <p><strong>Example:</strong> A medium-sized dog in the US costs approximately <strong>$1,500–$4,000 per year</strong>, or <strong>$18,000–$48,000 over a 12-year lifetime</strong>. Use our calculator above to get your personalized estimate!</p>
-                    </div>
-                </div>
-
-                <!-- Sidebar -->
-                <aside class="tool-sidebar">
-                    <div class="sidebar-cta">
-                        <h3>💰 Want to Save on Pet Costs?</h3>
-                        <ul>
-                            <li>Compare pet insurance quotes</li>
-                            <li>Find deals on pet food delivery</li>
-                            <li>Discover budget-friendly pet supplies</li>
-                        </ul>
-                        <a href="https://www.petinsurance.com/" class="affiliate-link" target="_blank" rel="nofollow sponsored" onclick="trackEvent(.Affiliate.,.Click.,.pet-insurance.)">Compare Pet Insurance →</a>
-                    </div>
-
-                    <div class="related-tools">
-                        <h3>🧮 Related Tools</h3>
-                        <ul>
-                            <li><a href="savings-calculator.html">💰 Savings Goal Calculator</a></li>
-                            <li><a href="subscription-calculator.html">📊 Subscription Cost Analyzer</a></li>
-                            <li><a href="bmi-calculator.html">💪 BMI Calculator</a></li>
-                        </ul>
-                    </div>
-
-                    <a href="#" class="ad-cta-box" onclick="event.preventDefault();openContactModal();">📢 Advertise on ToolHero<span>Click here — reach thousands of users daily</span></a>
-                </aside>
-            </div>
-        </div>
-    </main>
-
-    <footer>
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <h4>ToolHero</h4>
-                    <p>Free online calculators to help you make smarter decisions.</p>
-                </div>
-                <div class="footer-col">
-                    <h4>Legal</h4>
-                    <ul>
-                        <li><a href="../privacy.html">Privacy Policy</a></li>
-                        <li><a href="../terms.html">Terms of Use</a></li>
-                        <li><a href="../contact.html">Contact Us</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom"><p>&copy; 2026 ToolHero. All rights reserved.</p></div>
-        </div>
-    </footer>
-
-    <script src="../js/main.js"></script>
-    <script>
-    function calculatePetCost() {
-        var petType = document.getElementById('petType').value;
-        var breed = document.getElementById('petBreed').value;
-        var age = parseInt(document.getElementById('petAge').value) || 0;
-        var lifespan = parseInt(document.getElementById('lifespan').value) || 12;
-        var foodQuality = document.getElementById('foodQuality').value;
-        var location = document.getElementById('location').value;
-
-        var yearsLeft = Math.max(0, lifespan - age);
-
-        // Base costs by pet type (annual, US baseline)
-        var costData = {
-            dog: { initial: 500, food: {budget: 250, mid: 500, premium: 800, raw: 1200}, vet: 500, supplies: 300, insurance: 480 },
-            cat: { initial: 300, food: {budget: 150, mid: 300, premium: 500, raw: 800}, vet: 350, supplies: 250, insurance: 300 },
-            rabbit: { initial: 200, food: {budget: 150, mid: 250, premium: 400, raw: 600}, vet: 200, supplies: 200, insurance: 180 },
-            bird: { initial: 250, food: {budget: 100, mid: 200, premium: 350, raw: 500}, vet: 250, supplies: 150, insurance: 120 },
-            fish: { initial: 150, food: {budget: 30, mid: 60, premium: 100, raw: 200}, vet: 50, supplies: 80, insurance: 0 },
-            hamster: { initial: 100, food: {budget: 60, mid: 100, premium: 180, raw: 300}, vet: 100, supplies: 120, insurance: 60 },
-            reptile: { initial: 350, food: {budget: 100, mid: 200, premium: 350, raw: 500}, vet: 200, supplies: 200, insurance: 120 }
-        };
-
-        var data = costData[petType];
-        if (!data) return;
-
-        // Breed multiplier for dogs
-        var breedMult = { small: 0.7, medium: 1.0, large: 1.4, giant: 1.8 };
-        var mult = (petType === 'dog') ? (breedMult[breed] || 1.0) : 1.0;
-
-        // Location multiplier
-        var locMult = { us: 1.0, uk: 0.85, ca: 0.9, au: 0.95, eu: 0.8 };
-
-        var adjFood = data.food[foodQuality] * mult * (locMult[location] || 1.0);
-        var adjVet = data.vet * mult * (locMult[location] || 1.0);
-        var adjSupplies = data.supplies * mult * (locMult[location] || 1.0);
-        var adjInsurance = data.insurance * (locMult[location] || 1.0);
-        var adjInitial = data.initial * mult * (locMult[location] || 1.0);
-
-        var annualCost = adjFood + adjVet + adjSupplies + adjInsurance;
-        var monthlyCost = annualCost / 12;
-        var lifetimeCost = adjInitial + (annualCost * yearsLeft);
-
-        document.getElementById('initialCost').textContent = '$' + adjInitial.toLocaleString();
-        document.getElementById('monthlyCost').textContent = '$' + Math.round(monthlyCost).toLocaleString() + '/month';
-        document.getElementById('annualCost').textContent = '$' + Math.round(annualCost).toLocaleString() + '/year';
-        document.getElementById('lifetimeCost').textContent = '$' + Math.round(lifetimeCost).toLocaleString() + ' (remaining)';
-        document.getElementById('foodCost').textContent = '$' + Math.round(adjFood).toLocaleString();
-        document.getElementById('vetCost').textContent = '$' + Math.round(adjVet).toLocaleString();
-        document.getElementById('suppliesCost').textContent = '$' + Math.round(adjSupplies).toLocaleString();
-        document.getElementById('insuranceCost').textContent = '$' + Math.round(adjInsurance).toLocaleString();
-
-        document.getElementById('petResults').classList.add('show');
-        document.getElementById('petResults').scrollIntoView({ behavior: 'smooth' });
-
-        if (typeof trackEvent === 'function') trackEvent('Tool', 'Calculate', 'PetCost');
-    }
-    </script>
-</body>
-</html>
+function calculatePetCost(){var c=document.getElementById('petCurrency').value;var t=document.getElementById('petType').value;var age=parseInt(document.getElementById('petAge').value)||0;var ls=parseInt(document.getElementById('lifespan').value)||12;var food=document.getElementById('foodQuality').value;var reg=document.getElementById('petLocation').value;var em=parseFloat(document.getElementById('emergencyFund').value)||0;
+var base={
+'dog-small':{food:[300,500,800,1200],vet:380,supplies:280,insurance:420,initial:700},
+'dog-medium':{food:[400,650,1000,1600],vet:420,supplies:320,insurance:540,initial:850},
+'dog-large':{food:[550,900,1400,2200],vet:500,supplies:400,insurance:720,initial:1000},
+'dog-giant':{food:[750,1200,1900,3000],vet:600,supplies:480,insurance:960,initial:1300},
+'cat':{food:[280,450,700,1100],vet:320,supplies:220,insurance:380,initial:550},
+'rabbit':{food:[220,380,600,900],vet:260,supplies:200,insurance:180,initial:420},
+'bird':{food:[180,320,520,850],vet:250,supplies:210,insurance:160,initial:450},
+'fish':{food:[80,150,250,400],vet:40,supplies:120,insurance:0,initial:250},
+'hamster':{food:[90,160,280,400],vet:110,supplies:100,insurance:0,initial:150},
+'reptile':{food:[200,350,550,850],vet:240,supplies:220,insurance:140,initial:600},
+'turtle':{food:[180,300,480,750],vet:220,supplies:200,insurance:120,initial:500}};
+var fi={standard:0,premium:1,vet:2,fresh:3};var rm={us:1,uk:0.82,ca:0.88,au:0.92,eu:0.78};
+var b=base[t]||base['dog-medium'];
+var fc=b.food[fi[food]]*rm[reg];var vc=b.vet*rm[reg];var sc=b.supplies*rm[reg];var ic=b.insurance*rm[reg];var init=b.initial*rm[reg];
+var annual=fc+vc+sc+ic;var remaining=Math.max(0,ls-age);var lifetime=annual*remaining+init+em;
+document.getElementById('initialCost').textContent=fmt(init,c);document.getElementById('monthlyCost').textContent=fmt(annual/12,c)+'/month';document.getElementById('annualCost').textContent=fmt(annual,c)+'/year';document.getElementById('lifetimeCost').textContent=fmt(lifetime,c)+' for '+remaining+' years';document.getElementById('foodCost').textContent=fmt(fc,c);document.getElementById('vetCost').textContent=fmt(vc,c);document.getElementById('suppliesCost').textContent=fmt(sc,c);document.getElementById('insuranceCost').textContent=ic>0?fmt(ic,c):'N/A';document.getElementById('petResults').classList.add('show');document.getElementById('petResults').scrollIntoView({behavior:'smooth'});if(typeof trackEvent==='function')trackEvent('Tool','Calculate','PetCost');}
+</script></body></html>

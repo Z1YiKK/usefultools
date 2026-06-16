@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8"><style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:1000px;height:1500px;font-family:'Segoe UI',-apple-system,sans-serif;background:#0a0e27;color:#fff;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.card{width:940px;height:1440px;border-radius:28px;background:linear-gradient(160deg,#0f172a 0%,#1a1040 50%,#0f172a 100%);padding:64px 56px;position:relative;display:flex;flex-direction:column;justify-content:space-between;border:1px solid rgba(99,102,241,0.25)}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:6px;background:linear-gradient(90deg,#6366f1,#8b5cf6,#a855f7);border-radius:28px 28px 0 0}
+.accent-dot{position:absolute;width:12px;height:12px;border-radius:50%;background:#818cf8}
+.d1{top:40px;right:40px}.d2{top:40px;right:65px;background:#a78bfa}.d3{top:65px;right:40px;background:#c4b5fd}
+.header{margin-top:20px}
+.tag{display:inline-block;padding:6px 18px;border-radius:20px;font-size:16px;font-weight:600;letter-spacing:1px;background:rgba(99,102,241,0.2);color:#a5b4fc;margin-bottom:28px}
+h1{font-size:62px;font-weight:900;line-height:1.1;letter-spacing:-0.5px}
+h1 span{color:#818cf8}
+.subtitle{font-size:26px;color:rgba(255,255,255,0.55);margin-top:16px;line-height:1.4}
+.bignum{display:flex;gap:24px;margin:36px 0}
+.numcard{flex:1;padding:36px 32px;border-radius:18px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.06)}
+.numcard .val{font-size:64px;font-weight:900;line-height:1}
+.numcard .lbl{font-size:18px;color:rgba(255,255,255,0.55);margin-top:10px}
+.numcard.c1 .val{color:#818cf8}.numcard.c2 .val{color:#34d399}
+.steps{margin:20px 0}
+.step{display:flex;align-items:center;gap:18px;padding:16px 0;border-bottom:1px solid rgba(255,255,255,0.06)}
+.step-num{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:18px;background:rgba(99,102,241,0.2);color:#a5b4fc;flex-shrink:0}
+.step-text{font-size:22px;color:rgba(255,255,255,0.7)}
+.cta{display:flex;align-items:center;justify-content:space-between;padding:28px 36px;border-radius:16px;background:linear-gradient(135deg,#6366f1,#8b5cf6)}
+.cta-text{font-size:28px;font-weight:700}
+.cta-url{font-size:22px;opacity:0.8}
+.footer-text{text-align:center;font-size:16px;color:rgba(255,255,255,0.3);margin-top:8px}
+</style></head><body>
+<div class="card">
+<div class="accent-dot d1"></div><div class="accent-dot d2"></div><div class="accent-dot d3"></div>
+<div>
+<div class="tag">MORTGAGE CALCULATOR</div>
+<h1>Pay Off Your<br><span>Mortgage 7 Years</span> Early</h1>
+<p class="subtitle">Even $200/month extra can save six figures in interest. The math is proven — see exactly how much YOU can save in 30 seconds.</p>
+<div class="bignum">
+<div class="numcard c1"><div class="val">$97,000</div><div class="lbl">Interest saved on a $300k, 6.5% loan</div></div>
+<div class="numcard c2"><div class="val">7 yrs</div><div class="lbl">Paid off earlier with $200/mo extra</div></div>
+</div>
+<div class="steps">
+<div class="step"><div class="step-num">1</div><div class="step-text">Enter your loan amount, interest rate and term</div></div>
+<div class="step"><div class="step-num">2</div><div class="step-text">Add any extra payment amount — even $100 helps</div></div>
+<div class="step"><div class="step-num">3</div><div class="step-text">See your new payoff date and total interest saved</div></div>
+</div>
+</div>
+<div>
+<div class="cta"><div class="cta-text">Calculate Your Savings Now</div><div class="cta-url">toolhero.cc</div></div>
+<p class="footer-text">Free. No sign-up. Instant results. All calculations stay on your device.</p>
+</div>
+</div>
+</body></html>

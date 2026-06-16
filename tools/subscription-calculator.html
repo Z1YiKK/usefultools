@@ -1,95 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Subscription Cost Analyzer - Find Hidden Subscription Spending</title>
-    <meta name="description" content="Add up all your subscriptions (Netflix, Spotify, gym, apps) and see what you're really spending per month and per year. The results may shock you.">
-    <link rel="canonical" href="https://toolhero.cc/tools/subscription-calculator.html">
-    <link rel="stylesheet" href="../css/style.css">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Subscription Cost Analyzer — Multi-Currency, Custom Entries | ToolHero</title><meta name="description" content="Track subscriptions across currencies with custom entries. See monthly, annual, and multi-year costs. Most people find $50-200/month hidden spending."><link rel="canonical" href="https://toolhero.cc/tools/subscription-calculator.html"><link rel="stylesheet" href="../css/style.css"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2853119909292198" crossorigin="anonymous"></script>    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YHHBHY14BJ"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-YHHBHY14BJ");</script>
+
 </head>
-<body>
-    <header>
-        <nav class="navbar">
-            <div class="container">
-                <a href="../" class="logo"><span class="logo-icon">🦸</span><span class="logo-text">Tool<span class="highlight">Hero</span></span></a>
-                <ul class="nav-links"><li><a href="../">Home</a></li><li><a href="../#tools">Tools</a></li><li><a href="../blog/">Blog</a></li></ul>
-                <button class="mobile-menu-btn" aria-label="Menu">☰</button>
-            </div>
-        </nav>
-    </header>
-
-    <main class="tool-page">
-        <div class="container">
-            <div class="tool-breadcrumb"><a href="../">Home</a> → Subscription Cost Analyzer</div>
-            <div class="tool-layout">
-                <div class="tool-main">
-                    <h1>📊 Subscription Cost Analyzer — What Are You Really Spending?</h1>
-                    <p style="margin-bottom:20px;color:var(--text-light);">Americans spend an average of <strong>$219/month</strong> on subscriptions they've forgotten about. Let's find yours.</p>
-                    <div class="calc-form" id="subCalc">
-                        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;" id="subList">
-                            <div class="form-group"><label>Netflix</label><input type="number" class="sub-input" value="15.49" min="0" step="0.01" placeholder="$/mo"></div>
-                            <div class="form-group"><label>Amazon Prime</label><input type="number" class="sub-input" value="14.99" min="0" step="0.01" placeholder="$/mo"></div>
-                            <div class="form-group"><label>Spotify / Apple Music</label><input type="number" class="sub-input" value="10.99" min="0" step="0.01" placeholder="$/mo"></div>
-                            <div class="form-group"><label>Disney+ / HBO / Hulu</label><input type="number" class="sub-input" value="0" min="0" step="0.01" placeholder="$/mo"></div>
-                            <div class="form-group"><label>Gym / Fitness App</label><input type="number" class="sub-input" value="0" min="0" step="0.01" placeholder="$/mo"></div>
-                            <div class="form-group"><label>Cloud Storage (iCloud/Drive)</label><input type="number" class="sub-input" value="0" min="0" step="0.01" placeholder="$/mo"></div>
-                            <div class="form-group"><label>Gaming (Xbox/PS/Nintendo)</label><input type="number" class="sub-input" value="0" min="0" step="0.01" placeholder="$/mo"></div>
-                            <div class="form-group"><label>Meal Kit / Food Delivery</label><input type="number" class="sub-input" value="0" min="0" step="0.01" placeholder="$/mo"></div>
-                            <div class="form-group"><label>News / Magazine</label><input type="number" class="sub-input" value="0" min="0" step="0.01" placeholder="$/mo"></div>
-                            <div class="form-group"><label>Software / Apps</label><input type="number" class="sub-input" value="0" min="0" step="0.01" placeholder="$/mo"></div>
-                            <div class="form-group"><label>Other #1</label><input type="number" class="sub-input" value="0" min="0" step="0.01" placeholder="$/mo"></div>
-                            <div class="form-group"><label>Other #2</label><input type="number" class="sub-input" value="0" min="0" step="0.01" placeholder="$/mo"></div>
-                        </div>
-                        <button type="button" class="calc-btn" onclick="calculateSubs()">📊 Show Me My Spending →</button>
-                    </div>
-
-                    <div class="results" id="subResults">
-                        <h2>📊 Your Subscription Spending</h2>
-                        <div class="result-item"><span class="result-label">Monthly Total</span><span class="result-value big" id="subMonthly">-</span></div>
-                        <div class="result-item"><span class="result-label">Annual Total</span><span class="result-value big" id="subAnnual">-</span></div>
-                        <div class="result-item"><span class="result-label">10-Year Cost</span><span class="result-value" id="subDecade">-</span></div>
-                        <div class="result-item"><span class="result-label">Number of Subscriptions</span><span class="result-value" id="subCount">-</span></div>
-                    </div>
-
-                    <div class="tool-content">
-                        <h2>The Hidden Cost of Subscription Creep</h2>
-                        <p>Streaming services, apps, gym memberships, meal kits — subscriptions are everywhere. A <strong>2025 study found that 42% of people</strong> are paying for at least one subscription they've completely forgotten about.</p>
-                        <p>At $50/month in forgotten subscriptions, that's <strong>$6,000 wasted over 10 years</strong> — money that could be invested and growing. Use our calculator, then check your bank statements for any subscriptions you didn't list!</p>
-                    </div>
-                </div>
-                <aside class="tool-sidebar">
-                    <div class="sidebar-cta"><h3>💡 Want to Save Money?</h3><ul><li>Track all subscriptions in one place</li><li>Get alerts before free trials end</li><li>Cancel unwanted subs in one click</li></ul><a href="https://www.rocketmoney.com/" class="affiliate-link" target="_blank" rel="nofollow sponsored" onclick="trackEvent(.Affiliate.,.Click.,.subscription-saver.)">Try Subscription Manager →</a></div>
-                    <div class="related-tools"><h3>🧮 Related Tools</h3><ul><li><a href="savings-calculator.html">💰 Savings Calculator</a></li><li><a href="mortgage-calculator.html">🏠 Mortgage Calculator</a></li></ul></div>
-                    <a href="#" class="ad-cta-box" onclick="event.preventDefault();openContactModal();">📢 Advertise on ToolHero<span>Click here — reach thousands of users daily</span></a>
-                </aside>
-            </div>
-        </div>
-    </main>
-
-    <footer>
-        <div class="container"><div class="footer-grid"><div class="footer-col"><h4>ToolHero</h4><p>Free online calculators for smarter decisions.</p></div><div class="footer-col"><h4>Legal</h4><ul><li><a href="../privacy.html">Privacy Policy</a></li><li><a href="../terms.html">Terms of Use</a></li></ul></div></div><div class="footer-bottom"><p>&copy; 2026 ToolHero.</p></div></div>
-    </footer>
-
-    <script src="../js/main.js"></script>
-    <script>
-    function calculateSubs() {
-        var inputs = document.querySelectorAll('.sub-input');
-        var total = 0;
-        var count = 0;
-        inputs.forEach(function(inp) {
-            var val = parseFloat(inp.value) || 0;
-            if (val > 0) count++;
-            total += val;
-        });
-        document.getElementById('subMonthly').textContent = '$' + total.toFixed(2) + '/month';
-        document.getElementById('subAnnual').textContent = '$' + (total * 12).toFixed(2) + '/year';
-        document.getElementById('subDecade').textContent = '$' + (total * 120).toLocaleString() + ' over 10 years';
-        document.getElementById('subCount').textContent = count + ' active subscriptions';
-        document.getElementById('subResults').classList.add('show');
-        document.getElementById('subResults').scrollIntoView({ behavior: 'smooth' });
-        if (typeof trackEvent === 'function') trackEvent('Tool', 'Calculate', 'Subscription');
-    }
-    </script>
-</body>
-</html>
+<body><header><nav class="navbar"><div class="container"><a href="../" class="logo"><span class="logo-icon">&#x1F9B8;</span><span class="logo-text">Tool<span class="highlight">Hero</span></span></a><ul class="nav-links"><li><a href="../">Home</a></li><li><a href="../#tools">Tools</a></li><li><a href="../blog/">Blog</a></li></ul><button class="mobile-menu-btn">&#9776;</button></div></nav></header><main class="tool-page"><div class="container"><div class="tool-breadcrumb"><a href="../">Home</a> &#8594; Subscription Analyzer</div><div class="tool-layout"><div class="tool-main"><h1>Subscription Cost Analyzer — Find Hidden Spending</h1><p style="margin-bottom:20px;color:var(--text-light);">Americans underestimate subscriptions by 2.5&times; (C+R Research, 2022). Add yours below, including custom entries.</p><div class="calc-form">
+    <div class="form-group"><label for="subCurrency">Currency</label><select id="subCurrency"><option value="USD">USD ($)</option><option value="EUR">EUR (&euro;)</option><option value="GBP">GBP (&pound;)</option><option value="CAD">CAD (C$)</option><option value="AUD">AUD (A$)</option></select><span class="input-hint">All amounts below are <strong>monthly</strong>. For annual plans, divide by 12 (e.g. $120/yr = $10/mo). Quarterly = divide by 3.</span></div>
+    <div id="subList">
+        <div class="form-group"><label>Netflix</label><input type="number" class="sub-input" value="15.49" min="0" step="0.01" placeholder="/mo"><span class="input-hint">Standard plan with ads: $6.99. Standard: $15.49. Premium: $22.99 (US, 2026)</span></div>
+        <div class="form-group"><label>Amazon Prime</label><input type="number" class="sub-input" value="14.99" min="0" step="0.01" placeholder="/mo"><span class="input-hint">$14.99/mo or $139/year ($11.58/mo). Student: $7.49/mo (US, 2026)</span></div>
+        <div class="form-group"><label>Spotify / Apple Music</label><input type="number" class="sub-input" value="10.99" min="0" step="0.01" placeholder="/mo"><span class="input-hint">Individual: $10.99. Duo: $14.99. Family: $16.99. Student: $5.99 (US, 2026)</span></div>
+        <div class="form-group"><label>YouTube Premium</label><input type="number" class="sub-input" value="0" min="0" step="0.01" placeholder="/mo"><span class="input-hint">$13.99/mo individual. Family: $22.99/mo. Student: $7.99/mo (US, 2026)</span></div>
+        <div class="form-group"><label>Disney+ / Hulu / Max</label><input type="number" class="sub-input" value="0" min="0" step="0.01" placeholder="/mo"><span class="input-hint">Disney+ Basic: $9.99. Hulu (with ads): $9.99. Max: $9.99-16.99 (US, 2026)</span></div>
+        <div class="form-group"><label>Gym / Fitness</label><input type="number" class="sub-input" value="0" min="0" step="0.01" placeholder="/mo"><span class="input-hint">Planet Fitness: $15. LA Fitness: $35-50. Peloton App: $12.99 (US, 2026)</span></div>
+        <div class="form-group"><label>Cloud Storage</label><input type="number" class="sub-input" value="0" min="0" step="0.01" placeholder="/mo"><span class="input-hint">iCloud 50GB: $0.99. Google One 100GB: $1.99. Dropbox Plus: $11.99 (US, 2026)</span></div>
+        <div class="form-group"><label>Gaming</label><input type="number" class="sub-input" value="0" min="0" step="0.01" placeholder="/mo"><span class="input-hint">Xbox Game Pass: $16.99. PS Plus: $17.99. Nintendo Online: $3.99 (US, 2026)</span></div>
+        <div class="form-group"><label>Meal Kit Delivery</label><input type="number" class="sub-input" value="0" min="0" step="0.01" placeholder="/mo"><span class="input-hint">HelloFresh (3 meals/wk): ~$80/wk = ~$345/mo (varies). Enter your actual monthly spend.</span></div>
+        <div class="form-group"><label>News / Digital Media</label><input type="number" class="sub-input" value="0" min="0" step="0.01" placeholder="/mo"><span class="input-hint">NYT: $17. WSJ: $39. Medium: $5. Substack: varies ($5-15 avg). (US, 2026)</span></div>
+    </div>
+    <div id="customSubs"></div>
+    <button type="button" class="add-row-btn" onclick="addCustomRow()">Add Custom Subscription</button><span style="display:block;font-size:0.72rem;color:var(--text-light);margin-bottom:8px;text-align:center;">Add up to 8 custom entries for services not listed above</span>
+    <button type="button" class="calc-btn" onclick="calculateSubs()">Analyze My Spending</button>
+</div>
+<div class="results" id="subResults"><h2>Spending Breakdown</h2>
+    <div class="result-item"><span class="result-label">Monthly Total</span><span class="result-value big" id="subMonthly">-</span></div>
+    <div class="result-item"><span class="result-label">Annual Total</span><span class="result-value big" id="subAnnual">-</span></div>
+    <div class="result-item"><span class="result-label">5-Year Cost</span><span class="result-value" id="sub5Year">-</span></div>
+    <div class="result-item"><span class="result-label">10-Year Cost</span><span class="result-value" id="subDecade">-</span></div>
+    <div class="result-item"><span class="result-label">Active Subscriptions</span><span class="result-value" id="subCount">-</span></div>
+</div>
+<div class="tool-content"><h2>Subscription Creep: How It Happens</h2><p>C+R Research (2022) found Americans spend $219/month on subscriptions &mdash; 2.5&times; more than they estimate. Auto-renewals, forgotten trials, and services used once then abandoned all contribute to this blind spot.</p><p>A 10-minute audit of the last 3 months of bank statements catches everything. Redirecting even $50/month into savings compounds to over $26,000 in 20 years at 5%.</p></div></div>
+<aside class="tool-sidebar"><div class="sidebar-cta"><h3>Track Everything</h3><ul><li>Find all subscriptions</li><li>Cancel with one tap</li><li>Get renewal alerts</li></ul><a href="https://www.rocketmoney.com/" class="affiliate-link" target="_blank" rel="nofollow sponsored" onclick="trackEvent('Affiliate','Click','subscription')">Try Rocket Money</a></div><div class="related-tools"><h3>Related Tools</h3><ul><li><a href="savings-calculator.html">Savings Calculator</a></li><li><a href="mortgage-calculator.html">Mortgage Calculator</a></li></ul></div><a href="#" class="ad-cta-box" onclick="event.preventDefault();openContactModal();">Advertise on ToolHero<span>Click to reach thousands daily</span></a></aside></div></div></main>
+<footer><div class="container"><div class="footer-grid"><div class="footer-col"><h4>ToolHero</h4><p>Free online calculators for smarter decisions.</p></div><div class="footer-col"><h4>Legal</h4><ul><li><a href="../privacy.html">Privacy Policy</a></li><li><a href="../terms.html">Terms of Use</a></li></ul></div></div><div class="footer-bottom"><p>&copy; 2026 ToolHero.</p></div></div></footer>
+<script src="../js/main.js"></script><script>
+var subSymbols={USD:'$',EUR:'&euro;',GBP:'&pound;',CAD:'C$',AUD:'A$'};
+var customCount=0,maxCustom=8;
+function addCustomRow(){
+    if(customCount>=maxCustom)return;
+    customCount++;
+    var div=document.createElement('div');
+    div.className='form-group custom-row';
+    div.innerHTML='<div style="display:flex;gap:6px;align-items:end;"><input type="text" class="sub-input" placeholder="Name" style="width:45%;"><input type="number" class="sub-input" value="0" min="0" step="0.01" placeholder="/mo" style="width:35%;"><button type="button" onclick="this.parentElement.parentElement.remove();customCount--;" style="background:#ef4444;color:#fff;border:none;border-radius:6px;padding:6px 10px;cursor:pointer;font-size:0.75rem;flex-shrink:0;">X</button></div>';
+    document.getElementById('customSubs').appendChild(div);
+}
+function fmt(a,c){return subSymbols[c] + a.toFixed(2)}
+function calculateSubs(){var c=document.getElementById('subCurrency').value;var total=0,count=0;document.querySelectorAll('.sub-input').forEach(function(inp){var v=parseFloat(inp.value)||0;if(v>0)count++;total+=v;});document.getElementById('subMonthly').textContent=fmt(total,c)+'/month';document.getElementById('subAnnual').textContent=fmt(total*12,c)+'/year';document.getElementById('sub5Year').textContent=fmt(total*60,c)+' over 5 years';document.getElementById('subDecade').textContent=fmt(total*120,c)+' over 10 years';document.getElementById('subCount').textContent=count+' active subscriptions';document.getElementById('subResults').classList.add('show');document.getElementById('subResults').scrollIntoView({behavior:'smooth'});if(typeof trackEvent==='function')trackEvent('Tool','Calculate','Subscription');}
+</script></body></html>
