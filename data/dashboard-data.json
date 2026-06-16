@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-16T03:33:18.615Z",
+  "updated": "2026-06-16T03:37:43.503Z",
   "ga4": {
     "rows": [
       {
@@ -15,11 +15,11 @@
             "oneValue": "value"
           },
           {
-            "value": "37",
+            "value": "38",
             "oneValue": "value"
           },
           {
-            "value": "133.52381304166667",
+            "value": "133.72870020833332",
             "oneValue": "value"
           }
         ]
@@ -213,7 +213,7 @@
             "oneValue": "value"
           },
           {
-            "value": "1",
+            "value": "2",
             "oneValue": "value"
           },
           {
@@ -269,7 +269,9 @@
     ],
     "totals": []
   },
-  "searchConsole": {},
+  "searchConsole": {
+    "responseAggregationType": "byPage"
+  },
   "searchTotals": {
     "clicks": 0,
     "impressions": 0,

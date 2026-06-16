@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dashboard — ToolHero Analytics</title>
+<title>数据看板 — ToolHero Analytics</title>
 <meta name="robots" content="noindex, nofollow">
 <link rel="stylesheet" href="css/style.css">
 <style>
@@ -27,33 +27,40 @@ tr:last-child td{border-bottom:none}
 
 <main style="padding:40px 0 80px">
 <div class="container">
-<h1 style="font-size:2rem;margin-bottom:8px">Dashboard</h1>
-<p style="color:var(--text-light);margin-bottom:32px">Real-time analytics. Data from Google Analytics 4. Updated every 3 days.</p>
+<h1 style="font-size:2rem;margin-bottom:8px">数据看板</h1>
+<p style="color:var(--text-light);margin-bottom:32px">每3天自动刷新。数据来源：Google Analytics 4 + Search Console。</p>
 
 <div class="db-grid">
-<div class="db-card"><div class="val" id="visitors">--</div><div class="lbl">Visitors (Last 7 Days)</div></div>
-<div class="db-card green"><div class="val" id="pageviews">--</div><div class="lbl">Page Views (Last 7 Days)</div></div>
-<div class="db-card amber"><div class="val" id="avgTime">--</div><div class="lbl">Avg. Engagement Time</div></div>
-<div class="db-card purple"><div class="val" id="revenue">$0.00</div><div class="lbl">Ad Revenue (Awaiting AdSense)</div></div>
+<div class="db-card"><div class="val" id="visitors">--</div><div class="lbl">7日访客数</div></div>
+<div class="db-card green"><div class="val" id="pageviews">--</div><div class="lbl">7日页面浏览量</div></div>
+<div class="db-card amber"><div class="val" id="avgTime">--</div><div class="lbl">平均停留时长</div></div>
+<div class="db-card purple"><div class="val" id="revenue">$0.00</div><div class="lbl">广告收入（等AdSense通过）</div></div>
 </div>
 
 <div class="table-wrap">
-<h3 style="margin-bottom:16px">Top Pages (Last 7 Days)</h3>
+<h3 style="margin-bottom:16px">热门页面（近7天）</h3>
 <table>
-<thead><tr><th>Page</th><th>Views</th><th>Share</th></tr></thead>
+<thead><tr><th>页面</th><th>浏览量</th><th>占比</th></tr></thead>
 <tbody id="topPages">
 <tr><td colspan="3" style="text-align:center;color:var(--text-light)">Loading data...</td></tr>
 </tbody>
 </table>
 </div>
 
+<div class="db-grid">
+<div class="db-card"><div class="val" id="searchClicks">--</div><div class="lbl">搜索点击量（7日）</div></div>
+<div class="db-card green"><div class="val" id="searchImpressions">--</div><div class="lbl">搜索展示量（7日）</div></div>
+<div class="db-card amber"><div class="val" id="avgPosition">--</div><div class="lbl">平均搜索排名</div></div>
+<div class="db-card purple"><div class="val" id="indexedPages">--</div><div class="lbl">已收录页面</div></div>
+</div>
+
 <div class="table-wrap">
-<h3 style="margin-bottom:16px">Quick Links</h3>
+<h3 style="margin-bottom:16px">快捷入口</h3>
 <table>
-<tr><td>Google Analytics</td><td><a href="https://analytics.google.com" target="_blank">View Full Report &rarr;</a></td></tr>
-<tr><td>Search Console</td><td><a href="https://search.google.com/search-console" target="_blank">View Search Data &rarr;</a></td></tr>
+<tr><td>Google Analytics</td><td><a href="https://analytics.google.com" target="_blank">查看完整报告 &rarr;</a></td></tr>
+<tr><td>Search Console</td><td><a href="https://search.google.com/search-console" target="_blank">查看搜索数据 &rarr;</a></td></tr>
 <tr><td>Cloudflare</td><td><a href="https://dash.cloudflare.com" target="_blank">CDN &amp; DNS &rarr;</a></td></tr>
-<tr><td>GitHub</td><td><a href="https://github.com/Z1YiKK/usefultools" target="_blank">Source Code &rarr;</a></td></tr>
+<tr><td>GitHub</td><td><a href="https://github.com/Z1YiKK/usefultools" target="_blank">源码仓库 &rarr;</a></td></tr>
 </table>
 </div>
 
@@ -79,7 +86,7 @@ var pageNames = {
   '/privacy.html': '隐私政策 (Privacy)',
   '/terms.html': '使用条款 (Terms)',
   '/contact.html': '联系我们 (Contact)',
-  '/dashboard.html': '数据看板 (Dashboard)'
+  '/dashboard.html': '数据看板 (数据看板)'
 };
 
 fetch('data/dashboard-data.json?v=' + Date.now())
