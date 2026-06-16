@@ -17,3 +17,6 @@ data/*.json
 # Environment
 .env
 .env.local
+node_modules
+package.json
+package-lock.json
