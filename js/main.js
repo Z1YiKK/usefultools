@@ -305,6 +305,18 @@
         }
     };
 
+    // Setup share buttons (X + Facebook) after calculation
+    window.setupShare = function(shareId, text) {
+        var container = document.getElementById(shareId);
+        if (!container) return;
+        var url = encodeURIComponent(window.location.href);
+        var encodedText = encodeURIComponent(text);
+        var links = container.querySelectorAll('a');
+        if (links[0]) links[0].href = 'https://twitter.com/intent/tweet?text=' + encodedText + '&url=' + url;
+        if (links[1]) links[1].href = 'https://www.facebook.com/sharer/sharer.php?u=' + url + '&quote=' + encodedText;
+        container.classList.add('show');
+    };
+
     // ========== Analytics ==========
     window.trackEvent = function(category, action, label) {
         if (typeof gtag === 'function') {

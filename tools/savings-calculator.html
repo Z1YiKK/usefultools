@@ -39,6 +39,7 @@
     <div class="result-item"><span class="result-label">Interest Earned</span><span class="result-value" id="interestEarned">-</span></div>
     <div class="result-item"><span class="result-label">Interest as % of Total</span><span class="result-value" id="interestPct">-</span></div>
 </div>
+<div class="share-buttons" id="savingsShare"><span class="share-label">📤 Share:</span><a class="share-btn x" href="#" target="_blank" rel="noopener">X Post</a><a class="share-btn fb" href="#" target="_blank" rel="noopener">📘 Share</a></div>
 <div class="tool-content"><h2>The Power of Compound Interest</h2><p>Compound interest is often called the "eighth wonder of the world" — and for good reason. When your interest earns interest, your money grows exponentially over time. The key is starting early and staying consistent.</p><p><strong>Example:</strong> Saving $500/month at 5% APY compounded monthly, you reach $100,000 in about 14 years — and roughly 30% of that total comes from interest, not your own contributions.</p></div>
 </div>
 <aside class="tool-sidebar"><div class="sidebar-cta"><h3>💳 Want to Save Faster?</h3><ul><li>High-yield savings accounts</li><li>Automated investing</li><li>Track progress</li></ul><a href="https://www.nerdwallet.com/banking/high-yield-savings-accounts" class="affiliate-link" target="_blank" rel="nofollow sponsored" onclick="trackEvent('Affiliate','Click','savings')">Compare Savings Accounts →</a></div><div class="related-tools"><h3>🧮 Related Tools</h3><ul><li><a href="mortgage-calculator.html"> Mortgage Calculator</a></li><li><a href="subscription-calculator.html"> Subscription Analyzer</a></li></ul></div><a href="#" class="ad-cta-box" onclick="event.preventDefault();openContactModal();">📢 Advertise on ToolHero<span>Click here — reach thousands of users daily</span></a></aside>
@@ -75,6 +76,7 @@ function calculateSavings(){
     document.getElementById('savingsResults').classList.add('show');
     document.getElementById('savingsResults').scrollIntoView({behavior:'smooth'});
     if(typeof trackEvent==='function')trackEvent('Tool','Calculate','Savings');
+    setupShare('savingsShare','I\'ll reach my savings goal in '+document.getElementById('timeToGoal').textContent+'. Plan yours!');
 }
 </script>
 </body>
