@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-16T03:37:43.503Z",
+  "updated": "2026-06-21T10:51:38.992544Z",
   "ga4": {
     "rows": [
       {
@@ -11,125 +11,15 @@
         ],
         "metricValues": [
           {
-            "value": "18",
+            "value": "35",
             "oneValue": "value"
           },
           {
-            "value": "38",
+            "value": "129",
             "oneValue": "value"
           },
           {
-            "value": "133.72870020833332",
-            "oneValue": "value"
-          }
-        ]
-      },
-      {
-        "dimensionValues": [
-          {
-            "value": "/tools/pet-cost-calculator.html",
-            "oneValue": "value"
-          }
-        ],
-        "metricValues": [
-          {
-            "value": "5",
-            "oneValue": "value"
-          },
-          {
-            "value": "14",
-            "oneValue": "value"
-          },
-          {
-            "value": "1075.8024636666667",
-            "oneValue": "value"
-          }
-        ]
-      },
-      {
-        "dimensionValues": [
-          {
-            "value": "/tools/subscription-calculator.html",
-            "oneValue": "value"
-          }
-        ],
-        "metricValues": [
-          {
-            "value": "5",
-            "oneValue": "value"
-          },
-          {
-            "value": "16",
-            "oneValue": "value"
-          },
-          {
-            "value": "283.96587949999997",
-            "oneValue": "value"
-          }
-        ]
-      },
-      {
-        "dimensionValues": [
-          {
-            "value": "/tools/fuel-calculator.html",
-            "oneValue": "value"
-          }
-        ],
-        "metricValues": [
-          {
-            "value": "4",
-            "oneValue": "value"
-          },
-          {
-            "value": "5",
-            "oneValue": "value"
-          },
-          {
-            "value": "253.041684",
-            "oneValue": "value"
-          }
-        ]
-      },
-      {
-        "dimensionValues": [
-          {
-            "value": "/tools/mortgage-calculator.html",
-            "oneValue": "value"
-          }
-        ],
-        "metricValues": [
-          {
-            "value": "4",
-            "oneValue": "value"
-          },
-          {
-            "value": "8",
-            "oneValue": "value"
-          },
-          {
-            "value": "35.611835285714285",
-            "oneValue": "value"
-          }
-        ]
-      },
-      {
-        "dimensionValues": [
-          {
-            "value": "/tools/tip-calculator.html",
-            "oneValue": "value"
-          }
-        ],
-        "metricValues": [
-          {
-            "value": "3",
-            "oneValue": "value"
-          },
-          {
-            "value": "4",
-            "oneValue": "value"
-          },
-          {
-            "value": "96.275686666666672",
+            "value": "231.73339175925926",
             "oneValue": "value"
           }
         ]
@@ -143,15 +33,15 @@
         ],
         "metricValues": [
           {
-            "value": "2",
+            "value": "8",
             "oneValue": "value"
           },
           {
-            "value": "2",
+            "value": "43",
             "oneValue": "value"
           },
           {
-            "value": "89.758709",
+            "value": "284.63023946153851",
             "oneValue": "value"
           }
         ]
@@ -159,21 +49,21 @@
       {
         "dimensionValues": [
           {
-            "value": "/blog/",
+            "value": "/tools/mortgage-calculator.html",
             "oneValue": "value"
           }
         ],
         "metricValues": [
           {
-            "value": "1",
+            "value": "7",
             "oneValue": "value"
           },
           {
-            "value": "1",
+            "value": "15",
             "oneValue": "value"
           },
           {
-            "value": "309.801957",
+            "value": "61.700918363636362",
             "oneValue": "value"
           }
         ]
@@ -181,21 +71,43 @@
       {
         "dimensionValues": [
           {
-            "value": "/privacy.html",
+            "value": "/tools/pet-cost-calculator.html",
             "oneValue": "value"
           }
         ],
         "metricValues": [
           {
-            "value": "1",
+            "value": "7",
             "oneValue": "value"
           },
           {
-            "value": "1",
+            "value": "24",
             "oneValue": "value"
           },
           {
-            "value": "0",
+            "value": "97.71110575",
+            "oneValue": "value"
+          }
+        ]
+      },
+      {
+        "dimensionValues": [
+          {
+            "value": "/tools/subscription-calculator.html",
+            "oneValue": "value"
+          }
+        ],
+        "metricValues": [
+          {
+            "value": "7",
+            "oneValue": "value"
+          },
+          {
+            "value": "22",
+            "oneValue": "value"
+          },
+          {
+            "value": "67.439809076923083",
             "oneValue": "value"
           }
         ]
@@ -209,7 +121,205 @@
         ],
         "metricValues": [
           {
-            "value": "1",
+            "value": "6",
+            "oneValue": "value"
+          },
+          {
+            "value": "20",
+            "oneValue": "value"
+          },
+          {
+            "value": "410.0186305",
+            "oneValue": "value"
+          }
+        ]
+      },
+      {
+        "dimensionValues": [
+          {
+            "value": "/tools/fuel-calculator.html",
+            "oneValue": "value"
+          }
+        ],
+        "metricValues": [
+          {
+            "value": "5",
+            "oneValue": "value"
+          },
+          {
+            "value": "15",
+            "oneValue": "value"
+          },
+          {
+            "value": "68.146763",
+            "oneValue": "value"
+          }
+        ]
+      },
+      {
+        "dimensionValues": [
+          {
+            "value": "/tools/tip-calculator.html",
+            "oneValue": "value"
+          }
+        ],
+        "metricValues": [
+          {
+            "value": "5",
+            "oneValue": "value"
+          },
+          {
+            "value": "7",
+            "oneValue": "value"
+          },
+          {
+            "value": "19.078539799999998",
+            "oneValue": "value"
+          }
+        ]
+      },
+      {
+        "dimensionValues": [
+          {
+            "value": "/blog/",
+            "oneValue": "value"
+          }
+        ],
+        "metricValues": [
+          {
+            "value": "4",
+            "oneValue": "value"
+          },
+          {
+            "value": "9",
+            "oneValue": "value"
+          },
+          {
+            "value": "241.45389375000002",
+            "oneValue": "value"
+          }
+        ]
+      },
+      {
+        "dimensionValues": [
+          {
+            "value": "/tools/savings-calculator.html",
+            "oneValue": "value"
+          }
+        ],
+        "metricValues": [
+          {
+            "value": "4",
+            "oneValue": "value"
+          },
+          {
+            "value": "5",
+            "oneValue": "value"
+          },
+          {
+            "value": "3.2300055",
+            "oneValue": "value"
+          }
+        ]
+      },
+      {
+        "dimensionValues": [
+          {
+            "value": "/blog/bmi-science.html",
+            "oneValue": "value"
+          }
+        ],
+        "metricValues": [
+          {
+            "value": "3",
+            "oneValue": "value"
+          },
+          {
+            "value": "4",
+            "oneValue": "value"
+          },
+          {
+            "value": "2.7704706666666667",
+            "oneValue": "value"
+          }
+        ]
+      },
+      {
+        "dimensionValues": [
+          {
+            "value": "/blog/fuel-economy.html",
+            "oneValue": "value"
+          }
+        ],
+        "metricValues": [
+          {
+            "value": "3",
+            "oneValue": "value"
+          },
+          {
+            "value": "5",
+            "oneValue": "value"
+          },
+          {
+            "value": "12.438693666666666",
+            "oneValue": "value"
+          }
+        ]
+      },
+      {
+        "dimensionValues": [
+          {
+            "value": "/bmi",
+            "oneValue": "value"
+          }
+        ],
+        "metricValues": [
+          {
+            "value": "3",
+            "oneValue": "value"
+          },
+          {
+            "value": "11",
+            "oneValue": "value"
+          },
+          {
+            "value": "420.93662175",
+            "oneValue": "value"
+          }
+        ]
+      },
+      {
+        "dimensionValues": [
+          {
+            "value": "/tools/moving-calculator.html",
+            "oneValue": "value"
+          }
+        ],
+        "metricValues": [
+          {
+            "value": "3",
+            "oneValue": "value"
+          },
+          {
+            "value": "5",
+            "oneValue": "value"
+          },
+          {
+            "value": "4.215779",
+            "oneValue": "value"
+          }
+        ]
+      },
+      {
+        "dimensionValues": [
+          {
+            "value": "/blog/calorie-science.html",
+            "oneValue": "value"
+          }
+        ],
+        "metricValues": [
+          {
+            "value": "2",
             "oneValue": "value"
           },
           {
@@ -225,7 +335,117 @@
       {
         "dimensionValues": [
           {
-            "value": "/tools/moving-calculator.html",
+            "value": "/blog/moving-economics.html",
+            "oneValue": "value"
+          }
+        ],
+        "metricValues": [
+          {
+            "value": "2",
+            "oneValue": "value"
+          },
+          {
+            "value": "4",
+            "oneValue": "value"
+          },
+          {
+            "value": "3.258737",
+            "oneValue": "value"
+          }
+        ]
+      },
+      {
+        "dimensionValues": [
+          {
+            "value": "/blog/pet-cost-guide.html",
+            "oneValue": "value"
+          }
+        ],
+        "metricValues": [
+          {
+            "value": "2",
+            "oneValue": "value"
+          },
+          {
+            "value": "5",
+            "oneValue": "value"
+          },
+          {
+            "value": "6.5171505",
+            "oneValue": "value"
+          }
+        ]
+      },
+      {
+        "dimensionValues": [
+          {
+            "value": "/privacy.html",
+            "oneValue": "value"
+          }
+        ],
+        "metricValues": [
+          {
+            "value": "2",
+            "oneValue": "value"
+          },
+          {
+            "value": "3",
+            "oneValue": "value"
+          },
+          {
+            "value": "5.148493",
+            "oneValue": "value"
+          }
+        ]
+      },
+      {
+        "dimensionValues": [
+          {
+            "value": "/terms.html",
+            "oneValue": "value"
+          }
+        ],
+        "metricValues": [
+          {
+            "value": "2",
+            "oneValue": "value"
+          },
+          {
+            "value": "2",
+            "oneValue": "value"
+          },
+          {
+            "value": "2.8225675",
+            "oneValue": "value"
+          }
+        ]
+      },
+      {
+        "dimensionValues": [
+          {
+            "value": "/blog/behavioral-economics-saving.html",
+            "oneValue": "value"
+          }
+        ],
+        "metricValues": [
+          {
+            "value": "1",
+            "oneValue": "value"
+          },
+          {
+            "value": "4",
+            "oneValue": "value"
+          },
+          {
+            "value": "12.867363",
+            "oneValue": "value"
+          }
+        ]
+      },
+      {
+        "dimensionValues": [
+          {
+            "value": "/blog/compound-interest-math.html",
             "oneValue": "value"
           }
         ],
@@ -239,7 +459,7 @@
             "oneValue": "value"
           },
           {
-            "value": "3.433117",
+            "value": "4.061056",
             "oneValue": "value"
           }
         ]
@@ -247,7 +467,139 @@
       {
         "dimensionValues": [
           {
-            "value": "/tools/savings-calculator.html",
+            "value": "/blog/index.html",
+            "oneValue": "value"
+          }
+        ],
+        "metricValues": [
+          {
+            "value": "1",
+            "oneValue": "value"
+          },
+          {
+            "value": "4",
+            "oneValue": "value"
+          },
+          {
+            "value": "12.35609",
+            "oneValue": "value"
+          }
+        ]
+      },
+      {
+        "dimensionValues": [
+          {
+            "value": "/blog/mortgage-math.html",
+            "oneValue": "value"
+          }
+        ],
+        "metricValues": [
+          {
+            "value": "1",
+            "oneValue": "value"
+          },
+          {
+            "value": "4",
+            "oneValue": "value"
+          },
+          {
+            "value": "13.610732",
+            "oneValue": "value"
+          }
+        ]
+      },
+      {
+        "dimensionValues": [
+          {
+            "value": "/blog/mortgage-tips.html",
+            "oneValue": "value"
+          }
+        ],
+        "metricValues": [
+          {
+            "value": "1",
+            "oneValue": "value"
+          },
+          {
+            "value": "3",
+            "oneValue": "value"
+          },
+          {
+            "value": "13.463862",
+            "oneValue": "value"
+          }
+        ]
+      },
+      {
+        "dimensionValues": [
+          {
+            "value": "/blog/moving-savings-playbook.html",
+            "oneValue": "value"
+          }
+        ],
+        "metricValues": [
+          {
+            "value": "1",
+            "oneValue": "value"
+          },
+          {
+            "value": "2",
+            "oneValue": "value"
+          },
+          {
+            "value": "5.061583",
+            "oneValue": "value"
+          }
+        ]
+      },
+      {
+        "dimensionValues": [
+          {
+            "value": "/blog/pet-economics.html",
+            "oneValue": "value"
+          }
+        ],
+        "metricValues": [
+          {
+            "value": "1",
+            "oneValue": "value"
+          },
+          {
+            "value": "4",
+            "oneValue": "value"
+          },
+          {
+            "value": "13.544554",
+            "oneValue": "value"
+          }
+        ]
+      },
+      {
+        "dimensionValues": [
+          {
+            "value": "/blog/subscription-audit-guide.html",
+            "oneValue": "value"
+          }
+        ],
+        "metricValues": [
+          {
+            "value": "1",
+            "oneValue": "value"
+          },
+          {
+            "value": "2",
+            "oneValue": "value"
+          },
+          {
+            "value": "4.857795",
+            "oneValue": "value"
+          }
+        ]
+      },
+      {
+        "dimensionValues": [
+          {
+            "value": "/blog/subscription-economics.html",
             "oneValue": "value"
           }
         ],
@@ -261,13 +613,156 @@
             "oneValue": "value"
           },
           {
-            "value": "5.315836",
+            "value": "4.171808",
+            "oneValue": "value"
+          }
+        ]
+      },
+      {
+        "dimensionValues": [
+          {
+            "value": "/blog/tipping-culture.html",
+            "oneValue": "value"
+          }
+        ],
+        "metricValues": [
+          {
+            "value": "1",
+            "oneValue": "value"
+          },
+          {
+            "value": "1",
+            "oneValue": "value"
+          },
+          {
+            "value": "5.038451",
+            "oneValue": "value"
+          }
+        ]
+      },
+      {
+        "dimensionValues": [
+          {
+            "value": "/calorie",
+            "oneValue": "value"
+          }
+        ],
+        "metricValues": [
+          {
+            "value": "1",
+            "oneValue": "value"
+          },
+          {
+            "value": "1",
+            "oneValue": "value"
+          },
+          {
+            "value": "0",
+            "oneValue": "value"
+          }
+        ]
+      },
+      {
+        "dimensionValues": [
+          {
+            "value": "/contact.html",
+            "oneValue": "value"
+          }
+        ],
+        "metricValues": [
+          {
+            "value": "1",
+            "oneValue": "value"
+          },
+          {
+            "value": "12",
+            "oneValue": "value"
+          },
+          {
+            "value": "44.00786",
+            "oneValue": "value"
+          }
+        ]
+      },
+      {
+        "dimensionValues": [
+          {
+            "value": "/home",
+            "oneValue": "value"
+          }
+        ],
+        "metricValues": [
+          {
+            "value": "1",
+            "oneValue": "value"
+          },
+          {
+            "value": "2",
+            "oneValue": "value"
+          },
+          {
+            "value": "1512.877312",
+            "oneValue": "value"
+          }
+        ]
+      },
+      {
+        "dimensionValues": [
+          {
+            "value": "/mortgage",
+            "oneValue": "value"
+          }
+        ],
+        "metricValues": [
+          {
+            "value": "1",
+            "oneValue": "value"
+          },
+          {
+            "value": "3",
+            "oneValue": "value"
+          },
+          {
+            "value": "582.989584",
+            "oneValue": "value"
+          }
+        ]
+      },
+      {
+        "dimensionValues": [
+          {
+            "value": "/pet",
+            "oneValue": "value"
+          }
+        ],
+        "metricValues": [
+          {
+            "value": "1",
+            "oneValue": "value"
+          },
+          {
+            "value": "3",
+            "oneValue": "value"
+          },
+          {
+            "value": "0",
             "oneValue": "value"
           }
         ]
       }
     ],
-    "totals": []
+    "totals": [
+      {
+        "metricValues": [
+          {
+            "value": "125"
+          },
+          {
+            "value": "378"
+          }
+        ]
+      }
+    ]
   },
   "searchConsole": {
     "responseAggregationType": "byPage"
