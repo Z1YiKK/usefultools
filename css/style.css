@@ -1178,6 +1178,14 @@ footer {
         margin-right: 0;
     }
 
+    /* Hide sidebar Biltrx CTA on mobile — inline CTA is already visible above */
+    .tool-sidebar .sidebar-cta:first-of-type {
+        display: none;
+    }
+    .mobile-cta {
+        margin: 20px 0 16px !important;
+    }
+
     .ad-cta-box {
         margin: 16px 0;
         padding: 16px 14px;
