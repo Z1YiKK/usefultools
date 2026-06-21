@@ -16,25 +16,25 @@
 <main class="tool-page"><div class="container"><div class="tool-breadcrumb"><a href="../">Home</a> &rarr; Pet Cost Calculator</div><div class="tool-layout"><div class="tool-main"><h1>Pet Cost Calculator — Lifetime Ownership Cost</h1>
 <div class="calc-form">
     <div class="form-group"><label for="petType">Pet Type</label><select id="petType" onchange="onPetTypeChange()">
-        <option value="dog-small">Dog, Small Breed (e.g. Chihuahua, Shih Tzu, Dachshund)</option>
-        <option value="dog-medium" selected>Dog, Medium Breed (e.g. Beagle, Corgi, Border Collie)</option>
-        <option value="dog-large">Dog, Large Breed (e.g. Labrador, German Shepherd, Golden Retriever)</option>
-        <option value="dog-giant">Dog, Giant Breed (e.g. Great Dane, Mastiff, Saint Bernard)</option>
-        <option value="cat">Cat (e.g. Domestic Shorthair, Siamese, Maine Coon)</option>
-        <option value="rabbit">Rabbit (e.g. Holland Lop, Netherland Dwarf, Flemish Giant)</option>
-        <option value="bird">Bird (e.g. Budgie, Cockatiel, Parrot, Macaw, Canary, Finch)</option>
-        <option value="fish">Fish, Freshwater Aquarium (e.g. Goldfish, Betta, Tetra, Guppy)</option>
-        <option value="hamster">Hamster / Gerbil / Mouse / Guinea Pig</option>
-        <option value="reptile">Reptile (e.g. Bearded Dragon, Leopard Gecko, Corn Snake)</option>
+        <option value="dog-small">Dog — Small Breed</option>
+        <option value="dog-medium" selected>Dog — Medium Breed</option>
+        <option value="dog-large">Dog — Large Breed</option>
+        <option value="dog-giant">Dog — Giant Breed</option>
+        <option value="cat">Cat</option>
+        <option value="rabbit">Rabbit</option>
+        <option value="bird">Bird (Parrot, Budgie, Cockatiel...)</option>
+        <option value="fish">Fish — Freshwater Aquarium</option>
+        <option value="hamster">Hamster / Gerbil / Guinea Pig</option>
+        <option value="reptile">Reptile (Gecko, Snake...)</option>
         <option value="turtle">Turtle / Tortoise</option>
     </select><span class="input-hint">Select the closest match. Lifespan and costs auto-adjust. Adjust further if needed.</span></div>
     <div class="form-group"><label for="petAge">Current Age (years)</label><input type="number" id="petAge" value="0" min="0" max="100"><span class="input-hint">For a new pet, enter 0. Costs calculated for remaining expected lifespan.</span></div>
     <div class="form-group"><label for="lifespan">Average Lifespan (years)</label><input type="number" id="lifespan" value="12" min="1" max="150"><span class="input-hint" id="lifespanHint">Dogs: 10-15 yr. Cats: 12-18 yr. Rabbits: 8-12 yr. Birds: 5-60+ yr (species-dependent). Fish: 2-5 yr. Rodents: 2-7 yr. Reptiles: 8-20 yr. Turtles: 30-50+ yr.</span></div>
     <div class="form-group"><label for="foodQuality">Diet / Food Quality</label><select id="foodQuality">
-        <option value="standard">Standard (grocery-brand kibble, basic pellets, flake food)</option>
-        <option value="premium" selected>Premium (brand-name, better ingredients, species-appropriate)</option>
+        <option value="standard">Standard (basic kibble/pellets)</option>
+        <option value="premium" selected>Premium (brand-name, better quality)</option>
         <option value="vet">Veterinary / Prescription Diet</option>
-        <option value="fresh">Fresh / Raw / Whole Prey / Custom Formulation</option>
+        <option value="fresh">Fresh / Raw / Custom Diet</option>
     </select><span class="input-hint">Standard = Purina, Kaytee, Tetra. Premium = Blue Buffalo, Oxbow, Hikari, Hill's Science Diet. Vet = prescription formulas. Fresh = raw, homemade, whole prey for reptiles.</span></div>
     <div class="form-group"><label for="petCurrency">Currency</label><select id="petCurrency"><option value="USD">USD ($)</option><option value="EUR">EUR (&euro;)</option><option value="GBP">GBP (&pound;)</option><option value="CAD">CAD (C$)</option><option value="AUD">AUD (A$)</option></select></div>
     <div class="form-group"><label for="petLocation">Region (adjusts for local costs)</label><select id="petLocation">
