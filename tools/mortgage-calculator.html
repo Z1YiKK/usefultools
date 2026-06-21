@@ -62,7 +62,6 @@
     <div class="result-item"><span class="result-label">Time Saved</span><span class="result-value big" id="yearsSaved">-</span></div>
     <div class="result-item"><span class="result-label">Interest Saved</span><span class="result-value big" id="interestSaved">-</span></div>
 </div>
-<div class="share-buttons" id="mortgageShare"><span class="share-label">📤 Share:</span><a class="share-btn x" href="#" target="_blank" rel="noopener">X Post</a><a class="share-btn fb" href="#" target="_blank" rel="noopener">📘 Share</a></div>
 <div class="tool-content">
     <h2>How Extra Mortgage Payments Work</h2>
     <p>Every extra dollar you pay goes directly to <strong>reducing the principal balance</strong>, not interest. This means less interest accrues in future months — creating a compounding savings effect.</p>
@@ -154,7 +153,7 @@ function calculateMortgage() {
     document.getElementById('mortgageResults').classList.add('show');
     document.getElementById('mortgageResults').scrollIntoView({ behavior: 'smooth' });
     if(typeof trackEvent==='function')trackEvent('Tool','Calculate','Mortgage');
-    setupShare('mortgageShare','I could save '+document.getElementById('interestSaved').textContent+' on my mortgage! Calculate yours.');
+    setupShare('mortgageResults','I could save '+document.getElementById('interestSaved').textContent+' on my mortgage! Calculate yours.');
 }
 </script>
 </body>

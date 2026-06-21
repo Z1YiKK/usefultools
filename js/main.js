@@ -305,16 +305,19 @@
         }
     };
 
-    // Setup share buttons (X + Facebook) after calculation
-    window.setupShare = function(shareId, text) {
-        var container = document.getElementById(shareId);
-        if (!container) return;
-        var url = encodeURIComponent(window.location.href);
-        var encodedText = encodeURIComponent(text);
-        var links = container.querySelectorAll('a');
-        if (links[0]) links[0].href = 'https://twitter.com/intent/tweet?text=' + encodedText + '&url=' + url;
-        if (links[1]) links[1].href = 'https://www.facebook.com/sharer/sharer.php?u=' + url + '&quote=' + encodedText;
-        container.classList.add('show');
+    // Setup share buttons (X + FB) inside results — defers to after MutationObserver
+    window.setupShare = function(resultsId, text) {
+        queueMicrotask(function() {
+            var results = document.getElementById(resultsId);
+            if (!results) return;
+            var row = results.querySelector('.share-row');
+            if (!row) return;
+            var url = encodeURIComponent(window.location.href);
+            var encodedText = encodeURIComponent(text);
+            var links = row.querySelectorAll('a');
+            if (links[0]) links[0].href = 'https://twitter.com/intent/tweet?text=' + encodedText + '&url=' + url;
+            if (links[1]) links[1].href = 'https://www.facebook.com/sharer/sharer.php?u=' + url + '&quote=' + encodedText;
+        });
     };
 
     // ========== Analytics ==========
@@ -354,16 +357,18 @@
         });
     });
 
-    // ========== Copy Results (auto-adds to all results sections) ==========
-    var copyBtnObserver = new MutationObserver(function(mutations) {
+    // ========== Share Row (auto-adds copy + X + FB inside results) ==========
+    var shareObserver = new MutationObserver(function(mutations) {
         mutations.forEach(function(mutation) {
             if (mutation.target.classList.contains('results') && mutation.target.classList.contains('show')) {
                 var results = mutation.target;
-                if (!results.querySelector('.copy-results-btn')) {
-                    var btn = document.createElement('button');
-                    btn.className = 'copy-results-btn';
-                    btn.textContent = 'Copy Results';
-                    btn.onclick = function(e) {
+                if (!results.querySelector('.share-row')) {
+                    var row = document.createElement('div');
+                    row.className = 'share-row';
+                    row.innerHTML = '<button class="copy-results-btn">📋 Copy</button>' +
+                        '<a class="share-btn x" href="#" target="_blank" rel="noopener">✕ Post</a>' +
+                        '<a class="share-btn fb" href="#" target="_blank" rel="noopener">FB Share</a>';
+                    row.querySelector('.copy-results-btn').addEventListener('click', function(e) {
                         e.preventDefault();
                         var items = results.querySelectorAll('.result-item');
                         var text = document.title + '\n' + window.location.href + '\n\n';
@@ -375,17 +380,18 @@
                         var ta = document.createElement('textarea');
                         ta.value = text; document.body.appendChild(ta); ta.select();
                         document.execCommand('copy'); document.body.removeChild(ta);
-                        btn.textContent = 'Copied!';
-                        setTimeout(function() { btn.textContent = 'Copy Results'; }, 2000);
-                    };
-                    results.appendChild(btn);
+                        var btn = row.querySelector('.copy-results-btn');
+                        btn.textContent = '✓ Copied!';
+                        setTimeout(function() { btn.textContent = '📋 Copy'; }, 2000);
+                    });
+                    results.appendChild(row);
                 }
             }
         });
     });
     // Observe all results divs
     document.querySelectorAll('.results').forEach(function(r) {
-        copyBtnObserver.observe(r, { attributes: true, attributeFilter: ['class'] });
+        shareObserver.observe(r, { attributes: true, attributeFilter: ['class'] });
     });
 
     console.log('ToolHero ready');
