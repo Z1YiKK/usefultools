@@ -900,6 +900,12 @@ footer {
 }
 
 /* === INLINE CTA (between results and content) === */
+/* Desktop: hide inline CTA, only show sidebar version */
+.mobile-cta { display: none; }
+/* Mobile: show inline CTA, hide sidebar duplicate */
+@media (max-width: 768px) {
+    .mobile-cta { display: block; }
+}
 .inline-cta {
     background: linear-gradient(135deg, #f0fdf4, #ecfdf5);
     border: 1px solid #a7f3d0;
