@@ -18,9 +18,9 @@
     <div class="form-group"><label for="fuelEfficiency">Fuel Efficiency</label><input type="number" id="fuelEfficiency" value="28" min="1" max="200" step="0.1"><span class="input-hint" id="fuelEffHint">Typical: 25-30 MPG (car), 18-25 MPG (SUV), 45-55 MPG (hybrid)</span></div>
     <div class="form-group"><label for="tripDistance">Trip Distance (one-way)</label><input type="number" id="tripDistance" value="200" min="1" step="1"><span class="input-hint">One leg of your trip. For round trips, use Trip Count = 2.</span></div>
     <div class="form-group"><label for="distanceUnit">Distance Unit</label><select id="distanceUnit"><option value="miles">Miles</option><option value="km">Kilometers</option></select></div>
-    <div class="form-group"><label for="tripCount">Trip Count <span style="color:#94a3b8;">(how many times?)</span></label><input type="number" id="tripCount" value="1" min="1" max="999" step="1"><span class="input-hint">Set to 1 for a single one-way trip. Set to 2 for round trip. Set to 10 for 5 round trips, etc. For daily commute, try 260 (5 days x 52 weeks).</span></div>
-    <div class="form-group"><label for="gasPrice">Fuel Price</label><input type="number" id="gasPrice" value="3.50" min="0.1" max="20" step="0.01"><span class="input-hint">Check current prices at GasBuddy or your national energy agency</span></div>
-    <div class="form-group"><label for="fuelPriceUnit">Price Per</label><select id="fuelPriceUnit"><option value="gallon">Per Gallon</option><option value="liter">Per Liter</option></select></div>
+    <div class="form-group"><label for="tripCount">Trip Count <span style="color:#94a3b8;">(how many times?)</span></label><input type="number" id="tripCount" value="1" min="1" max="999" step="1"><span class="input-hint">1 = one-way, 2 = round trip, 10 = 5 round trips. For commute: trips/day x work days.</span></div>
+    <div class="form-group"><label for="gasPrice">Fuel Price (per unit)</label><input type="number" id="gasPrice" value="3.50" min="0.1" max="20" step="0.01"><span class="input-hint">Check current prices at GasBuddy or your national energy agency</span></div>
+    <div class="form-group"><label for="fuelPriceUnit">Unit (gallon/liter)</label><select id="fuelPriceUnit"><option value="gallon">Per Gallon</option><option value="liter">Per Liter</option></select></div>
     <button type="button" class="calc-btn" onclick="calculateFuel()">Calculate Fuel Cost</button>
 </div>
 <div class="results" id="fuelResults"><h2>Fuel Cost</h2>
