@@ -899,6 +899,47 @@ footer {
     line-height: 1.6;
 }
 
+/* === INLINE CTA (between results and content) === */
+.inline-cta {
+    background: linear-gradient(135deg, #f0fdf4, #ecfdf5);
+    border: 1px solid #a7f3d0;
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+.inline-cta .cta-text h4 {
+    margin: 0;
+    font-size: 0.95rem;
+    color: #065f46;
+    font-weight: 700;
+}
+.inline-cta .cta-text p {
+    margin: 4px 0 0;
+    font-size: 0.82rem;
+    color: #64748b;
+}
+.inline-cta .cta-btn {
+    display: inline-block;
+    background: #10b981;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    transition: background 0.2s;
+}
+.inline-cta .cta-btn:hover { background: #059669; }
+@media (max-width: 480px) {
+    .inline-cta { flex-direction: column; text-align: center; }
+}
+
 /* === BLOG === */
 .blog-page {
     padding: 60px 0 80px;
